@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = 'What is TRT? A plain-English guide to testosterone replacement therapy';
+const description = 'Testosterone replacement therapy (TRT) explained: who qualifies, how it works, the main delivery methods, benefits, risks, and what ongoing monitoring looks like.';
+---
+<BaseLayout title={`${title} — TRT Clinic Finder`} description={description}>
+  <article class="pb-20">
+    <section class="bg-gradient-to-b from-brand-50 to-white">
+      <div class="container-prose pt-12 pb-10">
+        <nav class="text-sm text-ink-500 mb-4">
+          <a href="/" class="hover:text-ink-900">Home</a>
+          <span class="mx-1.5">/</span>
+          <a href="/guides/" class="hover:text-ink-900">Guides</a>
+          <span class="mx-1.5">/</span>
+          <span class="text-ink-900">What is TRT?</span>
+        </nav>
+        <div class="flex items-center gap-2 text-sm font-semibold text-brand-700">
+          <Icon name="stethoscope" size={18} /> Medical basics · 8 min read
+        </div>
+        <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 leading-tight max-w-3xl">
+          What is testosterone replacement therapy?
+        </h1>
+        <p class="mt-4 max-w-2xl text-lg text-ink-600">
+          TRT is a medically supervised treatment that restores testosterone to a healthy range in men whose natural production has dropped below normal. It's one of the most studied hormone therapies in modern medicine — and one of the most misunderstood.
+        </p>
+      </div>
+    </section>
+
+    <section class="container-prose mt-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <div class="flex items-center gap-2 text-brand-700"><Icon name="flask" size={18} /> <span class="text-xs font-semibold uppercase tracking-wider">Diagnosis</span></div>
+          <p class="mt-2 text-sm text-ink-700">Typically confirmed by two separate morning blood draws showing total testosterone below ~300 ng/dL, plus documented symptoms.</p>
+        </div>
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <div class="flex items-center gap-2 text-brand-700"><Icon name="syringe" size={18} /> <span class="text-xs font-semibold uppercase tracking-wider">Delivery</span></div>
+          <p class="mt-2 text-sm text-ink-700">Intramuscular or subcutaneous injections, topical gels, long-acting pellets, oral undecanoate, and transdermal patches.</p>
+        </div>
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <div class="flex items-center gap-2 text-brand-700"><Icon name="clock" size={18} /> <span class="text-xs font-semibold uppercase tracking-wider">Commitment</span></div>
+          <p class="mt-2 text-sm text-ink-700">TRT is generally a long-term therapy. Stopping typically returns testosterone to its prior low baseline within weeks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-prose mt-12 prose prose-ink max-w-3xl">
+      <h2>Who TRT is for</h2>
+      <p>
+        TRT is indicated for men diagnosed with <strong>hypogonadism</strong> — a clinical condition where the body produces insufficient testosterone. The Endocrine Society and American Urological Association both recommend confirming low testosterone with two separate morning blood tests, since levels fluctuate significantly through the day and a single reading can be misleading.
+      </p>
+      <p>Low testosterone often shows up as a cluster of symptoms rather than a single complaint:</p>
+      <ul>
+        <li>Persistently low energy or motivation that doesn't improve with rest</li>
+        <li>Reduced libido, erectile dysfunction, or decreased spontaneous erections</li>
+        <li>Loss of muscle mass or strength despite consistent training</li>
+        <li>Increased body fat, especially abdominal</li>
+        <li>Mood changes — irritability, depression, mental fog</li>
+        <li>Poor sleep, hot flashes, or night sweats</li>
+      </ul>
+      <p>
+        Symptoms alone aren't enough. A responsible clinic will rule out other causes first (sleep apnea, thyroid dysfunction, depression, medication side effects, chronic illness) before starting treatment. If your provider offers TRT after a single phone call and no labs, that's a red flag.
+      </p>
+
+      <h2>How the main delivery methods compare</h2>
+      <p>No single form is "best" — the right choice depends on your schedule, needle tolerance, insurance coverage, and how your body metabolizes testosterone.</p>
+      <div class="not-prose my-6 overflow-x-auto">
+        <table class="min-w-full text-sm border border-ink-100 rounded-lg overflow-hidden">
+          <thead class="bg-ink-50 text-ink-700 text-left">
+            <tr>
+              <th class="px-4 py-2 font-semibold">Form</th>
+              <th class="px-4 py-2 font-semibold">Frequency</th>
+              <th class="px-4 py-2 font-semibold">Pros</th>
+              <th class="px-4 py-2 font-semibold">Trade-offs</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-ink-100 bg-white">
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">IM or SubQ injection (cypionate/enanthate)</td>
+              <td class="px-4 py-3">Weekly or twice-weekly</td>
+              <td class="px-4 py-3">Cheapest, most stable levels, widely prescribed</td>
+              <td class="px-4 py-3">Self-injection required; some men get peaks and troughs</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Topical gel / cream</td>
+              <td class="px-4 py-3">Daily</td>
+              <td class="px-4 py-3">No needles; steady daily dosing</td>
+              <td class="px-4 py-3">Transfer risk to partners/children; skin absorption varies</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Subcutaneous pellets</td>
+              <td class="px-4 py-3">Every 3–6 months</td>
+              <td class="px-4 py-3">Set-and-forget; very stable blood levels</td>
+              <td class="px-4 py-3">In-office minor procedure; dose can't be adjusted mid-cycle</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Oral undecanoate (Jatenzo, Kyzatrex)</td>
+              <td class="px-4 py-3">Twice daily with food</td>
+              <td class="px-4 py-3">No needles, no skin transfer</td>
+              <td class="px-4 py-3">Expensive, must be taken with dietary fat</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Transdermal patch</td>
+              <td class="px-4 py-3">Daily</td>
+              <td class="px-4 py-3">Simple application</td>
+              <td class="px-4 py-3">Frequent skin irritation; less commonly prescribed today</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What TRT actually does (and doesn't do)</h2>
+      <p>When testosterone is restored to a healthy mid-normal range (typically 500–900 ng/dL for most protocols), the improvements men most reliably report in controlled studies are:</p>
+      <ul>
+        <li>Increased libido and frequency of spontaneous erections</li>
+        <li>Improved mood and reduced depressive symptoms</li>
+        <li>Better lean-mass-to-fat-mass ratio over 6–12 months</li>
+        <li>Modest strength gains</li>
+        <li>Improved bone mineral density with long-term therapy</li>
+      </ul>
+      <p>
+        What TRT <em>won't</em> reliably do: turn an average body into a bodybuilder's, dramatically improve cognition in men whose testosterone was already normal, or serve as a substitute for sleep, diet, or exercise. Clinics that pitch TRT as a performance-enhancing fountain of youth are overpromising.
+      </p>
+
+      <h2>Risks and side effects</h2>
+      <p>Most healthy men tolerate TRT well with appropriate monitoring, but real risks exist:</p>
+      <ul>
+        <li><strong>Elevated hematocrit (thickened blood).</strong> The most common side effect. Periodic blood donations or dose adjustment typically manage it.</li>
+        <li><strong>Fertility suppression.</strong> Exogenous testosterone signals the testes to stop producing sperm. Men who want to preserve fertility should discuss HCG, enclomiphene, or sperm banking <em>before</em> starting.</li>
+        <li><strong>Acne and oily skin.</strong> Usually settles within a few months.</li>
+        <li><strong>Gynecomastia (breast tissue growth).</strong> Caused by testosterone converting to estrogen; managed with dose adjustment or aromatase inhibitors when clinically needed.</li>
+        <li><strong>Sleep apnea worsening.</strong> TRT can aggravate untreated sleep apnea — worth screening for before starting.</li>
+        <li><strong>Cardiovascular considerations.</strong> The TRAVERSE trial (2023) found no increased major cardiovascular events in men with hypogonadism on TRT, but the picture remains nuanced for men with pre-existing heart disease.</li>
+        <li><strong>Prostate.</strong> TRT doesn't cause prostate cancer, but it can accelerate growth of an existing cancer. PSA is monitored routinely.</li>
+      </ul>
+
+      <h2>What good monitoring looks like</h2>
+      <p>The therapy is safe to the extent it's <em>monitored</em>. A reasonable baseline and follow-up protocol includes:</p>
+      <ul>
+        <li>Baseline labs: total testosterone, free testosterone, SHBG, estradiol (sensitive assay), LH, FSH, CBC (for hematocrit), PSA, comprehensive metabolic panel</li>
+        <li>Symptom and blood pressure check</li>
+        <li>Follow-up labs at 6–8 weeks after starting or dose change, then every 6–12 months once stable</li>
+        <li>PSA and hematocrit checks annually at minimum</li>
+      </ul>
+      <p>
+        If a clinic doesn't order labs before prescribing, skips follow-up bloodwork, or refuses to adjust your dose based on how you feel and what your labs show, keep looking.
+      </p>
+
+      <h2>Questions worth asking before you start</h2>
+      <ul>
+        <li>What labs will you run before prescribing, and how often are follow-ups?</li>
+        <li>What's your protocol for men who want to preserve fertility?</li>
+        <li>How do you handle rising hematocrit?</li>
+        <li>Who do I call after hours if I have a reaction?</li>
+        <li>What's the total all-in monthly cost, including labs and consultations?</li>
+        <li>Am I locked into a long-term contract, or can I stop any time?</li>
+      </ul>
+
+      <hr />
+      <p class="text-sm text-ink-500">
+        <strong>Medical disclaimer:</strong> This article is for general information only and is not medical advice. Hormone therapy decisions should be made with a licensed clinician who knows your full medical history.
+      </p>
+    </section>
+
+    <section class="container-prose mt-14">
+      <div class="rounded-2xl bg-brand-600 text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h2 class="font-display text-2xl md:text-3xl font-semibold">Ready to find a clinic?</h2>
+          <p class="mt-2 text-brand-50">Browse TRT and hormone clinics by state, with ratings, services, and contact info.</p>
+        </div>
+        <a href="/clinics/" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-semibold text-brand-700 hover:bg-brand-50">
+          <Icon name="search" size={18} /> Browse clinics
+        </a>
+      </div>
+    </section>
+
+    <section class="container-prose mt-10">
+      <h2 class="font-display text-xl font-semibold text-ink-900 mb-4">Keep reading</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/guides/cost-guide/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="dollar" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">TRT cost guide</div>
+          <p class="mt-1 text-sm text-ink-500">What TRT actually costs per month — labs, consults, prescriptions.</p>
+        </a>
+        <a href="/guides/telehealth-vs-in-person/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="video" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">Telehealth vs in-person</div>
+          <p class="mt-1 text-sm text-ink-500">How the two care models differ — and when each makes sense.</p>
+        </a>
+        <a href="/guides/glossary/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="book-open" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">Glossary</div>
+          <p class="mt-1 text-sm text-ink-500">Plain-English definitions for the terms clinics use.</p>
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

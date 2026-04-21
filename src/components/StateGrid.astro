@@ -1,0 +1,25 @@
+---
+import { STATES } from '../data/states.js';
+
+interface Props {
+  counts?: Record<string, number>;
+}
+
+const { counts = {} } = Astro.props;
+---
+<ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+  {STATES.map((s) => {
+    const count = counts[s.slug] ?? 0;
+    return (
+      <li>
+        <a
+          href={`/clinics/${s.slug}/`}
+          class="card-lift block rounded-xl border border-ink-100 bg-white px-4 py-3 text-sm"
+        >
+          <div class="font-semibold text-ink-900">{s.name}</div>
+          <div class="text-xs text-ink-500 mt-0.5">{count > 0 ? `${count} clinics` : 'Coming soon'}</div>
+        </a>
+      </li>
+    );
+  })}
+</ul>

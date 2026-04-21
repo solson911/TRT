@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { STATES, STATE_BY_SLUG } from '../../../data/states.js';
+import { clinicsByCity } from '../../../data/clinics.js';
+
+export function getStaticPaths() {
+  return STATES.map((s) => ({ params: { state: s.slug } }));
+}
+
+const { state } = Astro.params;
+const stateInfo = STATE_BY_SLUG[state];
+if (!stateInfo) {
+  return Astro.redirect('/404');
+}
+
+const byCity = clinicsByCity(state);
+const cities = Object.keys(byCity)
+  .map((slug) => {
+    const list = byCity[slug];
+    const rated = list.filter((c) => c.rating);
+    const avg = rated.length ? rated.reduce((s, c) => s + c.rating, 0) / rated.length : 0;
+    return { slug, name: list[0]?.city || slug, count: list.length, avgRating: avg };
+  })
+  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+const totalCount = cities.reduce((n, c) => n + c.count, 0);
+const allClinics = cities.flatMap((c) => byCity[c.slug]);
+const rated = allClinics.filter((c) => c.rating);
+const avgRating = rated.length ? rated.reduce((s, c) => s + c.rating, 0) / rated.length : 0;
+const chainCount = new Set(allClinics.filter((c) => c.chain).map((c) => c.chain.split(',')[0].trim())).size;
+---
+<BaseLayout title={`TRT Clinics in ${stateInfo.name} — TRT Clinic Finder`}>
+  <section class="container-prose pt-14 pb-6">
+    <nav class="text-sm text-ink-500 mb-3">
+      <a href="/" class="hover:text-ink-900">Home</a>
+      <span class="mx-1.5">/</span>
+      <a href="/clinics/" class="hover:text-ink-900">States</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-ink-900">{stateInfo.name}</span>
+    </nav>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-ink-900">
+      TRT clinics in {stateInfo.name}
+    </h1>
+    <p class="mt-3 text-ink-600 text-lg">
+      {totalCount > 0
+        ? `${totalCount.toLocaleString()} clinics across ${cities.length} ${cities.length === 1 ? 'city' : 'cities'}.`
+        : `We haven't cataloged ${stateInfo.name} yet. Check back soon.`}
+    </p>
+  </section>
+
+  {totalCount > 0 && (
+    <section class="container-prose pb-6">
+      <dl class="grid grid-cols-3 gap-4 rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+        <div>
+          <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">Clinics</dt>
+          <dd class="mt-1 font-display text-2xl font-semibold text-ink-900">{totalCount.toLocaleString()}</dd>
+        </div>
+        <div>
+          <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">Cities</dt>
+          <dd class="mt-1 font-display text-2xl font-semibold text-ink-900">{cities.length}</dd>
+        </div>
+        <div>
+          <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">Avg. rating</dt>
+          <dd class="mt-1 font-display text-2xl font-semibold text-ink-900">
+            {avgRating > 0 ? avgRating.toFixed(1) : '—'}
+            {avgRating > 0 && <span class="text-amber-500 text-base align-middle">★</span>}
+          </dd>
+        </div>
+      </dl>
+    </section>
+  )}
+
+  {cities.length > 0 && (
+    <section class="container-prose pb-24">
+      <h2 class="font-display text-xl font-semibold text-ink-900 mb-3">Cities</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {cities.map(({ slug, name, count, avgRating }) => (
+          <li>
+            <a
+              href={`/clinics/${state}/${slug}/`}
+              class="card-lift block rounded-xl border border-ink-100 bg-white px-4 py-3"
+            >
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="font-semibold text-ink-900 truncate">{name}</span>
+                <span class="shrink-0 text-xs font-medium text-ink-500">{count}</span>
+              </div>
+              <div class="text-xs text-ink-500 mt-0.5">
+                {count === 1 ? 'clinic' : 'clinics'}
+                {avgRating > 0 && <> · <span class="text-amber-500">★</span> {avgRating.toFixed(1)} avg</>}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</BaseLayout>

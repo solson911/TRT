@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StateGrid from '../components/StateGrid.astro';
+import ClinicCard from '../components/ClinicCard.astro';
+import Icon from '../components/Icon.astro';
+import { countsByState, directorySummary, topRatedClinics } from '../data/clinics.js';
+
+const counts = countsByState();
+const summary = directorySummary();
+const featured = topRatedClinics({ limit: 8, minReviews: 50 });
+---
+<BaseLayout title="TRT Clinic Finder — Testosterone & Hormone Clinics Near You">
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-white to-white"></div>
+    <div class="container-prose pt-20 pb-16 md:pt-28 md:pb-20">
+      <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Find a clinic</p>
+      <h1 class="mt-3 font-display text-4xl md:text-6xl font-semibold tracking-tight text-ink-900 leading-tight max-w-3xl">
+        Every TRT & HRT clinic in the country, in one place.
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-ink-600">
+        A non-sponsored directory of testosterone and hormone therapy clinics across the United States. Pick your state to see every clinic we've cataloged — with ratings, services, and contact info.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="/clinics/" class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-white font-semibold hover:bg-brand-700 transition-colors">
+          <Icon name="search" size={18} /> Browse by state
+        </a>
+        <a href="/telehealth/" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-ink-800 font-semibold ring-1 ring-ink-200 hover:ring-ink-300 transition-colors">
+          <Icon name="video" size={18} /> Prefer telehealth?
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-prose -mt-4 pb-14">
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-4 rounded-2xl bg-white ring-1 ring-ink-100 p-6 shadow-sm">
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="building" size={20} /></span>
+        <div>
+          <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">Clinics cataloged</dt>
+          <dd class="mt-0.5 font-display text-3xl font-semibold text-ink-900">{summary.total.toLocaleString()}</dd>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="map-pin" size={20} /></span>
+        <div>
+          <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">States covered</dt>
+          <dd class="mt-0.5 font-display text-3xl font-semibold text-ink-900">{summary.states}</dd>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="compass" size={20} /></span>
+        <div>
+          <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">Cities</dt>
+          <dd class="mt-0.5 font-display text-3xl font-semibold text-ink-900">{summary.cities.toLocaleString()}</dd>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-amber-600"><Icon name="star" size={20} stroke={0} class="fill-current" /></span>
+        <div>
+          <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">Avg. rating</dt>
+          <dd class="mt-0.5 font-display text-3xl font-semibold text-ink-900">{summary.avgRating.toFixed(1)}</dd>
+        </div>
+      </div>
+    </dl>
+  </section>
+
+  {featured.length > 0 && (
+    <section class="container-prose pb-20">
+      <div class="flex items-end justify-between mb-6">
+        <div>
+          <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Highly rated</p>
+          <h2 class="mt-1 font-display text-2xl md:text-3xl font-semibold text-ink-900">Top-rated clinics across the country</h2>
+        </div>
+      </div>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {featured.map((c) => (
+          <li><ClinicCard clinic={c} /></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="container-prose pb-20">
+    <div class="flex items-end justify-between mb-6">
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-ink-900">Browse by state</h2>
+      <a href="/clinics/" class="text-sm font-medium text-brand-700 hover:text-brand-800">See all →</a>
+    </div>
+    <StateGrid counts={counts} />
+  </section>
+
+  <section class="container-prose pb-16">
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Guides</p>
+        <h2 class="mt-1 font-display text-2xl md:text-3xl font-semibold text-ink-900">Understand TRT before you book</h2>
+      </div>
+      <a href="/guides/" class="text-sm font-medium text-brand-700 hover:text-brand-800">All guides →</a>
+    </div>
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <li>
+        <a href="/guides/what-is-trt/" class="card-lift group block h-full rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="stethoscope" size={20} /></span>
+          <h3 class="mt-3 font-display text-lg font-semibold text-ink-900 group-hover:text-brand-700">What is TRT?</h3>
+          <p class="mt-1 text-sm text-ink-500">The plain-English breakdown.</p>
+        </a>
+      </li>
+      <li>
+        <a href="/guides/cost-guide/" class="card-lift group block h-full rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="dollar" size={20} /></span>
+          <h3 class="mt-3 font-display text-lg font-semibold text-ink-900 group-hover:text-brand-700">Cost guide</h3>
+          <p class="mt-1 text-sm text-ink-500">What TRT actually costs per month.</p>
+        </a>
+      </li>
+      <li>
+        <a href="/guides/telehealth-vs-in-person/" class="card-lift group block h-full rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="video" size={20} /></span>
+          <h3 class="mt-3 font-display text-lg font-semibold text-ink-900 group-hover:text-brand-700">Telehealth vs in-person</h3>
+          <p class="mt-1 text-sm text-ink-500">How the two care models compare.</p>
+        </a>
+      </li>
+      <li>
+        <a href="/guides/glossary/" class="card-lift group block h-full rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="book-open" size={20} /></span>
+          <h3 class="mt-3 font-display text-lg font-semibold text-ink-900 group-hover:text-brand-700">Glossary</h3>
+          <p class="mt-1 text-sm text-ink-500">Decode the jargon clinics use.</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container-prose pb-24">
+    <div class="rounded-2xl bg-ink-900 text-white p-8 md:p-10">
+      <h2 class="font-display text-2xl md:text-3xl font-semibold">How this directory is built</h2>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-ink-200">
+        <div>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white"><Icon name="shield-check" size={20} /></span>
+          <div class="mt-3 font-semibold text-white">Non-sponsored</div>
+          <p class="mt-1 text-sm">No clinic pays to be listed. Ranking is based on rating and review volume, nothing else.</p>
+        </div>
+        <div>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white"><Icon name="map-pin" size={20} /></span>
+          <div class="mt-3 font-semibold text-white">Broad coverage</div>
+          <p class="mt-1 text-sm">Combines Google Places, major chain directories, and Biote's certified-provider network across all 50 states.</p>
+        </div>
+        <div>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white"><Icon name="sparkles" size={20} /></span>
+          <div class="mt-3 font-semibold text-white">Editorially filtered</div>
+          <p class="mt-1 text-sm">Each listing is classified as TRT-focused or TRT-offering before inclusion, so general-practice offices don't dilute the directory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

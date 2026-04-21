@@ -1,0 +1,18 @@
+{
+  "_comment": "Search phrases used to discover TRT/HRT clinics via Google Places Text Search. Each phrase is combined with a metro (or state name in --mode statewide) for geographic targeting. Phrases added 2026-04-21 expand coverage to BHRT, peptide, andropause, and wellness/age-management terminology.",
+  "queries": [
+    "testosterone replacement therapy",
+    "trt clinic",
+    "low t clinic",
+    "hormone replacement therapy men",
+    "mens hormone clinic",
+    "testosterone clinic",
+    "hormone optimization clinic",
+    "bhrt clinic",
+    "bioidentical hormone clinic",
+    "peptide therapy clinic",
+    "andropause clinic",
+    "age management medicine",
+    "mens wellness clinic"
+  ]
+}

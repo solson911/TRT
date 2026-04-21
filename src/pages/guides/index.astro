@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+
+const guides = [
+  {
+    href: '/guides/what-is-trt/',
+    icon: 'stethoscope',
+    category: 'Medical basics',
+    title: 'What is testosterone replacement therapy?',
+    teaser: 'Who TRT is for, how it works, the main delivery methods, and what responsible monitoring looks like.',
+    readTime: '8 min',
+  },
+  {
+    href: '/guides/cost-guide/',
+    icon: 'dollar',
+    category: 'Cost & insurance',
+    title: 'TRT cost guide for 2026',
+    teaser: 'Real numbers for labs, consultations, and every form of testosterone — plus how insurance actually works.',
+    readTime: '7 min',
+  },
+  {
+    href: '/guides/telehealth-vs-in-person/',
+    icon: 'video',
+    category: 'Care models',
+    title: 'Telehealth vs in-person clinics',
+    teaser: 'Side-by-side comparison of the two main care models — cost, convenience, labs, controlled-substance laws, and fit.',
+    readTime: '6 min',
+  },
+  {
+    href: '/guides/glossary/',
+    icon: 'book-open',
+    category: 'Reference',
+    title: 'TRT and hormone therapy glossary',
+    teaser: 'Plain-English definitions for every acronym, medication, and lab value you\'ll encounter.',
+    readTime: '32 terms',
+  },
+];
+---
+<BaseLayout title="TRT guides — plain-English articles on testosterone therapy | TRT Clinic Finder" description="Educational guides on testosterone replacement therapy, cost, care models, and key medical terminology.">
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="container-prose pt-14 pb-10">
+      <nav class="text-sm text-ink-500 mb-4">
+        <a href="/" class="hover:text-ink-900">Home</a>
+        <span class="mx-1.5">/</span>
+        <span class="text-ink-900">Guides</span>
+      </nav>
+      <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Guides</p>
+      <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900">
+        Understand TRT before you start
+      </h1>
+      <p class="mt-4 max-w-2xl text-ink-600 text-lg">
+        Straightforward, non-promotional articles that cover the essentials — what TRT is, what it costs, how telehealth compares to traditional clinics, and the language you'll hear along the way.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-prose pt-10 pb-24">
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {guides.map((g) => (
+        <li>
+          <a href={g.href} class="card-lift group block h-full rounded-2xl bg-white ring-1 ring-ink-100 p-6">
+            <div class="flex items-center gap-2 text-sm font-semibold text-brand-700">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50"><Icon name={g.icon} size={20} /></span>
+              <span>{g.category}</span>
+              <span class="text-ink-300 mx-1">·</span>
+              <span class="text-ink-500 font-medium">{g.readTime}</span>
+            </div>
+            <h2 class="mt-4 font-display text-xl md:text-2xl font-semibold text-ink-900 group-hover:text-brand-700">{g.title}</h2>
+            <p class="mt-2 text-ink-600">{g.teaser}</p>
+            <div class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
+              Read guide <Icon name="arrow-right" size={16} />
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = 'TRT cost guide: what testosterone therapy actually costs in the U.S.';
+const description = 'A breakdown of typical TRT pricing in the United States — initial labs, consultations, monthly medication by delivery form, insurance realities, and how telehealth compares to traditional clinics.';
+---
+<BaseLayout title={`${title} — TRT Clinic Finder`} description={description}>
+  <article class="pb-20">
+    <section class="bg-gradient-to-b from-brand-50 to-white">
+      <div class="container-prose pt-12 pb-10">
+        <nav class="text-sm text-ink-500 mb-4">
+          <a href="/" class="hover:text-ink-900">Home</a>
+          <span class="mx-1.5">/</span>
+          <a href="/guides/" class="hover:text-ink-900">Guides</a>
+          <span class="mx-1.5">/</span>
+          <span class="text-ink-900">TRT cost guide</span>
+        </nav>
+        <div class="flex items-center gap-2 text-sm font-semibold text-brand-700">
+          <Icon name="dollar" size={18} /> Cost & insurance · 7 min read
+        </div>
+        <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 leading-tight max-w-3xl">
+          What does TRT actually cost?
+        </h1>
+        <p class="mt-4 max-w-2xl text-lg text-ink-600">
+          Real numbers for real people. We'll walk through the three cost buckets — labs, consultations, medication — and what to expect at a traditional clinic versus a telehealth provider.
+        </p>
+      </div>
+    </section>
+
+    <section class="container-prose mt-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <div class="flex items-center gap-2 text-brand-700"><Icon name="flask" size={18} /> <span class="text-xs font-semibold uppercase tracking-wider">Baseline labs</span></div>
+          <p class="mt-2 font-display text-2xl font-semibold text-ink-900">$80 – $350</p>
+          <p class="text-sm text-ink-500 mt-1">Out-of-pocket, varies by panel depth and whether insurance covers.</p>
+        </div>
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <div class="flex items-center gap-2 text-brand-700"><Icon name="stethoscope" size={18} /> <span class="text-xs font-semibold uppercase tracking-wider">Initial consult</span></div>
+          <p class="mt-2 font-display text-2xl font-semibold text-ink-900">$0 – $350</p>
+          <p class="text-sm text-ink-500 mt-1">Many clinics offer free intros. In-person specialist visits run higher.</p>
+        </div>
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+          <div class="flex items-center gap-2 text-brand-700"><Icon name="syringe" size={18} /> <span class="text-xs font-semibold uppercase tracking-wider">Monthly treatment</span></div>
+          <p class="mt-2 font-display text-2xl font-semibold text-ink-900">$30 – $400+</p>
+          <p class="text-sm text-ink-500 mt-1">Enormous range depending on delivery form and whether you pay cash.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-prose mt-12 prose prose-ink max-w-3xl">
+      <h2>The three cost buckets</h2>
+      <p>Almost every TRT program breaks down into the same three buckets. Understanding them separately lets you compare clinics apples-to-apples, because bundled monthly fees often obscure what you're actually paying for.</p>
+
+      <h3>1. Initial bloodwork</h3>
+      <p>
+        A responsible protocol starts with a baseline panel. Expect at minimum total testosterone (on two separate morning draws), free testosterone, SHBG, estradiol (sensitive assay), LH, FSH, CBC for hematocrit, PSA if you're over 40, and a comprehensive metabolic panel. Some clinics add thyroid, lipid, DHEA-S, IGF-1, and cortisol.
+      </p>
+      <p>
+        Out-of-pocket at a direct-pay lab like Quest or LabCorp, a basic panel runs $80–$150. A comprehensive men's health panel runs $200–$350. If your insurance covers the draw and you have a PCP who'll order it, your copay may be $0–$50. Clinics sometimes mark labs up significantly when bundled — ask for the itemized cost.
+      </p>
+
+      <h3>2. Consultation and membership fees</h3>
+      <p>This is where pricing models diverge sharply:</p>
+      <ul>
+        <li><strong>Free intro + fee-per-visit:</strong> Many chains (Gameday, Low T Center) offer a free consultation, then charge per follow-up or bundle into a monthly membership.</li>
+        <li><strong>Monthly membership:</strong> Telehealth providers commonly charge $100–$200/month that includes medication, check-ins, and ongoing labs.</li>
+        <li><strong>Fee-for-service:</strong> Traditional endocrinologists and urologists bill per visit — $150–$400 out-of-pocket, usually covered by insurance with a copay.</li>
+      </ul>
+
+      <h3>3. Medication</h3>
+      <p>This is the biggest swing. Cash pricing varies dramatically by form:</p>
+      <div class="not-prose my-6 overflow-x-auto">
+        <table class="min-w-full text-sm border border-ink-100 rounded-lg overflow-hidden">
+          <thead class="bg-ink-50 text-ink-700 text-left">
+            <tr>
+              <th class="px-4 py-2 font-semibold">Medication</th>
+              <th class="px-4 py-2 font-semibold">Typical cash price</th>
+              <th class="px-4 py-2 font-semibold">With insurance</th>
+              <th class="px-4 py-2 font-semibold">Notes</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-ink-100 bg-white">
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Testosterone cypionate (generic, injectable)</td>
+              <td class="px-4 py-3">$20 – $80/month</td>
+              <td class="px-4 py-3">$5 – $30 copay</td>
+              <td class="px-4 py-3">The workhorse. Often cheapest option.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Testosterone enanthate</td>
+              <td class="px-4 py-3">$25 – $90/month</td>
+              <td class="px-4 py-3">$5 – $30 copay</td>
+              <td class="px-4 py-3">Nearly identical to cypionate in practice.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Compounded injectable (clinic-specific)</td>
+              <td class="px-4 py-3">$60 – $180/month</td>
+              <td class="px-4 py-3">Usually not covered</td>
+              <td class="px-4 py-3">Often includes supplies and syringes.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Topical gel (AndroGel, Testim generics)</td>
+              <td class="px-4 py-3">$30 – $250/month</td>
+              <td class="px-4 py-3">$10 – $60 copay</td>
+              <td class="px-4 py-3">Branded gels are expensive without insurance.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Pellets (Testopel or compounded)</td>
+              <td class="px-4 py-3">$600 – $1,200 every 3–6 months</td>
+              <td class="px-4 py-3">Varies; often partial coverage</td>
+              <td class="px-4 py-3">Includes in-office insertion procedure.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Oral (Jatenzo, Kyzatrex)</td>
+              <td class="px-4 py-3">$400 – $1,000+/month</td>
+              <td class="px-4 py-3">Highly variable; frequent prior auth</td>
+              <td class="px-4 py-3">Newest category; most expensive.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-ink-900">Ancillaries (HCG, anastrozole, enclomiphene)</td>
+              <td class="px-4 py-3">$30 – $120/month each</td>
+              <td class="px-4 py-3">Rarely covered for TRT indication</td>
+              <td class="px-4 py-3">Often bundled into telehealth monthly fees.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Will insurance cover TRT?</h2>
+      <p>
+        Yes — often — but with conditions. Commercial plans and Medicare Part D typically cover testosterone therapy when you have a documented diagnosis of hypogonadism (ICD-10 code E29.1 or similar) supported by two morning total-testosterone readings below the lab's reference range. Your prescribing provider needs to be in-network or willing to send records.
+      </p>
+      <p>
+        What insurance commonly <em>won't</em> cover:
+      </p>
+      <ul>
+        <li>Treatment for "low-normal" testosterone without a formal hypogonadism diagnosis</li>
+        <li>Compounded formulations when an approved commercial product exists</li>
+        <li>Ancillary drugs like HCG or enclomiphene prescribed for TRT support rather than fertility</li>
+        <li>Pellets at many plans, though this is changing</li>
+        <li>Cash-pay telehealth programs that don't bill insurance at all</li>
+      </ul>
+
+      <h2>Telehealth vs traditional clinic: the cost comparison</h2>
+      <p>
+        A rough but useful rule of thumb for an ongoing, stable patient paying cash:
+      </p>
+      <ul>
+        <li><strong>Traditional in-person clinic:</strong> $100–$200/month for membership or per-visit, plus medication either through insurance (low) or clinic-supplied (medium to high). Total all-in: $80–$350/month once stable.</li>
+        <li><strong>Telehealth-only provider:</strong> $100–$180/month typically includes medication, provider check-ins, and some labs. Lower administrative overhead means the bundled price is often competitive. Total all-in: $100–$200/month once stable.</li>
+        <li><strong>Specialist (endocrinologist/urologist) through insurance:</strong> Lowest ongoing cost if your plan is good — $10–$40 copays plus low-cost generic testosterone. Trade-off is slower access and more general-practice approach rather than TRT-focused protocols.</li>
+      </ul>
+
+      <h2>Questions to ask before signing up</h2>
+      <ul>
+        <li>What's the all-in monthly total, including labs, consults, and medication?</li>
+        <li>Are lab costs passed through at cost, or marked up?</li>
+        <li>What happens if my dose needs to change — is there an extra fee?</li>
+        <li>Am I on a contract, or month-to-month?</li>
+        <li>Will you bill my insurance, or is this cash-pay only?</li>
+        <li>If I cancel, do I keep the remainder of prescribed medication?</li>
+      </ul>
+
+      <hr />
+      <p class="text-sm text-ink-500">
+        Prices above reflect typical 2026 U.S. market ranges. Your actual cost depends on location, insurance, and the specific clinic. This guide is informational, not a price guarantee.
+      </p>
+    </section>
+
+    <section class="container-prose mt-14">
+      <div class="rounded-2xl bg-brand-600 text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h2 class="font-display text-2xl md:text-3xl font-semibold">Find a clinic near you</h2>
+          <p class="mt-2 text-brand-50">Browse TRT and hormone clinics by state, with ratings and services.</p>
+        </div>
+        <a href="/clinics/" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-semibold text-brand-700 hover:bg-brand-50">
+          <Icon name="search" size={18} /> Browse clinics
+        </a>
+      </div>
+    </section>
+
+    <section class="container-prose mt-10">
+      <h2 class="font-display text-xl font-semibold text-ink-900 mb-4">Keep reading</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/guides/what-is-trt/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="stethoscope" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">What is TRT?</div>
+          <p class="mt-1 text-sm text-ink-500">How testosterone replacement therapy works, start to finish.</p>
+        </a>
+        <a href="/guides/telehealth-vs-in-person/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="video" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">Telehealth vs in-person</div>
+          <p class="mt-1 text-sm text-ink-500">The two care models compared head-to-head.</p>
+        </a>
+        <a href="/guides/glossary/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="book-open" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">Glossary</div>
+          <p class="mt-1 text-sm text-ink-500">Terms clinics use, decoded.</p>
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

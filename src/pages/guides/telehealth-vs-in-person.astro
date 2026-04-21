@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+
+const title = 'TRT telehealth vs in-person: which is right for you?';
+const description = 'A detailed comparison of telehealth TRT providers and traditional in-person hormone clinics — cost, convenience, lab access, controlled-substance laws, and which model fits different patients.';
+---
+<BaseLayout title={`${title} — TRT Clinic Finder`} description={description}>
+  <article class="pb-20">
+    <section class="bg-gradient-to-b from-brand-50 to-white">
+      <div class="container-prose pt-12 pb-10">
+        <nav class="text-sm text-ink-500 mb-4">
+          <a href="/" class="hover:text-ink-900">Home</a>
+          <span class="mx-1.5">/</span>
+          <a href="/guides/" class="hover:text-ink-900">Guides</a>
+          <span class="mx-1.5">/</span>
+          <span class="text-ink-900">Telehealth vs in-person</span>
+        </nav>
+        <div class="flex items-center gap-2 text-sm font-semibold text-brand-700">
+          <Icon name="video" size={18} /> Care models · 6 min read
+        </div>
+        <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 leading-tight max-w-3xl">
+          Telehealth TRT vs in-person clinics
+        </h1>
+        <p class="mt-4 max-w-2xl text-lg text-ink-600">
+          Both models can deliver safe, effective therapy — but they trade off differently on cost, convenience, and clinical depth. Here's how to pick the right one for your situation.
+        </p>
+      </div>
+    </section>
+
+    <section class="container-prose mt-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-6">
+          <div class="flex items-center gap-2 text-brand-700 mb-2">
+            <Icon name="video" size={20} />
+            <span class="text-xs font-semibold uppercase tracking-wider">Telehealth</span>
+          </div>
+          <h2 class="font-display text-xl font-semibold text-ink-900">Online-only providers</h2>
+          <p class="mt-2 text-sm text-ink-600">Video consultations, mail-order medication, at-home or partner-lab bloodwork. No clinic visits required after setup.</p>
+          <ul class="mt-4 space-y-2 text-sm text-ink-700">
+            <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-brand-600 mt-0.5 shrink-0" /> Fastest time to first dose (often 1–2 weeks)</li>
+            <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-brand-600 mt-0.5 shrink-0" /> Predictable monthly bundled pricing</li>
+            <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-brand-600 mt-0.5 shrink-0" /> No commute, no waiting rooms</li>
+            <li class="flex items-start gap-2"><Icon name="x" size={16} class="text-ink-400 mt-0.5 shrink-0" /> Self-injection required; no hands-on training</li>
+            <li class="flex items-start gap-2"><Icon name="x" size={16} class="text-ink-400 mt-0.5 shrink-0" /> Usually cash-pay, rarely bills insurance</li>
+            <li class="flex items-start gap-2"><Icon name="x" size={16} class="text-ink-400 mt-0.5 shrink-0" /> State-by-state licensing limits some providers</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-6">
+          <div class="flex items-center gap-2 text-brand-700 mb-2">
+            <Icon name="building" size={20} />
+            <span class="text-xs font-semibold uppercase tracking-wider">In-person</span>
+          </div>
+          <h2 class="font-display text-xl font-semibold text-ink-900">Traditional clinics</h2>
+          <p class="mt-2 text-sm text-ink-600">Physical location, in-office injections or training, labs drawn on-site, face-to-face follow-ups. Includes national chains and independent urologists/endocrinologists.</p>
+          <ul class="mt-4 space-y-2 text-sm text-ink-700">
+            <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-brand-600 mt-0.5 shrink-0" /> Hands-on injection training and in-office dosing available</li>
+            <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-brand-600 mt-0.5 shrink-0" /> More likely to accept insurance</li>
+            <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-brand-600 mt-0.5 shrink-0" /> Physical exam, pellets, in-office procedures</li>
+            <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-brand-600 mt-0.5 shrink-0" /> Easier to escalate to a specialist if needed</li>
+            <li class="flex items-start gap-2"><Icon name="x" size={16} class="text-ink-400 mt-0.5 shrink-0" /> Scheduling + travel time</li>
+            <li class="flex items-start gap-2"><Icon name="x" size={16} class="text-ink-400 mt-0.5 shrink-0" /> Can cost more out-of-pocket at premium clinics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-prose mt-12 prose prose-ink max-w-3xl">
+      <h2>What's the same at both</h2>
+      <p>The clinical essentials don't change based on delivery channel. Both should require:</p>
+      <ul>
+        <li>Two separate morning blood draws confirming low testosterone before prescribing</li>
+        <li>A symptom review and medical history</li>
+        <li>Baseline labs beyond testosterone (CBC, PSA, estradiol, lipid, metabolic panel)</li>
+        <li>Follow-up bloodwork at 6–8 weeks and then every 6–12 months</li>
+        <li>A real clinician reviewing labs and adjusting dose</li>
+      </ul>
+      <p>If a telehealth provider skips the baseline bloodwork, or an in-person clinic prescribes after a single appointment without labs, either is cutting corners.</p>
+
+      <h2>Where they differ meaningfully</h2>
+
+      <h3>Lab access</h3>
+      <p>
+        In-person clinics usually draw labs on-site. Telehealth providers partner with Quest, LabCorp, or similar — you book at a nearby lab and walk in. Some telehealth companies offer at-home fingerprick kits, but these have accuracy limitations for sensitive hormone panels and are better suited to screening than diagnosis. If you live somewhere with limited walk-in lab coverage, this is worth checking first.
+      </p>
+
+      <h3>Injection training</h3>
+      <p>
+        If you've never self-injected before, an in-person clinic can walk you through it with a nurse watching. Telehealth providers send videos and written guides; most men pick it up quickly, but some find the learning curve stressful without hands-on training. If needles are a dealbreaker, topical gels or oral medications work through either model.
+      </p>
+
+      <h3>Controlled-substance laws</h3>
+      <p>
+        Testosterone is a Schedule III controlled substance in the U.S. Federal law allows prescribing via telemedicine under conditions set during the COVID-19 public health emergency, extended by the DEA, and still evolving as of 2026. Some states layer additional requirements — mandating at least one in-person visit, limiting initial prescription duration, or requiring specific provider licensing. Reputable telehealth providers openly state which states they serve and why. If a provider will serve any state without qualification, ask questions.
+      </p>
+
+      <h3>Insurance</h3>
+      <p>
+        In-person clinics more commonly accept insurance, particularly traditional endocrinology and urology practices. Many chain TRT clinics and most telehealth providers operate cash-pay — simpler pricing, but you absorb the cost. If your plan covers TRT, using insurance through a traditional provider is almost always cheapest long-term.
+      </p>
+
+      <h3>Ancillary medications</h3>
+      <p>
+        Some protocols include HCG (to preserve fertility and testicular size), anastrozole (to manage estrogen), or enclomiphene (sometimes used as an alternative to TRT). Telehealth providers tend to prescribe these more freely as part of monthly bundles. Traditional endocrinologists are often more conservative and may require a stronger clinical rationale.
+      </p>
+
+      <h3>Escalation path</h3>
+      <p>
+        If something unusual comes up — persistently high hematocrit, rising PSA, atypical cardiac symptoms — an in-person clinic with a physician on staff is better positioned to coordinate further workup. Telehealth providers typically refer out, which works but adds a step.
+      </p>
+
+      <h2>Which model fits which patient</h2>
+      <p><strong>Telehealth is usually a strong fit if you:</strong></p>
+      <ul>
+        <li>Are a straightforward case (otherwise-healthy adult male, clearly low testosterone, clear symptoms)</li>
+        <li>Prefer cash-pay simplicity over navigating insurance</li>
+        <li>Value convenience and speed of access</li>
+        <li>Are comfortable self-injecting and managing your own logistics</li>
+        <li>Live in a state with full telehealth coverage from your chosen provider</li>
+      </ul>
+      <p><strong>In-person is usually a better fit if you:</strong></p>
+      <ul>
+        <li>Have complicated medical history (cardiovascular disease, prior prostate issues, fertility concerns)</li>
+        <li>Want to use your health insurance</li>
+        <li>Prefer pellets or in-office procedures</li>
+        <li>Want hands-on injection training</li>
+        <li>Live somewhere underserved by telehealth licensing</li>
+      </ul>
+
+      <h2>Red flags either way</h2>
+      <ul>
+        <li>Prescribes without any baseline labs</li>
+        <li>"Guaranteed approval" or "no-testosterone-needed" messaging</li>
+        <li>Long-term contracts with big cancellation fees</li>
+        <li>Unwilling to explain dose choices or show you your own lab values</li>
+        <li>Cash-only with no itemized breakdown of what you're paying for</li>
+        <li>Doesn't monitor PSA and hematocrit at all</li>
+      </ul>
+
+      <hr />
+      <p class="text-sm text-ink-500">
+        This article is informational only, not medical advice. Talk to a licensed clinician about what's right for your situation.
+      </p>
+    </section>
+
+    <section class="container-prose mt-14">
+      <div class="rounded-2xl bg-brand-600 text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h2 class="font-display text-2xl md:text-3xl font-semibold">Browse clinics by state</h2>
+          <p class="mt-2 text-brand-50">See every TRT and hormone clinic we've cataloged in your state.</p>
+        </div>
+        <a href="/clinics/" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-semibold text-brand-700 hover:bg-brand-50">
+          <Icon name="search" size={18} /> Browse clinics
+        </a>
+      </div>
+    </section>
+
+    <section class="container-prose mt-10">
+      <h2 class="font-display text-xl font-semibold text-ink-900 mb-4">Keep reading</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/guides/what-is-trt/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="stethoscope" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">What is TRT?</div>
+          <p class="mt-1 text-sm text-ink-500">A plain-English guide to how TRT works.</p>
+        </a>
+        <a href="/guides/cost-guide/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="dollar" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">Cost guide</div>
+          <p class="mt-1 text-sm text-ink-500">What TRT actually costs in 2026.</p>
+        </a>
+        <a href="/guides/glossary/" class="card-lift block rounded-xl bg-white ring-1 ring-ink-100 p-5">
+          <Icon name="book-open" size={20} class="text-brand-700" />
+          <div class="mt-2 font-semibold text-ink-900">Glossary</div>
+          <p class="mt-1 text-sm text-ink-500">Terms clinics use, decoded.</p>
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

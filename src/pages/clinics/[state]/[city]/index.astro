@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ClinicCard from '../../../../components/ClinicCard.astro';
+import { STATES, STATE_BY_SLUG } from '../../../../data/states.js';
+import { clinicsByCity } from '../../../../data/clinics.js';
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const s of STATES) {
+    const byCity = clinicsByCity(s.slug);
+    for (const citySlug of Object.keys(byCity)) {
+      paths.push({ params: { state: s.slug, city: citySlug } });
+    }
+  }
+  return paths;
+}
+
+const { state, city } = Astro.params;
+const stateInfo = STATE_BY_SLUG[state];
+const byCity = clinicsByCity(state);
+const list = byCity[city] || [];
+const cityName = list[0]?.city || city;
+
+if (list.length === 0) {
+  return Astro.redirect('/404');
+}
+
+// Default sort: rating-weighted score
+list.sort((a, b) => {
+  const score = (c) => (c.rating || 0) * Math.log10(1 + (c.ratingCount || 0));
+  return score(b) - score(a);
+});
+
+// Build service filter pills from what actually appears in this city
+const PREFERRED = ['TRT', 'HRT', 'BHRT', 'Peptides', 'GLP-1', 'Wellness'];
+const present = new Set();
+for (const c of list) for (const s of c.services || []) present.add(s);
+const serviceChoices = PREFERRED.filter((s) => present.has(s));
+
+// Pre-compute searchable payload on each item via data attributes to keep the
+// client-side filter work trivial.
+function searchBlob(c) {
+  return [c.name, c.address, c.phone, (c.services || []).join(' '), c.chain || '']
+    .filter(Boolean).join(' ').toLowerCase();
+}
+---
+<BaseLayout title={`TRT Clinics in ${cityName}, ${stateInfo?.abbr || ''} — TRT Clinic Finder`}>
+  <section class="container-prose pt-14 pb-6">
+    <nav class="text-sm text-ink-500 mb-3">
+      <a href="/" class="hover:text-ink-900">Home</a>
+      <span class="mx-1.5">/</span>
+      <a href="/clinics/" class="hover:text-ink-900">States</a>
+      <span class="mx-1.5">/</span>
+      <a href={`/clinics/${state}/`} class="hover:text-ink-900">{stateInfo?.name}</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-ink-900">{cityName}</span>
+    </nav>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-ink-900">
+      TRT clinics in {cityName}, {stateInfo?.abbr}
+    </h1>
+    <p class="mt-3 text-ink-600 text-lg">
+      <span id="result-count">{list.length}</span> {list.length === 1 ? 'clinic' : 'clinics'} cataloged.
+    </p>
+  </section>
+
+  <section class="container-prose pb-4">
+    <div class="flex flex-col md:flex-row md:items-center gap-3">
+      <div class="relative flex-1">
+        <input
+          id="clinic-search"
+          type="search"
+          placeholder="Filter by name, service, or address…"
+          class="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+        />
+      </div>
+      <div class="flex items-center gap-2 text-sm">
+        <label for="clinic-sort" class="text-ink-500">Sort</label>
+        <select
+          id="clinic-sort"
+          class="rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+        >
+          <option value="rated">Top rated</option>
+          <option value="reviews">Most reviewed</option>
+          <option value="name">Name (A–Z)</option>
+        </select>
+      </div>
+    </div>
+    {serviceChoices.length > 0 && (
+      <div class="mt-3 flex flex-wrap gap-2" id="service-filters">
+        <button type="button" data-service="" class="service-pill is-active">All</button>
+        {serviceChoices.map((s) => (
+          <button type="button" data-service={s} class="service-pill">{s}</button>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <section class="container-prose pb-24">
+    <ul id="clinic-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {list.map((c) => (
+        <li
+          data-search={searchBlob(c)}
+          data-services={(c.services || []).join('|')}
+          data-rating={c.rating ?? 0}
+          data-reviews={c.ratingCount ?? 0}
+          data-name={(c.name || '').toLowerCase()}
+        >
+          <ClinicCard clinic={c} />
+        </li>
+      ))}
+    </ul>
+    <p id="empty-state" class="hidden mt-8 text-center text-ink-500 text-sm">No clinics match those filters.</p>
+  </section>
+
+  <style is:global>
+    .service-pill {
+      display: inline-flex; align-items: center;
+      border-radius: 9999px; padding: 0.25rem 0.75rem;
+      font-size: 0.8125rem; font-weight: 500;
+      background: white; color: var(--color-ink-700);
+      border: 1px solid var(--color-ink-200);
+      cursor: pointer; transition: background-color 120ms, color 120ms, border-color 120ms;
+    }
+    .service-pill:hover { border-color: var(--color-ink-300); }
+    .service-pill.is-active {
+      background: var(--color-brand-600); color: white; border-color: var(--color-brand-600);
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const searchInput = document.getElementById('clinic-search');
+      const sortSelect = document.getElementById('clinic-sort');
+      const list = document.getElementById('clinic-list');
+      const emptyState = document.getElementById('empty-state');
+      const countEl = document.getElementById('result-count');
+      const pillContainer = document.getElementById('service-filters');
+      if (!list) return;
+      const items = Array.from(list.children);
+      let activeService = '';
+
+      function apply() {
+        const q = (searchInput?.value || '').trim().toLowerCase();
+        let visible = 0;
+        for (const li of items) {
+          const blob = li.dataset.search || '';
+          const services = (li.dataset.services || '').split('|').filter(Boolean);
+          const matchesQuery = !q || blob.includes(q);
+          const matchesService = !activeService || services.includes(activeService);
+          const show = matchesQuery && matchesService;
+          li.style.display = show ? '' : 'none';
+          if (show) visible++;
+        }
+        if (emptyState) emptyState.classList.toggle('hidden', visible > 0);
+        if (countEl) countEl.textContent = visible.toLocaleString();
+      }
+
+      function sort(mode) {
+        const score = (li) => (parseFloat(li.dataset.rating) || 0) * Math.log10(1 + (parseFloat(li.dataset.reviews) || 0));
+        const sorters = {
+          rated:   (a, b) => score(b) - score(a),
+          reviews: (a, b) => (parseFloat(b.dataset.reviews) || 0) - (parseFloat(a.dataset.reviews) || 0),
+          name:    (a, b) => (a.dataset.name || '').localeCompare(b.dataset.name || ''),
+        };
+        items.sort(sorters[mode] || sorters.rated);
+        for (const li of items) list.appendChild(li);
+      }
+
+      searchInput?.addEventListener('input', apply);
+      sortSelect?.addEventListener('change', (e) => { sort(e.target.value); apply(); });
+
+      if (pillContainer) {
+        pillContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('button[data-service]');
+          if (!btn) return;
+          activeService = btn.dataset.service || '';
+          for (const b of pillContainer.querySelectorAll('button')) b.classList.toggle('is-active', b === btn);
+          apply();
+        });
+      }
+    })();
+  </script>
+</BaseLayout>
