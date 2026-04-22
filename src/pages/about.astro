@@ -1,22 +1,87 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 ---
 <BaseLayout title="About — TRT Clinic Finder">
-  <section class="container-prose pt-20 pb-24 max-w-2xl prose prose-ink">
-    <h1 class="font-display">About</h1>
-    <p>
-      TRT Clinic Finder is an independent directory of testosterone and hormone replacement therapy clinics across the United States. Every listing is cataloged from public sources — nobody buys placement, and nobody gets removed for not paying.
-    </p>
-    <p>
-      The directory exists so the guy who needs TRT can see every real option in his city, not just the three clinics with the biggest ad budgets.
-    </p>
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="container-prose pt-14 pb-10">
+      <nav class="text-sm text-ink-500 mb-4">
+        <a href="/" class="hover:text-ink-900">Home</a>
+        <span class="mx-1.5">/</span>
+        <span class="text-ink-900">About</span>
+      </nav>
+      <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">About</p>
+      <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 max-w-3xl">
+        The independent TRT directory we wished existed
+      </h1>
+      <p class="mt-4 max-w-2xl text-ink-600 text-lg">
+        Nobody buys placement. Nobody gets removed for not paying. The directory exists so the guy who needs TRT can see every real option in his city — not just the three clinics with the biggest ad budgets.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-prose pt-10 pb-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="shield-check" size={20} /></span>
+        <div class="mt-3 font-semibold text-ink-900">No sponsorships</div>
+        <p class="mt-1 text-sm text-ink-600">Clinics don't pay to be listed, and paying wouldn't move them up. Ranking is based on rating × review count only.</p>
+      </div>
+      <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="map-pin" size={20} /></span>
+        <div class="mt-3 font-semibold text-ink-900">All 50 states</div>
+        <p class="mt-1 text-sm text-ink-600">Coverage from day one — every state, most major metros, and hundreds of smaller cities.</p>
+      </div>
+      <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700"><Icon name="sparkles" size={20} /></span>
+        <div class="mt-3 font-semibold text-ink-900">Editorially filtered</div>
+        <p class="mt-1 text-sm text-ink-600">Each listing is classified as primary-TRT or TRT-offering before inclusion. General-practice offices don't dilute the directory.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-prose pt-6 pb-6 max-w-3xl prose prose-ink">
     <h2>How we catalog clinics</h2>
     <p>
-      We pull clinic data from Google Places using searches for TRT, HRT, and hormone-optimization keywords per metro area, then deduplicate and tag services based on what the clinic publishes publicly. Data is refreshed periodically.
+      Clinic data is compiled from several public sources and cross-referenced so no legitimate clinic gets missed:
     </p>
-    <h2>This is not medical advice</h2>
+    <ul>
+      <li><strong>Google Places</strong> — searches for TRT, HRT, peptide, BHRT, andropause, and hormone-optimization keywords across every state and a curated list of metros.</li>
+      <li><strong>National chain directories</strong> — Gameday Men's Health, Low T Center / SynergenX, Renew Vitality, Restore Hyper Wellness, Serotonin Centers. Pulled directly from each brand's location pages so nothing gets missed.</li>
+      <li><strong>Biote certified-provider network</strong> — the largest BHRT certification program in the US. Listed as a certification badge on existing clinics; new entries only when the provider is a standalone clinic.</li>
+    </ul>
     <p>
-      Information on this site is educational only. Talk to a licensed clinician before starting, changing, or stopping any hormone therapy.
+      Every candidate clinic is then classified by an AI model as <em>primary TRT</em>, <em>offers TRT</em>, or <em>unrelated</em>. Only the first two show up in the public directory.
     </p>
+
+    <h2>What we don't do</h2>
+    <ul>
+      <li>Sell leads to clinics.</li>
+      <li>Accept payment for placement, ranking, or "verified" badges.</li>
+      <li>Write fake reviews. Rating data comes straight from Google.</li>
+      <li>Give medical advice. The guides on this site are informational only.</li>
+    </ul>
+
+    <h2>Spot an error?</h2>
+    <p>
+      If a clinic's info is wrong, outdated, or if a clinic should not be listed, we want to know. Email corrections and we'll fix them in the next data refresh. Same for clinics we're missing — if you own or work at a clinic that isn't here, we'll add it after verification.
+    </p>
+
+    <h2>Medical disclaimer</h2>
+    <p>
+      Information on this site is educational only. Talk to a licensed clinician before starting, changing, or stopping any hormone therapy. This directory does not endorse or recommend any specific clinic.
+    </p>
+  </section>
+
+  <section class="container-prose pt-6 pb-24">
+    <div class="rounded-2xl bg-brand-600 text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div>
+        <h2 class="font-display text-2xl md:text-3xl font-semibold">Start browsing</h2>
+        <p class="mt-2 text-brand-50">Every TRT and hormone clinic we've cataloged, organized by state and city.</p>
+      </div>
+      <a href="/clinics/" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 font-semibold text-brand-700 hover:bg-brand-50">
+        <Icon name="search" size={18} /> Browse clinics
+      </a>
+    </div>
   </section>
 </BaseLayout>
