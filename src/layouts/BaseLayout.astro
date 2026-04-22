@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description = 'Find TRT and HRT clinics across the United States.', canonical } = Astro.props;
-const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://trtclinicfinder.com').toString();
+const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://trtverified.com').toString();
 ---
 <!doctype html>
 <html lang="en">

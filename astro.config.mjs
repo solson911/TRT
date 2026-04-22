@@ -6,7 +6,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://trtclinicfinder.com',
+  site: 'https://trtverified.com',
   trailingSlash: 'always',
 
   vite: {
