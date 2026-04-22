@@ -1,0 +1,93 @@
+---
+// Renders a photo gallery for a clinic using the Google Places Photo API.
+// Photos are fetched by the browser on demand, so the public API key is
+// embedded in the img src. It must have an HTTP Referer restriction in
+// Google Cloud Console limiting it to *.trtverified.com/*.
+interface Photo {
+  name: string;
+  widthPx?: number;
+  heightPx?: number;
+  authorAttributions?: Array<{ displayName?: string; uri?: string; photoUri?: string }>;
+}
+
+interface Props {
+  photos?: Photo[];
+  clinicName: string;
+  googleUrl?: string;
+}
+
+const { photos = [], clinicName, googleUrl } = Astro.props;
+
+// Safe to expose — must be domain-restricted in Cloud Console.
+const PHOTO_KEY = 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718';
+const photoUrl = (name: string, maxWidthPx: number) =>
+  `https://places.googleapis.com/v1/${name}/media?maxWidthPx=${maxWidthPx}&key=${PHOTO_KEY}`;
+
+const hero = photos[0];
+const thumbs = photos.slice(1, 4);
+const extras = Math.max(0, photos.length - 4);
+
+const attributions = Array.from(
+  new Map(
+    photos.slice(0, 4)
+      .flatMap((p) => p.authorAttributions || [])
+      .filter((a) => a?.displayName)
+      .map((a) => [a.displayName, a])
+  ).values()
+).slice(0, 3);
+---
+{photos.length > 0 && (
+  <section class="container-prose pb-6">
+    <div class="grid grid-cols-4 grid-rows-2 gap-2 h-[280px] md:h-[360px]">
+      <div class="col-span-4 md:col-span-2 row-span-2 overflow-hidden rounded-2xl ring-1 ring-ink-100 bg-ink-50">
+        <img
+          src={photoUrl(hero.name, 1200)}
+          alt={`Photo of ${clinicName}`}
+          loading="eager"
+          class="w-full h-full object-cover"
+          width={hero.widthPx}
+          height={hero.heightPx}
+        />
+      </div>
+      {thumbs.map((p, i) => (
+        <div class:list={[
+          'hidden md:block overflow-hidden rounded-2xl ring-1 ring-ink-100 bg-ink-50',
+          i === thumbs.length - 1 && extras > 0 ? 'relative' : '',
+        ]}>
+          <img
+            src={photoUrl(p.name, 600)}
+            alt={`Photo of ${clinicName}`}
+            loading="lazy"
+            class="w-full h-full object-cover"
+            width={p.widthPx}
+            height={p.heightPx}
+          />
+          {i === thumbs.length - 1 && extras > 0 && googleUrl && (
+            <a
+              href={googleUrl}
+              target="_blank"
+              rel="noopener"
+              class="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-sm font-semibold hover:bg-black/60"
+            >
+              +{extras} more on Google
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+    {attributions.length > 0 && (
+      <p class="mt-2 text-xs text-ink-500">
+        Photos via Google Maps contributors: {attributions.map((a, i) => (
+          <>
+            {a.uri ? (
+              <a href={a.uri} target="_blank" rel="noopener" class="hover:text-ink-700 underline-offset-2 hover:underline">{a.displayName}</a>
+            ) : (
+              <span>{a.displayName}</span>
+            )}
+            {i < attributions.length - 1 ? ', ' : ''}
+          </>
+        ))}
+      </p>
+    )}
+  </section>
+)}

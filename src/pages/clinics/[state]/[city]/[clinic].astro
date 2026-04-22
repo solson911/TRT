@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import ClinicCard from '../../../../components/ClinicCard.astro';
+import ClinicPhotos from '../../../../components/ClinicPhotos.astro';
 import Icon from '../../../../components/Icon.astro';
 import { STATE_BY_SLUG } from '../../../../data/states.js';
 import { loadClinics, clinicsByCity, primaryChain, isBiote, isPermanentlyClosed, isTemporarilyClosed } from '../../../../data/clinics.js';
@@ -124,6 +125,10 @@ const directionsUrl = clinic.lat && clinic.lng
       )}
     </div>
   </section>
+
+  {clinic.photos && clinic.photos.length > 0 && (
+    <ClinicPhotos photos={clinic.photos} clinicName={clinic.name} googleUrl={clinic.googleUrl} />
+  )}
 
   <section class="container-prose pb-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
     <div class="lg:col-span-2">
