@@ -152,6 +152,32 @@ export function topRatedClinics({ limit = 12, minReviews = 20 } = {}) {
   return out;
 }
 
+// Flatten the Places amenity blobs into a short list the UI can render with
+// icons. Each amenity is { key, icon, label }; returns [] when nothing is
+// populated so the caller can skip the whole section.
+export function amenities(clinic) {
+  if (!clinic) return [];
+  const out = [];
+  const a = clinic.accessibility || {};
+  if (a.wheelchairAccessibleEntrance || a.wheelchairAccessibleParking) {
+    out.push({ key: 'accessible', icon: 'accessibility', label: 'Wheelchair accessible' });
+  }
+  const p = clinic.parking || {};
+  if (p.freeParkingLot || p.freeStreetParking || p.freeGarageParking) {
+    out.push({ key: 'parking-free', icon: 'parking', label: 'Free parking' });
+  } else if (p.paidParkingLot || p.paidStreetParking || p.paidGarageParking || p.valetParking) {
+    out.push({ key: 'parking-paid', icon: 'parking', label: 'Paid parking' });
+  }
+  const pay = clinic.payment || {};
+  if (pay.acceptsCreditCards) {
+    out.push({ key: 'cards', icon: 'credit-card', label: 'Credit cards accepted' });
+  }
+  if (pay.acceptsNfc) {
+    out.push({ key: 'contactless', icon: 'wifi-tethering', label: 'Contactless payment' });
+  }
+  return out;
+}
+
 export function directorySummary() {
   const all = loadClinics().filter((c) => !c.telehealth && !isPermanentlyClosed(c));
   const rated = all.filter((c) => c.rating);

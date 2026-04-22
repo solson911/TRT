@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { primaryChain, isBiote } from '../data/clinics.js';
+import { primaryChain, isBiote, amenities } from '../data/clinics.js';
 
 interface Clinic {
   slug: string;
@@ -29,6 +29,8 @@ interface Props {
 const { clinic } = Astro.props;
 const chain = primaryChain(clinic);
 const biote = isBiote(clinic);
+const amenityList = amenities(clinic);
+const typeLabel = clinic.primaryTypeDisplay;
 ---
 <a
   href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/${clinic.slug}/`}
@@ -72,7 +74,10 @@ const biote = isBiote(clinic);
   {clinic.address && (
     <p class="mt-2 flex items-start gap-1.5 text-sm text-ink-600">
       <Icon name="map-pin" size={14} class="mt-0.5 shrink-0 text-ink-400" />
-      <span>{clinic.address}</span>
+      <span>
+        {typeLabel && <span class="text-ink-500">{typeLabel} · </span>}
+        {clinic.address}
+      </span>
     </p>
   )}
   {clinic.services && clinic.services.length > 0 && (
@@ -95,6 +100,15 @@ const biote = isBiote(clinic);
       <span class="inline-flex items-center gap-1 truncate max-w-[180px]">
         <Icon name="globe" size={12} class="text-ink-400 shrink-0" />
         <span class="truncate">{clinic.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
+      </span>
+    )}
+    {amenityList.length > 0 && (
+      <span class="ml-auto inline-flex items-center gap-2 text-ink-400">
+        {amenityList.map((a) => (
+          <span title={a.label} aria-label={a.label} class="inline-flex">
+            <Icon name={a.icon} size={14} />
+          </span>
+        ))}
       </span>
     )}
   </div>
