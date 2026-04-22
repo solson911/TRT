@@ -2,10 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StateGrid from '../../components/StateGrid.astro';
 import { countsByState } from '../../data/clinics.js';
+import { breadcrumbJsonLd } from '../../data/breadcrumbs.js';
 
 const counts = countsByState();
+
+const jsonLd = breadcrumbJsonLd([
+  { name: 'Home', url: 'https://trtverified.com/' },
+  { name: 'States', url: 'https://trtverified.com/clinics/' },
+]);
 ---
-<BaseLayout title="Find a TRT clinic by state — TRT Clinic Finder">
+<BaseLayout title="Find a TRT clinic by state — TRT Clinic Finder" jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-10">
     <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Directory</p>
     <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900">

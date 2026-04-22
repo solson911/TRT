@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { STATES, STATE_BY_SLUG } from '../../../data/states.js';
 import { clinicsByCity } from '../../../data/clinics.js';
+import { stateCrumbs, breadcrumbJsonLd, summaryItemListJsonLd } from '../../../data/breadcrumbs.js';
 
 export function getStaticPaths() {
   return STATES.map((s) => ({ params: { state: s.slug } }));
@@ -28,8 +29,20 @@ const allClinics = cities.flatMap((c) => byCity[c.slug]);
 const rated = allClinics.filter((c) => c.rating);
 const avgRating = rated.length ? rated.reduce((s, c) => s + c.rating, 0) / rated.length : 0;
 const chainCount = new Set(allClinics.filter((c) => c.chain).map((c) => c.chain.split(',')[0].trim())).size;
+
+const crumbLd = breadcrumbJsonLd(stateCrumbs(stateInfo.name, state));
+const listLd = cities.length > 0
+  ? summaryItemListJsonLd(
+      cities.map((c) => ({
+        name: `TRT clinics in ${c.name}, ${stateInfo.abbr}`,
+        url: `https://trtverified.com/clinics/${state}/${c.slug}/`,
+      })),
+      { name: `Cities in ${stateInfo.name} with TRT clinics` }
+    )
+  : null;
+const jsonLd = listLd ? [crumbLd, listLd] : [crumbLd];
 ---
-<BaseLayout title={`TRT Clinics in ${stateInfo.name} — TRT Clinic Finder`}>
+<BaseLayout title={`TRT Clinics in ${stateInfo.name} — TRT Clinic Finder`} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-6">
     <nav class="text-sm text-ink-500 mb-3">
       <a href="/" class="hover:text-ink-900">Home</a>

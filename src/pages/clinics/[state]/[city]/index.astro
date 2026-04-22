@@ -3,6 +3,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import ClinicCard from '../../../../components/ClinicCard.astro';
 import { STATES, STATE_BY_SLUG } from '../../../../data/states.js';
 import { clinicsByCity } from '../../../../data/clinics.js';
+import { cityCrumbs, breadcrumbJsonLd, summaryItemListJsonLd } from '../../../../data/breadcrumbs.js';
 
 export function getStaticPaths() {
   const paths = [];
@@ -43,8 +44,20 @@ function searchBlob(c) {
   return [c.name, c.address, c.phone, (c.services || []).join(' '), c.chain || '']
     .filter(Boolean).join(' ').toLowerCase();
 }
+
+const crumbLd = breadcrumbJsonLd(cityCrumbs(cityName, city, stateInfo?.name || '', state));
+// Cap at 25 — Google respects the order here for ranking signals and we
+// already sort by rating score. More than 25 is noise for the crawler.
+const listLd = summaryItemListJsonLd(
+  list.slice(0, 25).map((c) => ({
+    name: c.name,
+    url: `https://trtverified.com/clinics/${state}/${city}/${c.slug}/`,
+  })),
+  { name: `TRT clinics in ${cityName}, ${stateInfo?.abbr || ''}` }
+);
+const jsonLd = [crumbLd, listLd];
 ---
-<BaseLayout title={`TRT Clinics in ${cityName}, ${stateInfo?.abbr || ''} — TRT Clinic Finder`}>
+<BaseLayout title={`TRT Clinics in ${cityName}, ${stateInfo?.abbr || ''} — TRT Clinic Finder`} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-6">
     <nav class="text-sm text-ink-500 mb-3">
       <a href="/" class="hover:text-ink-900">Home</a>

@@ -6,6 +6,7 @@ import ClinicReviews from '../../../../components/ClinicReviews.astro';
 import Icon from '../../../../components/Icon.astro';
 import { STATE_BY_SLUG } from '../../../../data/states.js';
 import { loadClinics, clinicsByCity, primaryChain, isBiote, isPermanentlyClosed, isTemporarilyClosed, amenities } from '../../../../data/clinics.js';
+import { clinicCrumbs, breadcrumbJsonLd } from '../../../../data/breadcrumbs.js';
 
 export function getStaticPaths() {
   return loadClinics()
@@ -53,7 +54,9 @@ const heroImage = clinic.photos && clinic.photos[0]
   ? `https://places.googleapis.com/v1/${clinic.photos[0].name}/media?maxWidthPx=1200&key=${PHOTO_KEY}`
   : undefined;
 
-const jsonLd = closed ? undefined : {
+const breadcrumbLd = breadcrumbJsonLd(clinicCrumbs(clinic, stateInfo?.name || clinic.state));
+
+const businessLd = closed ? null : {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: clinic.name,
@@ -93,6 +96,8 @@ const jsonLd = closed ? undefined : {
     })),
   }),
 };
+
+const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
 ---
 <BaseLayout
   title={closed
