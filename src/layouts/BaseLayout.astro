@@ -7,9 +7,10 @@ interface Props {
   description?: string;
   canonical?: string;
   noindex?: boolean;
+  jsonLd?: unknown;
 }
 
-const { title, description = 'Find TRT and HRT clinics across the United States.', canonical, noindex = false } = Astro.props;
+const { title, description = 'Find TRT and HRT clinics across the United States.', canonical, noindex = false, jsonLd } = Astro.props;
 const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://trtverified.com').toString();
 ---
 <!doctype html>
@@ -27,6 +28,10 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

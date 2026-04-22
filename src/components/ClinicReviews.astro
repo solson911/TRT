@@ -1,0 +1,108 @@
+---
+import Icon from './Icon.astro';
+
+interface Review {
+  name?: string;
+  rating?: number;
+  text?: string;
+  textLang?: string;
+  publishTime?: string;
+  relativePublishTimeDescription?: string;
+  authorName?: string;
+  authorUri?: string;
+  authorPhotoUri?: string;
+}
+
+interface Props {
+  reviews?: Review[];
+  googleUrl?: string;
+  rating?: number;
+  ratingCount?: number;
+}
+
+const { reviews = [], googleUrl, rating, ratingCount } = Astro.props;
+
+function relativeTime(review: Review) {
+  if (review.relativePublishTimeDescription) return review.relativePublishTimeDescription;
+  if (!review.publishTime) return '';
+  const d = new Date(review.publishTime);
+  if (isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+}
+
+const stars = (n: number) => Array.from({ length: 5 }, (_, i) => i < Math.round(n));
+---
+{reviews.length > 0 && (
+  <section class="container-prose pb-12">
+    <div class="flex items-end justify-between mb-4 flex-wrap gap-2">
+      <div>
+        <h2 class="font-display text-xl md:text-2xl font-semibold text-ink-900">What patients are saying</h2>
+        {rating && (
+          <div class="mt-1 flex items-center gap-2 text-sm text-ink-600">
+            <span class="inline-flex items-center gap-1">
+              <Icon name="star" size={14} stroke={0} class="fill-amber-500 text-amber-500" />
+              <span class="font-semibold text-ink-900">{rating.toFixed(1)}</span>
+            </span>
+            <span>· {(ratingCount ?? 0).toLocaleString()} reviews on Google</span>
+          </div>
+        )}
+      </div>
+      {googleUrl && (
+        <a href={googleUrl} target="_blank" rel="noopener" class="text-sm font-medium text-brand-700 hover:text-brand-800">
+          See all reviews on Google →
+        </a>
+      )}
+    </div>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {reviews.map((r) => (
+        <li class="rounded-2xl ring-1 ring-ink-100 bg-white p-5">
+          <div class="flex items-start gap-3">
+            {r.authorPhotoUri ? (
+              <img
+                src={r.authorPhotoUri}
+                alt=""
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                class="w-10 h-10 rounded-full object-cover bg-ink-100 shrink-0"
+                width="40"
+                height="40"
+              />
+            ) : (
+              <div class="w-10 h-10 rounded-full bg-ink-100 shrink-0" />
+            )}
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <div class="min-w-0">
+                  {r.authorUri ? (
+                    <a href={r.authorUri} target="_blank" rel="noopener" class="font-medium text-ink-900 hover:text-brand-700 truncate block">
+                      {r.authorName || 'Google reviewer'}
+                    </a>
+                  ) : (
+                    <span class="font-medium text-ink-900 truncate block">{r.authorName || 'Google reviewer'}</span>
+                  )}
+                  <div class="text-xs text-ink-500">{relativeTime(r)}</div>
+                </div>
+                {typeof r.rating === 'number' && (
+                  <div class="flex items-center shrink-0" aria-label={`${r.rating} out of 5 stars`}>
+                    {stars(r.rating).map((filled) => (
+                      <Icon
+                        name="star"
+                        size={14}
+                        stroke={0}
+                        class={filled ? 'fill-amber-500 text-amber-500' : 'fill-ink-200 text-ink-200'}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+              {r.text && (
+                <p class="mt-2 text-sm text-ink-700 whitespace-pre-line" lang={r.textLang || undefined}>{r.text}</p>
+              )}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-3 text-xs text-ink-500">Reviews via Google Maps. Content and opinions belong to their original authors.</p>
+  </section>
+)}

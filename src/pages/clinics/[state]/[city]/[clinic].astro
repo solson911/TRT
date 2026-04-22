@@ -2,6 +2,7 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import ClinicCard from '../../../../components/ClinicCard.astro';
 import ClinicPhotos from '../../../../components/ClinicPhotos.astro';
+import ClinicReviews from '../../../../components/ClinicReviews.astro';
 import Icon from '../../../../components/Icon.astro';
 import { STATE_BY_SLUG } from '../../../../data/states.js';
 import { loadClinics, clinicsByCity, primaryChain, isBiote, isPermanentlyClosed, isTemporarilyClosed } from '../../../../data/clinics.js';
@@ -41,12 +42,63 @@ const mapEmbed = `https://www.google.com/maps?q=${mapQuery}&z=15&output=embed`;
 const directionsUrl = clinic.lat && clinic.lng
   ? `https://www.google.com/maps/dir/?api=1&destination=${clinic.lat},${clinic.lng}`
   : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([clinic.name, clinic.address].filter(Boolean).join(' '))}`;
+
+// LocalBusiness / MedicalBusiness structured data. Skipped on closed clinics
+// (we don't want rich snippets promoting a business that no longer exists).
+// The Places photo API key is public by design — restricted by HTTP Referer
+// in Cloud Console.
+const PHOTO_KEY = 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718';
+const heroImage = clinic.photos && clinic.photos[0]
+  ? `https://places.googleapis.com/v1/${clinic.photos[0].name}/media?maxWidthPx=1200&key=${PHOTO_KEY}`
+  : undefined;
+
+const jsonLd = closed ? undefined : {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: clinic.name,
+  url: `https://trtverified.com/clinics/${clinic.stateSlug}/${clinic.citySlug}/${clinic.slug}/`,
+  ...(clinic.website && { sameAs: [clinic.website] }),
+  ...(heroImage && { image: heroImage }),
+  ...(clinic.phone && { telephone: clinic.phone }),
+  ...(clinic.address && {
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: clinic.street || undefined,
+      addressLocality: clinic.city || undefined,
+      addressRegion: clinic.state || undefined,
+      postalCode: clinic.zip || undefined,
+      addressCountry: 'US',
+    },
+  }),
+  ...(clinic.lat && clinic.lng && {
+    geo: { '@type': 'GeoCoordinates', latitude: clinic.lat, longitude: clinic.lng },
+  }),
+  ...(clinic.rating && clinic.ratingCount && {
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: clinic.rating,
+      reviewCount: clinic.ratingCount,
+    },
+  }),
+  ...(clinic.reviews && clinic.reviews.length > 0 && {
+    review: clinic.reviews.slice(0, 5).map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.authorName || 'Google reviewer' },
+      ...(r.rating && {
+        reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+      }),
+      ...(r.publishTime && { datePublished: r.publishTime }),
+      ...(r.text && { reviewBody: r.text }),
+    })),
+  }),
+};
 ---
 <BaseLayout
   title={closed
     ? `${clinic.name} — Permanently Closed | TRT Clinic Finder`
     : `${clinic.name} — ${clinic.city}, ${stateInfo?.abbr} | TRT Clinic Finder`}
   noindex={closed}
+  jsonLd={jsonLd}
 >
   {closed && (
     <section class="bg-amber-50 border-y border-amber-200">
@@ -175,6 +227,15 @@ const directionsUrl = clinic.lat && clinic.lng
       </div>
     </aside>
   </section>
+
+  {clinic.reviews && clinic.reviews.length > 0 && (
+    <ClinicReviews
+      reviews={clinic.reviews}
+      googleUrl={clinic.googleUrl}
+      rating={clinic.rating}
+      ratingCount={clinic.ratingCount}
+    />
+  )}
 
   {siblings.length > 0 && (
     <section class="container-prose pb-16">
