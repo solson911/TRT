@@ -1,0 +1,81 @@
+{
+  "states": {
+    "texas": {
+      "intro": "Texas has 317 testosterone replacement therapy clinics, with substantial concentrations in Austin, Houston, San Antonio, Fort Worth, Dallas, and El Paso. Major multi-location providers operating throughout the state include Gameday Men's Health, Low T Center, and Renew Vitality. Treatment offerings vary by location and provider.",
+      "clinicCount": 317,
+      "generatedAt": "2026-04-22T20:00:13Z"
+    },
+    "california": {
+      "intro": "California hosts 338 testosterone replacement therapy clinics, with notable concentrations in Los Angeles, San Diego, Sacramento, Newport Beach, Fresno, and Bakersfield. Major multi-location providers operating across the state include Gameday Men's Health and Renew Vitality. This directory organizes clinics by region to help you identify options in your area.",
+      "clinicCount": 338,
+      "generatedAt": "2026-04-22T20:00:25Z"
+    },
+    "florida": {
+      "intro": "Florida has 314 testosterone replacement therapy clinics distributed across the state, with notable concentrations in Tampa, Jacksonville, Fort Lauderdale, Miami, Orlando, and St. Petersburg. Major multi-location providers operating throughout Florida include Gameday Men's Health and Renew Vitality. These clinics provide TRT services to patients seeking hormone therapy treatment across the region.",
+      "clinicCount": 314,
+      "generatedAt": "2026-04-22T20:00:33Z"
+    },
+    "new-york": {
+      "intro": "New York has 137 testosterone replacement therapy clinics operating across the state, with significant concentration in Manhattan, Rochester, Buffalo, Syracuse, Garden City, and Staten Island. Major multi-location providers in the region include Renew Vitality and Gameday Men's Health, offering TRT services to patients throughout New York.",
+      "clinicCount": 137,
+      "generatedAt": "2026-04-22T20:00:40Z"
+    },
+    "arizona": {
+      "intro": "Arizona has 129 testosterone replacement therapy clinics distributed across the state, with major concentrations in Scottsdale, Phoenix, Tucson, Chandler, Mesa, and Gilbert. Gameday Men's Health and Renew Vitality are among the notable multi-location providers operating statewide. This directory helps patients locate clinics by location and provider.",
+      "clinicCount": 129,
+      "generatedAt": "2026-04-22T20:00:50Z"
+    }
+  },
+  "cities": {
+    "new-york/manhattan": {
+      "intro": "Manhattan has 42 TRT and hormone therapy clinics offering services including testosterone replacement therapy, peptides, HRT, and wellness treatments. These clinics maintain an average Google rating of 4.7 stars, reflecting consistent patient satisfaction. Whether you're seeking hormone optimization or specialized wellness care, the city's clinics provide varied approaches to treatment.",
+      "clinicCount": 42,
+      "generatedAt": "2026-04-22T20:00:57Z"
+    },
+    "nevada/las-vegas": {
+      "intro": "Las Vegas has 35 cataloged hormone therapy and testosterone replacement therapy (TRT) clinics, ranging from national chain locations to independent practices. Services typically include HRT, TRT, and wellness treatments, with an average Google rating of 4.5 stars across the market. Both established healthcare systems and specialized hormone clinics serve the local community.",
+      "clinicCount": 35,
+      "generatedAt": "2026-04-22T20:01:06Z"
+    },
+    "arizona/scottsdale": {
+      "intro": "Scottsdale, Arizona hosts 32 hormone therapy clinics offering services including testosterone replacement therapy (TRT), hormone replacement therapy (HRT), and wellness treatments. Both national TRT chains and independent practices operate in the city, providing patients with diverse options for care. These clinics maintain an impressive average Google rating of 4.9 stars.",
+      "clinicCount": 32,
+      "generatedAt": "2026-04-22T20:01:13Z"
+    },
+    "california/los-angeles": {
+      "intro": "Los Angeles has 27 cataloged hormone therapy and TRT clinics ranging from established national chains to independent practices. These clinics commonly offer testosterone replacement therapy, peptide treatments, and wellness services, with an average Google rating of 4.8 stars across the directory.",
+      "clinicCount": 27,
+      "generatedAt": "2026-04-22T20:01:22Z"
+    },
+    "texas/austin": {
+      "intro": "Austin's hormone therapy landscape includes 25 clinics offering TRT, HRT, and wellness services. Both national chains and independent practices serve the city, with an average Google rating of 4.9 stars across providers. Patients can find a range of treatment options and experience levels throughout the Austin area.",
+      "clinicCount": 25,
+      "generatedAt": "2026-04-22T20:01:28Z"
+    },
+    "texas/houston": {
+      "intro": "Houston's hormone therapy landscape includes 25 clinics offering services such as testosterone replacement therapy (TRT), bioidentical hormone replacement (BHRT), IV therapy, and peptide treatments. The market combines both national TRT chains and independent practices, providing patients with diverse options for hormone optimization. These clinics maintain a strong average Google rating of 4.9 stars.",
+      "clinicCount": 25,
+      "generatedAt": "2026-04-22T20:01:35Z"
+    },
+    "texas/san-antonio": {
+      "intro": "San Antonio is home to 25 testosterone replacement therapy and hormone therapy clinics, combining national TRT chains with independent practices. These clinics offer services including HRT, TRT, and wellness treatments, with an average Google rating of 4.8 stars across the market. Whether seeking specialized hormone care or general wellness support, patients have diverse options from established providers.",
+      "clinicCount": 25,
+      "generatedAt": "2026-04-22T20:01:42Z"
+    },
+    "florida/tampa": {
+      "intro": "Tampa's hormone therapy landscape includes 24 cataloged clinics offering services such as testosterone replacement therapy (TRT), bioidentical hormone replacement (BHRT), peptide therapies, and wellness programs. The market features both national TRT chains and independent practitioners, with an average Google rating of 4.9 stars across these clinics.",
+      "clinicCount": 24,
+      "generatedAt": "2026-04-22T20:01:52Z"
+    },
+    "arizona/phoenix": {
+      "intro": "Phoenix's directory includes 20 testosterone replacement and hormone wellness clinics, featuring both national TRT chains and independent medical practices serving the greater Phoenix area. Services include hormone replacement therapy and wellness programs. The clinics average a 4.9-star Google rating.",
+      "clinicCount": 20,
+      "generatedAt": "2026-04-22T20:02:12Z"
+    },
+    "california/san-diego": {
+      "intro": "San Diego has 20 cataloged clinics providing testosterone replacement therapy and hormone therapy services, including TRT and wellness treatments. These facilities range from national TRT chains to independent practices, with an average Google rating of 4.7 stars across the city.",
+      "clinicCount": 20,
+      "generatedAt": "2026-04-22T20:02:35Z"
+    }
+  }
+}

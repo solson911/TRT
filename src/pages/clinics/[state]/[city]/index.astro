@@ -4,6 +4,7 @@ import ClinicCard from '../../../../components/ClinicCard.astro';
 import { STATES, STATE_BY_SLUG } from '../../../../data/states.js';
 import { clinicsByCity } from '../../../../data/clinics.js';
 import { cityCrumbs, breadcrumbJsonLd, summaryItemListJsonLd } from '../../../../data/breadcrumbs.js';
+import { cityIntro } from '../../../../data/intros.js';
 
 export function getStaticPaths() {
   const paths = [];
@@ -56,6 +57,7 @@ const listLd = summaryItemListJsonLd(
   { name: `TRT clinics in ${cityName}, ${stateInfo?.abbr || ''}` }
 );
 const jsonLd = [crumbLd, listLd];
+const intro = cityIntro(state, city);
 ---
 <BaseLayout title={`TRT Clinics in ${cityName}, ${stateInfo?.abbr || ''} — TRT Clinic Finder`} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-6">
@@ -74,6 +76,9 @@ const jsonLd = [crumbLd, listLd];
     <p class="mt-3 text-ink-600 text-lg">
       <span id="result-count">{list.length}</span> {list.length === 1 ? 'clinic' : 'clinics'} cataloged.
     </p>
+    {intro && (
+      <p class="mt-4 max-w-3xl text-ink-600">{intro}</p>
+    )}
   </section>
 
   <section class="container-prose pb-4">

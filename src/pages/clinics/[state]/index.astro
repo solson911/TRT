@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { STATES, STATE_BY_SLUG } from '../../../data/states.js';
 import { clinicsByCity } from '../../../data/clinics.js';
 import { stateCrumbs, breadcrumbJsonLd, summaryItemListJsonLd } from '../../../data/breadcrumbs.js';
+import { stateIntro } from '../../../data/intros.js';
 
 export function getStaticPaths() {
   return STATES.map((s) => ({ params: { state: s.slug } }));
@@ -41,6 +42,7 @@ const listLd = cities.length > 0
     )
   : null;
 const jsonLd = listLd ? [crumbLd, listLd] : [crumbLd];
+const intro = stateIntro(state);
 ---
 <BaseLayout title={`TRT Clinics in ${stateInfo.name} — TRT Clinic Finder`} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-6">
@@ -59,6 +61,9 @@ const jsonLd = listLd ? [crumbLd, listLd] : [crumbLd];
         ? `${totalCount.toLocaleString()} clinics across ${cities.length} ${cities.length === 1 ? 'city' : 'cities'}.`
         : `We haven't cataloged ${stateInfo.name} yet. Check back soon.`}
     </p>
+    {intro && (
+      <p class="mt-4 max-w-3xl text-ink-600">{intro}</p>
+    )}
   </section>
 
   {totalCount > 0 && (
