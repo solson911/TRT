@@ -28,7 +28,11 @@ sys.stdout.reconfigure(line_buffering=True)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
 
-API_KEY = os.environ.get('GOOGLE_PLACES_API_KEY', 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718')
+API_KEY = (
+    os.environ.get('PLACES_UNRESTRICTED_API_KEY')
+    or os.environ.get('GOOGLE_PLACES_API_KEY')
+    or 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718'
+)
 DETAILS_URL = 'https://places.googleapis.com/v1/places/{place_id}'
 
 SAVE_EVERY = 100

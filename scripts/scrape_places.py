@@ -29,9 +29,14 @@ DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
 QUERIES_FILE = os.path.join(ROOT, 'data', 'seed-queries.json')
 METROS_FILE = os.path.join(ROOT, 'data', 'seed-metros.json')
 
-# Reusing the Places API key pattern from roostmode enrich_places.py.
-# Override via env var if you want a different key.
-API_KEY = os.environ.get('GOOGLE_PLACES_API_KEY', 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718')
+# Server-side calls (no HTTP Referer) must use the unrestricted/IP-restricted
+# key from .env, not the referer-restricted browser key. Prefer env over the
+# legacy hardcoded fallback.
+API_KEY = (
+    os.environ.get('PLACES_UNRESTRICTED_API_KEY')
+    or os.environ.get('GOOGLE_PLACES_API_KEY')
+    or 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718'
+)
 SEARCH_URL = 'https://places.googleapis.com/v1/places:searchText'
 
 # Flush to disk every N API calls so a crash or disconnect doesn't lose a whole sweep.
