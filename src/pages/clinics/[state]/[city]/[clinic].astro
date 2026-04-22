@@ -60,7 +60,7 @@ const businessLd = closed ? null : {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: clinic.name,
-  url: `https://trtverified.com/clinics/${clinic.stateSlug}/${clinic.citySlug}/${clinic.slug}/`,
+  url: `https://trtindex.com/clinics/${clinic.stateSlug}/${clinic.citySlug}/${clinic.slug}/`,
   ...(clinic.website && { sameAs: [clinic.website] }),
   ...(heroImage && { image: heroImage }),
   ...(clinic.phone && { telephone: clinic.phone }),
@@ -101,8 +101,8 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
 ---
 <BaseLayout
   title={closed
-    ? `${clinic.name} — Permanently Closed | TRT Verified`
-    : `${clinic.name} — ${clinic.city}, ${stateInfo?.abbr} | TRT Verified`}
+    ? `${clinic.name} — Permanently Closed | TRT Index`
+    : `${clinic.name} — ${clinic.city}, ${stateInfo?.abbr} | TRT Index`}
   noindex={closed}
   jsonLd={jsonLd}
 >
@@ -144,9 +144,6 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
           )}
           {biote && !chain?.toLowerCase().includes('biote') && (
             <span class="inline-flex items-center rounded-md bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800 ring-1 ring-inset ring-amber-200">Biote Certified</span>
-          )}
-          {clinic.verified && !closed && (
-            <span class="inline-flex items-center rounded-md bg-brand-600 px-2 py-0.5 text-xs font-semibold text-white">Verified</span>
           )}
         </div>
         <h1 class="font-display text-3xl md:text-4xl font-semibold text-ink-900 leading-tight">{clinic.name}</h1>

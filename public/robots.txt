@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trtverified.com/sitemap-index.xml
+Sitemap: https://trtindex.com/sitemap-index.xml

@@ -12,11 +12,11 @@ import { loadClinics, isPermanentlyClosed } from './src/data/clinics.js';
 const closedPaths = new Set(
   loadClinics()
     .filter(isPermanentlyClosed)
-    .map((c) => `https://trtverified.com/clinics/${c.stateSlug}/${c.citySlug}/${c.slug}/`)
+    .map((c) => `https://trtindex.com/clinics/${c.stateSlug}/${c.citySlug}/${c.slug}/`)
 );
 
 export default defineConfig({
-  site: 'https://trtverified.com',
+  site: 'https://trtindex.com',
   trailingSlash: 'always',
 
   vite: {

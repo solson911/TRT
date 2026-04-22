@@ -2,7 +2,7 @@
 // JSON-LD version is valid on its own. Callers render the visible nav from
 // the same data to keep the two in lockstep.
 
-const SITE = 'https://trtverified.com';
+const SITE = 'https://trtindex.com';
 
 export function clinicCrumbs(clinic, stateName) {
   return [

@@ -52,14 +52,14 @@ const crumbLd = breadcrumbJsonLd(cityCrumbs(cityName, city, stateInfo?.name || '
 const listLd = summaryItemListJsonLd(
   list.slice(0, 25).map((c) => ({
     name: c.name,
-    url: `https://trtverified.com/clinics/${state}/${city}/${c.slug}/`,
+    url: `https://trtindex.com/clinics/${state}/${city}/${c.slug}/`,
   })),
   { name: `TRT clinics in ${cityName}, ${stateInfo?.abbr || ''}` }
 );
 const jsonLd = [crumbLd, listLd];
 const intro = cityIntro(state, city);
 ---
-<BaseLayout title={`TRT Clinics in ${cityName}, ${stateInfo?.abbr || ''} — TRT Verified`} jsonLd={jsonLd}>
+<BaseLayout title={`TRT Clinics in ${cityName}, ${stateInfo?.abbr || ''} — TRT Index`} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-6">
     <nav class="text-sm text-ink-500 mb-3">
       <a href="/" class="hover:text-ink-900">Home</a>

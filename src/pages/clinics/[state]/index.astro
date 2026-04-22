@@ -36,7 +36,7 @@ const listLd = cities.length > 0
   ? summaryItemListJsonLd(
       cities.map((c) => ({
         name: `TRT clinics in ${c.name}, ${stateInfo.abbr}`,
-        url: `https://trtverified.com/clinics/${state}/${c.slug}/`,
+        url: `https://trtindex.com/clinics/${state}/${c.slug}/`,
       })),
       { name: `Cities in ${stateInfo.name} with TRT clinics` }
     )
@@ -44,7 +44,7 @@ const listLd = cities.length > 0
 const jsonLd = listLd ? [crumbLd, listLd] : [crumbLd];
 const intro = stateIntro(state);
 ---
-<BaseLayout title={`TRT Clinics in ${stateInfo.name} — TRT Verified`} jsonLd={jsonLd}>
+<BaseLayout title={`TRT Clinics in ${stateInfo.name} — TRT Index`} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-6">
     <nav class="text-sm text-ink-500 mb-3">
       <a href="/" class="hover:text-ink-900">Home</a>
