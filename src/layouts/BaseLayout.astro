@@ -6,9 +6,10 @@ interface Props {
   title: string;
   description?: string;
   canonical?: string;
+  noindex?: boolean;
 }
 
-const { title, description = 'Find TRT and HRT clinics across the United States.', canonical } = Astro.props;
+const { title, description = 'Find TRT and HRT clinics across the United States.', canonical, noindex = false } = Astro.props;
 const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://trtverified.com').toString();
 ---
 <!doctype html>
@@ -20,6 +21,7 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalHref} />
 
     <meta property="og:title" content={title} />

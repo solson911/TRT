@@ -12,7 +12,7 @@ cost, public find-a-location pages). Each chain is parsed differently:
                   /locations/<slug> page (discovered via sitemap.xml)
   - serotonin   → inline DatoCMS "locations" JSON array on /locations/
 
-Output gets merged into public/data/clinics.min.json.
+Output gets merged into data/clinics.min.json.
 
 Dedup: each chain record is assigned a synthetic placeId (`chain-<chain>-<id>`).
 Before insertion we check whether the existing dataset already contains the
@@ -37,7 +37,7 @@ from html import unescape
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'public', 'data', 'clinics.min.json')
+DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
 
 UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36')
@@ -640,7 +640,7 @@ def main():
 
     existing.sort(key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
     with open(DATA_FILE, 'w') as f:
-        json.dump(existing, f, indent=2, ensure_ascii=False)
+        json.dump(existing, f, ensure_ascii=False, separators=(',', ':'))
     print(f'[save] wrote {len(existing)} clinics → {DATA_FILE}')
 
 

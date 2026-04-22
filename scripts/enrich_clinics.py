@@ -5,7 +5,7 @@ enrich_clinics.py — classify each clinic as TRT-relevant via the claude CLI.
 Uses `claude -p --model haiku` so the work runs against the user's Max
 subscription, not the Anthropic API (no double billing).
 
-Writes the classification back onto the record in public/data/clinics.min.json:
+Writes the classification back onto the record in data/clinics.min.json:
 
   classification: 'primary_trt' | 'offers_trt' | 'unrelated'
   classificationConfidence: 'high' | 'medium' | 'low'
@@ -34,7 +34,7 @@ import time
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'public', 'data', 'clinics.min.json')
+DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
 MODEL = 'haiku'
 SAVE_EVERY = 200
 BATCH_SIZE = 20
@@ -155,7 +155,7 @@ def classify_batch(clinics):
 
 def save(records):
     with open(DATA_FILE, 'w') as f:
-        json.dump(records, f, indent=2, ensure_ascii=False)
+        json.dump(records, f, ensure_ascii=False, separators=(',', ':'))
 
 
 def main():

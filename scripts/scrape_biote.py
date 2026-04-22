@@ -233,7 +233,7 @@ def load_clinics():
 def save_clinics(records):
     records.sort(key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
     with open(DATA_FILE, 'w') as f:
-        json.dump(records, f, indent=2, ensure_ascii=False)
+        json.dump(records, f, ensure_ascii=False, separators=(',', ':'))
 
 
 def build_indices(records):

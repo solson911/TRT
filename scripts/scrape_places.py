@@ -4,7 +4,7 @@ scrape_places.py — discover TRT/HRT clinics via Google Places (New) Text Searc
 
 Seeds: data/seed-queries.json x data/seed-metros.json. For each (query, metro, state),
 runs Places Text Search, paginates with nextPageToken, and appends unique entries
-(by place_id) to public/data/clinics.min.json.
+(by place_id) to data/clinics.min.json.
 
 Usage:
   python3 scripts/scrape_places.py                     # all states
@@ -25,7 +25,7 @@ import urllib.request
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'public', 'data', 'clinics.min.json')
+DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
 QUERIES_FILE = os.path.join(ROOT, 'data', 'seed-queries.json')
 METROS_FILE = os.path.join(ROOT, 'data', 'seed-metros.json')
 
@@ -41,6 +41,7 @@ FIELD_MASK = ','.join([
     'places.id',
     'places.displayName',
     'places.formattedAddress',
+    'places.shortFormattedAddress',
     'places.addressComponents',
     'places.location',
     'places.nationalPhoneNumber',
@@ -50,7 +51,18 @@ FIELD_MASK = ','.join([
     'places.priceLevel',
     'places.googleMapsUri',
     'places.types',
+    'places.primaryType',
+    'places.primaryTypeDisplayName',
+    'places.businessStatus',
     'places.regularOpeningHours',
+    'places.photos',
+    'places.editorialSummary',
+    'places.generativeSummary',
+    'places.reviews',
+    'places.accessibilityOptions',
+    'places.paymentOptions',
+    'places.parkingOptions',
+    'places.priceRange',
     'nextPageToken',
 ])
 
@@ -213,7 +225,7 @@ def save_all(by_id):
     items = sorted(by_id.values(), key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     with open(DATA_FILE, 'w') as f:
-        json.dump(items, f, indent=2, ensure_ascii=False)
+        json.dump(items, f, ensure_ascii=False, separators=(',', ':'))
     print(f'[save] wrote {len(items)} clinics → {DATA_FILE}')
 
 

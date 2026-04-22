@@ -9,7 +9,7 @@ us authoritative Yelp review data to enrich the records we already have.
 Seeds: same (state, metro) grid as Places. Terms are TRT-focused. Each (metro,
 term) call returns up to 50 results; we paginate via `offset` up to 240.
 
-Output is merged into public/data/clinics.min.json using three-tier dedup:
+Output is merged into data/clinics.min.json using three-tier dedup:
 street+city+state → phone+city+state → (normalized name)+city+state. New
 records get synthetic placeId `yelp-<yelp_id>` and `source: yelp`. Existing
 records matched via Yelp get `yelp_id`, `yelp_rating`, `yelp_review_count`,
@@ -33,7 +33,7 @@ import urllib.request
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'public', 'data', 'clinics.min.json')
+DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
 METROS_FILE = os.path.join(ROOT, 'data', 'seed-metros.json')
 ENV_FILE = os.path.join(ROOT, '.env')
 
@@ -262,7 +262,7 @@ def load_existing():
 def save(records):
     records.sort(key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
     with open(DATA_FILE, 'w') as f:
-        json.dump(records, f, indent=2, ensure_ascii=False)
+        json.dump(records, f, ensure_ascii=False, separators=(',', ':'))
     print(f'[save] wrote {len(records)} clinics → {DATA_FILE}')
 
 

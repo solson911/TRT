@@ -1,4 +1,4 @@
-// Loads clinic data from public/data/clinics.min.json at build time.
+// Loads clinic data from data/clinics.min.json at build time.
 // The JSON file is produced by scripts/scrape_places.py then classified by
 // scripts/enrich_clinics.py. loadClinics() returns only records classified as
 // TRT-relevant (primary_trt or offers_trt); unrelated or unclassified records
@@ -44,7 +44,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_PATH = path.join(__dirname, '..', '..', 'public', 'data', 'clinics.min.json');
+const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'clinics.min.json');
 
 const DIRECTORY_CLASSES = new Set(['primary_trt', 'offers_trt']);
 
@@ -59,8 +59,20 @@ export function loadClinics() {
   const raw = fs.readFileSync(DATA_PATH, 'utf8');
   const parsed = JSON.parse(raw);
   const all = Array.isArray(parsed) ? parsed : (parsed.clinics || []);
+  // Include CLOSED_PERMANENTLY so their detail pages still build (they render as
+  // "permanently closed" pages with noindex + alternative-clinic suggestions) —
+  // handy when someone searches the specific clinic name. Listing/roll-up
+  // helpers below filter them out so they don't clutter live listings.
   cached = all.filter((c) => DIRECTORY_CLASSES.has(c.classification));
   return cached;
+}
+
+export function isPermanentlyClosed(clinic) {
+  return clinic?.businessStatus === 'CLOSED_PERMANENTLY';
+}
+
+export function isTemporarilyClosed(clinic) {
+  return clinic?.businessStatus === 'CLOSED_TEMPORARILY';
 }
 
 export function loadAllClinics() {
@@ -74,6 +86,7 @@ export function clinicsByState() {
   const byState = {};
   for (const c of loadClinics()) {
     if (c.telehealth) continue;
+    if (isPermanentlyClosed(c)) continue;
     if (!c.stateSlug) continue;
     (byState[c.stateSlug] ||= []).push(c);
   }
@@ -84,6 +97,7 @@ export function clinicsByCity(stateSlug) {
   const byCity = {};
   for (const c of loadClinics()) {
     if (c.telehealth) continue;
+    if (isPermanentlyClosed(c)) continue;
     if (c.stateSlug !== stateSlug) continue;
     if (!c.citySlug) continue;
     (byCity[c.citySlug] ||= []).push(c);
@@ -95,6 +109,7 @@ export function countsByState() {
   const counts = {};
   for (const c of loadClinics()) {
     if (c.telehealth || !c.stateSlug) continue;
+    if (isPermanentlyClosed(c)) continue;
     counts[c.stateSlug] = (counts[c.stateSlug] ?? 0) + 1;
   }
   return counts;
@@ -119,7 +134,7 @@ export function isBiote(clinic) {
 // score = rating * log10(1 + reviewCount); min 20 reviews keeps it honest.
 export function topRatedClinics({ limit = 12, minReviews = 20 } = {}) {
   const pool = loadClinics().filter((c) =>
-    !c.telehealth && c.rating && (c.ratingCount ?? 0) >= minReviews && c.stateSlug && c.citySlug && c.slug
+    !c.telehealth && !isPermanentlyClosed(c) && c.rating && (c.ratingCount ?? 0) >= minReviews && c.stateSlug && c.citySlug && c.slug
   );
   pool.sort((a, b) => {
     const score = (c) => (c.rating || 0) * Math.log10(1 + (c.ratingCount || 0));
@@ -138,7 +153,7 @@ export function topRatedClinics({ limit = 12, minReviews = 20 } = {}) {
 }
 
 export function directorySummary() {
-  const all = loadClinics().filter((c) => !c.telehealth);
+  const all = loadClinics().filter((c) => !c.telehealth && !isPermanentlyClosed(c));
   const rated = all.filter((c) => c.rating);
   const avgRating = rated.length
     ? rated.reduce((s, c) => s + (c.rating || 0), 0) / rated.length

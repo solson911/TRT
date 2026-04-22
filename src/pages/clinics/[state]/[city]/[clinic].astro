@@ -3,7 +3,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import ClinicCard from '../../../../components/ClinicCard.astro';
 import Icon from '../../../../components/Icon.astro';
 import { STATE_BY_SLUG } from '../../../../data/states.js';
-import { loadClinics, clinicsByCity, primaryChain, isBiote } from '../../../../data/clinics.js';
+import { loadClinics, clinicsByCity, primaryChain, isBiote, isPermanentlyClosed, isTemporarilyClosed } from '../../../../data/clinics.js';
 
 export function getStaticPaths() {
   return loadClinics()
@@ -20,15 +20,18 @@ const stateInfo = STATE_BY_SLUG[state];
 
 const chain = primaryChain(clinic);
 const biote = isBiote(clinic);
+const closed = isPermanentlyClosed(clinic);
+const tempClosed = isTemporarilyClosed(clinic);
 
-// "Other clinics in {city}", excluding current, up to 4
+// "Other clinics in {city}", excluding current. For closed clinics, surface more
+// (6) and promote visually; for live clinics, keep it tight (4).
 const siblings = (clinicsByCity(clinic.stateSlug)[clinic.citySlug] || [])
   .filter((c) => c.slug !== clinic.slug)
   .sort((a, b) => {
     const score = (c) => (c.rating || 0) * Math.log10(1 + (c.ratingCount || 0));
     return score(b) - score(a);
   })
-  .slice(0, 4);
+  .slice(0, closed ? 6 : 4);
 
 const mapQuery = clinic.lat && clinic.lng
   ? `${clinic.lat},${clinic.lng}`
@@ -38,7 +41,23 @@ const directionsUrl = clinic.lat && clinic.lng
   ? `https://www.google.com/maps/dir/?api=1&destination=${clinic.lat},${clinic.lng}`
   : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([clinic.name, clinic.address].filter(Boolean).join(' '))}`;
 ---
-<BaseLayout title={`${clinic.name} — ${clinic.city}, ${stateInfo?.abbr} | TRT Clinic Finder`}>
+<BaseLayout
+  title={closed
+    ? `${clinic.name} — Permanently Closed | TRT Clinic Finder`
+    : `${clinic.name} — ${clinic.city}, ${stateInfo?.abbr} | TRT Clinic Finder`}
+  noindex={closed}
+>
+  {closed && (
+    <section class="bg-amber-50 border-y border-amber-200">
+      <div class="container-prose py-4 flex items-start gap-3">
+        <Icon name="info" size={20} class="text-amber-700 mt-0.5 shrink-0" />
+        <div>
+          <div class="font-semibold text-amber-900">This clinic has permanently closed</div>
+          <p class="text-sm text-amber-800 mt-0.5">The information below is preserved for reference. See alternative TRT clinics in {clinic.city} further down, or <a href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/`} class="underline font-medium">browse all clinics in {clinic.city}</a>.</p>
+        </div>
+      </div>
+    </section>
+  )}
   <section class="container-prose pt-14 pb-6">
     <nav class="text-sm text-ink-500 mb-3">
       <a href="/" class="hover:text-ink-900">Home</a>
@@ -55,13 +74,19 @@ const directionsUrl = clinic.lat && clinic.lng
     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
       <div class="min-w-0">
         <div class="flex flex-wrap gap-1.5 mb-2">
+          {closed && (
+            <span class="inline-flex items-center rounded-md bg-ink-900 px-2 py-0.5 text-xs font-semibold text-white">Permanently Closed</span>
+          )}
+          {tempClosed && (
+            <span class="inline-flex items-center rounded-md bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900 ring-1 ring-inset ring-amber-300">Temporarily Closed</span>
+          )}
           {chain && (
             <span class="inline-flex items-center rounded-md bg-ink-100 px-2 py-0.5 text-xs font-semibold text-ink-700">{chain}</span>
           )}
           {biote && !chain?.toLowerCase().includes('biote') && (
             <span class="inline-flex items-center rounded-md bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800 ring-1 ring-inset ring-amber-200">Biote Certified</span>
           )}
-          {clinic.verified && (
+          {clinic.verified && !closed && (
             <span class="inline-flex items-center rounded-md bg-brand-600 px-2 py-0.5 text-xs font-semibold text-white">Verified</span>
           )}
         </div>
@@ -75,21 +100,28 @@ const directionsUrl = clinic.lat && clinic.lng
           </div>
         )}
       </div>
-      <div class="flex flex-wrap gap-2">
-        {clinic.phone && (
-          <a href={`tel:${clinic.phone.replace(/[^0-9+]/g, '')}`} class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-white text-sm font-semibold hover:bg-brand-700">
-            <Icon name="phone" size={16} /> Call {clinic.phone}
+      {!closed && (
+        <div class="flex flex-wrap gap-2">
+          {clinic.phone && (
+            <a href={`tel:${clinic.phone.replace(/[^0-9+]/g, '')}`} class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-white text-sm font-semibold hover:bg-brand-700">
+              <Icon name="phone" size={16} /> Call {clinic.phone}
+            </a>
+          )}
+          {clinic.website && (
+            <a href={clinic.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
+              <Icon name="globe" size={16} /> Website
+            </a>
+          )}
+          <a href={directionsUrl} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
+            <Icon name="compass" size={16} /> Directions
           </a>
-        )}
-        {clinic.website && (
-          <a href={clinic.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
-            <Icon name="globe" size={16} /> Website
-          </a>
-        )}
-        <a href={directionsUrl} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
-          <Icon name="compass" size={16} /> Directions
+        </div>
+      )}
+      {closed && (
+        <a href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/`} class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-white text-sm font-semibold hover:bg-brand-700 self-start">
+          <Icon name="search" size={16} /> See open clinics in {clinic.city}
         </a>
-      </div>
+      )}
     </div>
   </section>
 
@@ -142,7 +174,9 @@ const directionsUrl = clinic.lat && clinic.lng
   {siblings.length > 0 && (
     <section class="container-prose pb-16">
       <div class="flex items-end justify-between mb-4">
-        <h2 class="font-display text-xl md:text-2xl font-semibold text-ink-900">Other clinics in {clinic.city}</h2>
+        <h2 class="font-display text-xl md:text-2xl font-semibold text-ink-900">
+          {closed ? `Open TRT clinics in ${clinic.city}` : `Other clinics in ${clinic.city}`}
+        </h2>
         <a href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/`} class="text-sm font-medium text-brand-700 hover:text-brand-800">See all →</a>
       </div>
       <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">

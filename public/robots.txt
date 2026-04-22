@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /data/
 
 Sitemap: https://trtverified.com/sitemap-index.xml

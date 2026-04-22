@@ -17,7 +17,7 @@ MASTER_LOG="$LOG_DIR/overnight_${STAMP}.log"
 echo "=== overnight run started $(date -u +'%Y-%m-%dT%H:%M:%SZ') ===" | tee -a "$MASTER_LOG"
 
 backup_data() {
-  cp public/data/clinics.min.json "$LOG_DIR/clinics.min.${STAMP}.bak.json" 2>/dev/null || true
+  cp data/clinics.min.json "$LOG_DIR/clinics.min.${STAMP}.bak.json" 2>/dev/null || true
 }
 
 run_stage() {
