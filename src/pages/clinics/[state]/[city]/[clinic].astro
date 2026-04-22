@@ -170,11 +170,11 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
             </a>
           )}
           {clinic.website && (
-            <a href={clinic.website} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
+            <a href={clinic.website} target="_blank" rel="nofollow noopener noreferrer external" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
               <Icon name="globe" size={16} /> Website
             </a>
           )}
-          <a href={directionsUrl} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
+          <a href={directionsUrl} target="_blank" rel="nofollow noopener noreferrer external" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-ink-800 text-sm font-semibold ring-1 ring-ink-200 hover:ring-ink-300">
             <Icon name="compass" size={16} /> Directions
           </a>
         </div>
@@ -241,10 +241,10 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
           <div class="flex items-start gap-2"><span class="text-ink-400 shrink-0">Phone</span><a href={`tel:${clinic.phone.replace(/[^0-9+]/g, '')}`} class="text-ink-800 hover:text-brand-700">{clinic.phone}</a></div>
         )}
         {clinic.website && (
-          <div class="flex items-start gap-2"><span class="text-ink-400 shrink-0">Web</span><a href={clinic.website} target="_blank" rel="noopener" class="truncate text-ink-800 hover:text-brand-700">{clinic.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></div>
+          <div class="flex items-start gap-2"><span class="text-ink-400 shrink-0">Web</span><a href={clinic.website} target="_blank" rel="nofollow noopener noreferrer external" class="truncate text-ink-800 hover:text-brand-700">{clinic.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></div>
         )}
         {clinic.googleUrl && (
-          <div class="flex items-start gap-2"><span class="text-ink-400 shrink-0">Google</span><a href={clinic.googleUrl} target="_blank" rel="noopener" class="text-ink-800 hover:text-brand-700">View listing</a></div>
+          <div class="flex items-start gap-2"><span class="text-ink-400 shrink-0">Google</span><a href={clinic.googleUrl} target="_blank" rel="nofollow noopener noreferrer external" class="text-ink-800 hover:text-brand-700">View listing</a></div>
         )}
       </div>
     </aside>

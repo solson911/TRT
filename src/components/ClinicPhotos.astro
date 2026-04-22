@@ -68,7 +68,7 @@ const attributions = Array.from(
             <a
               href={googleUrl}
               target="_blank"
-              rel="noopener"
+              rel="nofollow noopener noreferrer external"
               class="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-sm font-semibold hover:bg-black/60"
             >
               +{extras} more on Google
@@ -82,7 +82,7 @@ const attributions = Array.from(
         Photos via Google Maps contributors: {attributions.map((a, i) => (
           <>
             {a.uri ? (
-              <a href={a.uri} target="_blank" rel="noopener" class="hover:text-ink-700 underline-offset-2 hover:underline">{a.displayName}</a>
+              <a href={a.uri} target="_blank" rel="nofollow noopener noreferrer external" class="hover:text-ink-700 underline-offset-2 hover:underline">{a.displayName}</a>
             ) : (
               <span>{a.displayName}</span>
             )}

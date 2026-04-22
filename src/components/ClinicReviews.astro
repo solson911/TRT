@@ -48,7 +48,7 @@ const stars = (n: number) => Array.from({ length: 5 }, (_, i) => i < Math.round(
         )}
       </div>
       {googleUrl && (
-        <a href={googleUrl} target="_blank" rel="noopener" class="text-sm font-medium text-brand-700 hover:text-brand-800">
+        <a href={googleUrl} target="_blank" rel="nofollow noopener noreferrer external" class="text-sm font-medium text-brand-700 hover:text-brand-800">
           See all reviews on Google →
         </a>
       )}
@@ -74,7 +74,7 @@ const stars = (n: number) => Array.from({ length: 5 }, (_, i) => i < Math.round(
               <div class="flex items-center justify-between gap-2">
                 <div class="min-w-0">
                   {r.authorUri ? (
-                    <a href={r.authorUri} target="_blank" rel="noopener" class="font-medium text-ink-900 hover:text-brand-700 truncate block">
+                    <a href={r.authorUri} target="_blank" rel="nofollow noopener noreferrer external" class="font-medium text-ink-900 hover:text-brand-700 truncate block">
                       {r.authorName || 'Google reviewer'}
                     </a>
                   ) : (
