@@ -1,0 +1,186 @@
+---
+import Icon from './Icon.astro';
+---
+<div class="site-search relative" data-site-search>
+  <div class="relative">
+    <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-ink-400">
+      <Icon name="search" size={18} />
+    </span>
+    <input
+      type="search"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="Search by clinic name or city..."
+      aria-label="Search clinics by name or city"
+      class="w-full rounded-xl border border-ink-200 bg-white pl-11 pr-4 py-3.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 shadow-sm"
+      data-site-search-input
+    />
+  </div>
+  <div
+    class="site-search-panel hidden absolute left-0 right-0 top-full mt-2 z-30 rounded-xl bg-white ring-1 ring-ink-100 shadow-xl overflow-hidden max-h-[70vh] overflow-y-auto"
+    data-site-search-panel
+  ></div>
+</div>
+
+<script is:inline>
+(function () {
+  const roots = document.querySelectorAll('[data-site-search]');
+  if (!roots.length) return;
+
+  let indexPromise = null;
+  function loadIndex() {
+    if (!indexPromise) {
+      indexPromise = fetch('/search-index.json')
+        .then((r) => r.json())
+        .catch(() => ({ cities: [], clinics: [] }));
+    }
+    return indexPromise;
+  }
+
+  function norm(s) { return (s || '').toLowerCase(); }
+
+  function rankAndFilter(q, idx) {
+    const nq = norm(q).trim();
+    if (!nq) return { cities: [], clinics: [] };
+
+    const cityHits = [];
+    for (const row of idx.cities) {
+      const [name, stateAbbr, stateSlug, citySlug, count] = row;
+      const hay = norm(name + ' ' + stateAbbr);
+      const pos = hay.indexOf(nq);
+      if (pos === -1) continue;
+      const starts = pos === 0 || hay[pos - 1] === ' ';
+      cityHits.push({ row, rank: (starts ? 0 : 1) * 1e9 - count });
+      if (cityHits.length > 200) break;
+    }
+    cityHits.sort((a, b) => a.rank - b.rank);
+
+    const clinicHits = [];
+    for (const row of idx.clinics) {
+      const [name, city, stateAbbr] = row;
+      const hay = norm(name);
+      const pos = hay.indexOf(nq);
+      const cityHay = norm(city + ' ' + stateAbbr);
+      const cityPos = cityHay.indexOf(nq);
+      if (pos === -1 && cityPos === -1) continue;
+      const starts = pos === 0 || (pos > 0 && hay[pos - 1] === ' ');
+      const score = row[6] || 0;
+      const bucket = pos === 0 ? 0 : pos > 0 && starts ? 1 : pos > 0 ? 2 : 3;
+      clinicHits.push({ row, rank: bucket * 1e9 - score });
+      if (clinicHits.length > 400) break;
+    }
+    clinicHits.sort((a, b) => a.rank - b.rank);
+
+    return {
+      cities: cityHits.slice(0, 5).map((h) => h.row),
+      clinics: clinicHits.slice(0, 8).map((h) => h.row),
+    };
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  }
+  function highlight(text, q) {
+    const nq = norm(q);
+    const nt = norm(text);
+    const pos = nt.indexOf(nq);
+    if (pos === -1 || !nq) return escapeHtml(text);
+    const before = text.slice(0, pos);
+    const hit = text.slice(pos, pos + nq.length);
+    const after = text.slice(pos + nq.length);
+    return `${escapeHtml(before)}<mark class="bg-brand-100 text-brand-800 rounded-sm px-0.5">${escapeHtml(hit)}</mark>${escapeHtml(after)}`;
+  }
+
+  function render(panel, results, q) {
+    const { cities, clinics } = results;
+    if (!cities.length && !clinics.length) {
+      panel.innerHTML = `<div class="p-4 text-sm text-ink-500">No matches for "${escapeHtml(q)}".</div>`;
+      panel.classList.remove('hidden');
+      return;
+    }
+    const parts = [];
+    if (cities.length) {
+      parts.push('<div class="px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-ink-400">Cities</div>');
+      parts.push('<ul>');
+      for (const [name, stateAbbr, stateSlug, citySlug, count] of cities) {
+        const url = `/clinics/${stateSlug}/${citySlug}/`;
+        parts.push(`<li><a href="${url}" class="ss-item flex items-center gap-3 px-4 py-2.5 hover:bg-brand-50 focus:bg-brand-50 focus:outline-none" tabindex="-1" data-url="${url}">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700">📍</span>
+          <span class="min-w-0 flex-1">
+            <span class="block font-medium text-ink-900">${highlight(name, q)}, ${escapeHtml(stateAbbr)}</span>
+            <span class="block text-xs text-ink-500">${count} clinic${count === 1 ? '' : 's'}</span>
+          </span>
+        </a></li>`);
+      }
+      parts.push('</ul>');
+    }
+    if (clinics.length) {
+      parts.push('<div class="px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-ink-400">Clinics</div>');
+      parts.push('<ul>');
+      for (const [name, city, stateAbbr, stateSlug, citySlug, slug] of clinics) {
+        const url = `/clinics/${stateSlug}/${citySlug}/${slug}/`;
+        parts.push(`<li><a href="${url}" class="ss-item flex items-center gap-3 px-4 py-2.5 hover:bg-brand-50 focus:bg-brand-50 focus:outline-none" tabindex="-1" data-url="${url}">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-ink-50 text-ink-500">🏥</span>
+          <span class="min-w-0 flex-1">
+            <span class="block font-medium text-ink-900 truncate">${highlight(name, q)}</span>
+            <span class="block text-xs text-ink-500">${escapeHtml(city)}, ${escapeHtml(stateAbbr)}</span>
+          </span>
+        </a></li>`);
+      }
+      parts.push('</ul>');
+    }
+    panel.innerHTML = parts.join('');
+    panel.classList.remove('hidden');
+  }
+
+  for (const root of roots) {
+    const input = root.querySelector('[data-site-search-input]');
+    const panel = root.querySelector('[data-site-search-panel]');
+    let items = [];
+    let activeIdx = -1;
+
+    function refreshItems() {
+      items = Array.from(panel.querySelectorAll('.ss-item'));
+      activeIdx = -1;
+    }
+    function setActive(i) {
+      if (!items.length) return;
+      activeIdx = (i + items.length) % items.length;
+      for (const it of items) it.classList.remove('bg-brand-50');
+      items[activeIdx].classList.add('bg-brand-50');
+      items[activeIdx].scrollIntoView({ block: 'nearest' });
+    }
+
+    let debounce = 0;
+    async function handle() {
+      const q = input.value;
+      if (!q.trim()) { panel.classList.add('hidden'); return; }
+      const idx = await loadIndex();
+      const results = rankAndFilter(q, idx);
+      render(panel, results, q);
+      refreshItems();
+    }
+
+    input.addEventListener('focus', () => { loadIndex(); });
+    input.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(handle, 60);
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(activeIdx + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(activeIdx - 1); }
+      else if (e.key === 'Enter') {
+        if (activeIdx >= 0 && items[activeIdx]) {
+          e.preventDefault();
+          window.location.href = items[activeIdx].dataset.url;
+        }
+      } else if (e.key === 'Escape') {
+        panel.classList.add('hidden');
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!root.contains(e.target)) panel.classList.add('hidden');
+    });
+  }
+})();
+</script>

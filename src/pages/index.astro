@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StateGrid from '../components/StateGrid.astro';
+import SiteSearch from '../components/SiteSearch.astro';
 import Icon from '../components/Icon.astro';
 import { countsByState, directorySummary } from '../data/clinics.js';
 
@@ -27,6 +28,10 @@ const summary = directorySummary();
             <a href="/telehealth/" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-ink-800 font-semibold ring-1 ring-ink-200 hover:ring-ink-300 transition-colors">
               <Icon name="video" size={18} /> Prefer telehealth?
             </a>
+          </div>
+          <div class="mt-5">
+            <SiteSearch />
+            <p class="mt-2 text-xs text-ink-500">Or jump straight to a clinic or city.</p>
           </div>
         </div>
         <div>
