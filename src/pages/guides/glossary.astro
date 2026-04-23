@@ -7,28 +7,28 @@ const description = 'Plain-English definitions of the medical terms, lab values,
 
 const entries = [
   { term: 'Androgens', def: 'The family of male sex hormones, of which testosterone is the primary one. Includes DHT, DHEA, and androstenedione.' },
-  { term: 'Anastrozole', def: 'An aromatase inhibitor sometimes prescribed alongside TRT to reduce excess estrogen when estradiol runs high. Used sparingly — over-suppression causes its own problems.' },
+  { term: 'Anastrozole', def: 'An aromatase inhibitor sometimes prescribed alongside TRT to reduce excess estrogen when estradiol runs high. Used sparingly - over-suppression causes its own problems.' },
   { term: 'Aromatase', def: 'The enzyme that converts testosterone into estradiol (estrogen). Body fat contains aromatase, which is why heavier men often run higher estradiol on TRT.' },
-  { term: 'BHRT (bioidentical hormone replacement therapy)', def: 'Hormone therapy using molecules chemically identical to those the body makes. In the TRT context, BHRT usually means compounded testosterone or pellets. The "bioidentical" label is marketing more than medicine — FDA-approved testosterone is also bioidentical.' },
-  { term: 'CBC (complete blood count)', def: 'A standard blood test that measures red and white cells. On TRT, the key value is hematocrit — the percentage of blood volume made up of red cells — because TRT can raise it.' },
+  { term: 'BHRT (bioidentical hormone replacement therapy)', def: 'Hormone therapy using molecules chemically identical to those the body makes. In the TRT context, BHRT usually means compounded testosterone or pellets. The "bioidentical" label is marketing more than medicine - FDA-approved testosterone is also bioidentical.' },
+  { term: 'CBC (complete blood count)', def: 'A standard blood test that measures red and white cells. On TRT, the key value is hematocrit - the percentage of blood volume made up of red cells - because TRT can raise it.' },
   { term: 'Clomid (clomiphene)', def: 'A medication that stimulates the pituitary to produce more LH and FSH, boosting natural testosterone production. Sometimes used as an alternative to TRT in men who want to preserve fertility.' },
-  { term: 'Cypionate', def: 'Testosterone cypionate — the most commonly prescribed injectable testosterone ester in the U.S. Administered once or twice weekly.' },
+  { term: 'Cypionate', def: 'Testosterone cypionate - the most commonly prescribed injectable testosterone ester in the U.S. Administered once or twice weekly.' },
   { term: 'DHT (dihydrotestosterone)', def: 'A potent androgen made from testosterone by the enzyme 5-alpha-reductase. Responsible for many male-pattern traits, including hair loss susceptibility.' },
-  { term: 'Enanthate', def: 'Testosterone enanthate — an injectable testosterone ester with a very similar profile to cypionate. Common outside the U.S.' },
+  { term: 'Enanthate', def: 'Testosterone enanthate - an injectable testosterone ester with a very similar profile to cypionate. Common outside the U.S.' },
   { term: 'Enclomiphene', def: 'An isomer of clomiphene that stimulates natural testosterone production without some of clomiphene\'s side effects. Increasingly used in telehealth protocols.' },
   { term: 'Estradiol (E2)', def: 'The primary form of estrogen in both men and women. Men need some estradiol for libido, bone health, and mood. A "sensitive assay" is required for accurate measurement in men.' },
   { term: 'FSH (follicle-stimulating hormone)', def: 'A pituitary hormone that stimulates sperm production. TRT suppresses FSH, which is why it reduces fertility.' },
-  { term: 'Free testosterone', def: 'The portion of testosterone not bound to SHBG or albumin — the biologically active fraction. Often tracks better with symptoms than total testosterone.' },
+  { term: 'Free testosterone', def: 'The portion of testosterone not bound to SHBG or albumin - the biologically active fraction. Often tracks better with symptoms than total testosterone.' },
   { term: 'GLP-1 (glucagon-like peptide-1)', def: 'A class of medications (Ozempic, Wegovy, Mounjaro) used for weight loss and diabetes. Some TRT clinics offer these as adjunct therapies, though they are not part of TRT itself.' },
   { term: 'HCG (human chorionic gonadotropin)', def: 'A peptide that mimics LH, keeping the testes producing testosterone and sperm while on TRT. Prescribed to men who want to preserve fertility or maintain testicular size.' },
-  { term: 'Hematocrit', def: 'The percentage of blood volume made of red cells. TRT typically raises it; values above 52–54% usually prompt a dose reduction or therapeutic phlebotomy.' },
+  { term: 'Hematocrit', def: 'The percentage of blood volume made of red cells. TRT typically raises it; values above 52-54% usually prompt a dose reduction or therapeutic phlebotomy.' },
   { term: 'HRT (hormone replacement therapy)', def: 'Umbrella term for replacing any hormone. In men\'s health it usually means TRT; in women\'s health it refers to estrogen/progesterone therapy.' },
   { term: 'Hypogonadism', def: 'The clinical condition of producing insufficient testosterone. Primary hypogonadism = testicular failure. Secondary = pituitary/hypothalamic origin.' },
   { term: 'IGF-1 (insulin-like growth factor 1)', def: 'A proxy measurement for growth hormone activity. Some clinics check it as part of a comprehensive male-optimization panel.' },
-  { term: 'Injectable', def: 'Testosterone delivered via intramuscular (IM) or subcutaneous (SubQ) injection — the most common and affordable delivery form.' },
+  { term: 'Injectable', def: 'Testosterone delivered via intramuscular (IM) or subcutaneous (SubQ) injection - the most common and affordable delivery form.' },
   { term: 'LH (luteinizing hormone)', def: 'The pituitary hormone that signals the testes to produce testosterone. Measuring LH alongside testosterone helps distinguish primary from secondary hypogonadism.' },
   { term: 'Low T', def: 'Informal term for clinically low testosterone. Used in marketing, but not a diagnostic label on its own.' },
-  { term: 'Pellets', def: 'Small testosterone cylinders implanted under the skin every 3–6 months. Release hormone slowly for stable blood levels without weekly dosing.' },
+  { term: 'Pellets', def: 'Small testosterone cylinders implanted under the skin every 3-6 months. Release hormone slowly for stable blood levels without weekly dosing.' },
   { term: 'Peptides', def: 'Short chains of amino acids sometimes prescribed for recovery, weight management, or growth-hormone support (e.g., sermorelin, ipamorelin, BPC-157). Regulatory status varies; many are compounded rather than FDA-approved.' },
   { term: 'Phlebotomy', def: 'Blood donation or therapeutic blood draw. Used to manage elevated hematocrit in men on TRT.' },
   { term: 'PSA (prostate-specific antigen)', def: 'A blood marker used to screen for prostate issues. TRT doesn\'t cause prostate cancer, but can accelerate growth of existing cancer, so PSA is monitored regularly.' },
@@ -36,15 +36,15 @@ const entries = [
   { term: 'Subcutaneous (SubQ) injection', def: 'Injection into the fatty layer beneath the skin. Increasingly preferred for TRT: less painful than IM, comparable absorption, uses shorter needles.' },
   { term: 'TDS (testosterone deficiency syndrome)', def: 'Another clinical label for hypogonadism, used primarily by urology.' },
   { term: 'Topical gel', def: 'Testosterone in a gel or cream applied daily to the shoulders, arms, or abdomen. AndroGel and Testim are common branded forms.' },
-  { term: 'Total testosterone', def: 'The sum of all testosterone in the blood — bound and unbound. The standard first-line measurement, typically drawn in the morning.' },
+  { term: 'Total testosterone', def: 'The sum of all testosterone in the blood - bound and unbound. The standard first-line measurement, typically drawn in the morning.' },
   { term: 'TRT (testosterone replacement therapy)', def: 'Medically supervised restoration of testosterone to a healthy range in men with clinically low levels.' },
-  { term: 'Trough', def: 'The lowest blood level of testosterone during a dosing cycle — typically the day before the next injection. Used to verify doses are adequate.' },
+  { term: 'Trough', def: 'The lowest blood level of testosterone during a dosing cycle - typically the day before the next injection. Used to verify doses are adequate.' },
 ];
 
 entries.sort((a, b) => a.term.localeCompare(b.term));
 const letters = Array.from(new Set(entries.map((e) => e.term[0].toUpperCase()))).sort();
 ---
-<BaseLayout title={`${title} — TRT Index`} description={description}>
+<BaseLayout title={`${title} - TRT Index`} description={description}>
   <article class="pb-20">
     <section class="bg-gradient-to-b from-brand-50 to-white">
       <div class="container-prose pt-12 pb-10">

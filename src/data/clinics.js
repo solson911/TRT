@@ -60,7 +60,7 @@ export function loadClinics() {
   const parsed = JSON.parse(raw);
   const all = Array.isArray(parsed) ? parsed : (parsed.clinics || []);
   // Include CLOSED_PERMANENTLY so their detail pages still build (they render as
-  // "permanently closed" pages with noindex + alternative-clinic suggestions) —
+  // "permanently closed" pages with noindex + alternative-clinic suggestions) -
   // handy when someone searches the specific clinic name. Listing/roll-up
   // helpers below filter them out so they don't clutter live listings.
   cached = all.filter((c) => DIRECTORY_CLASSES.has(c.classification));

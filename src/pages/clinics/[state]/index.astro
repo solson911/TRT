@@ -44,7 +44,7 @@ const listLd = cities.length > 0
 const jsonLd = listLd ? [crumbLd, listLd] : [crumbLd];
 const intro = stateIntro(state);
 ---
-<BaseLayout title={`TRT Clinics in ${stateInfo.name} — TRT Index`} jsonLd={jsonLd}>
+<BaseLayout title={`TRT Clinics in ${stateInfo.name} - TRT Index`} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-6">
     <nav class="text-sm text-ink-500 mb-3">
       <a href="/" class="hover:text-ink-900">Home</a>
@@ -80,7 +80,7 @@ const intro = stateIntro(state);
         <div>
           <dt class="text-xs font-medium uppercase tracking-wider text-ink-500">Avg. rating</dt>
           <dd class="mt-1 font-display text-2xl font-semibold text-ink-900">
-            {avgRating > 0 ? avgRating.toFixed(1) : '—'}
+            {avgRating > 0 ? avgRating.toFixed(1) : '-'}
             {avgRating > 0 && <span class="text-amber-500 text-base align-middle">★</span>}
           </dd>
         </div>

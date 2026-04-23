@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_intros.py — per-state and per-city SEO intro paragraphs.
+generate_intros.py - per-state and per-city SEO intro paragraphs.
 
 Shells out to the `claude` CLI so we don't double-bill the API against the
 Max subscription. Writes to data/page-intros.json with the shape:
@@ -87,7 +87,7 @@ def state_prompt(state_name, clinic_count, top_cities, top_chains):
     chains_line = ''
     if top_chains:
         chains_line = f' Notable multi-location providers operating here include {", ".join(top_chains[:3])}.'
-    return f"""Write a single concise paragraph (2-3 sentences, 45-75 words) introducing TRT clinics in {state_name} for a directory landing page. Mention that there are {clinic_count} clinics across the state, concentrated in {cities_line}.{chains_line} Write in a neutral, informative tone — no hype, no marketing language, no testimonials. Do not start with "Welcome to" or "Looking for". Do not use the word "comprehensive". Do not output anything except the paragraph itself — no preamble, no quotes, no markdown."""
+    return f"""Write a single concise paragraph (2-3 sentences, 45-75 words) introducing TRT clinics in {state_name} for a directory landing page. Mention that there are {clinic_count} clinics across the state, concentrated in {cities_line}.{chains_line} Write in a neutral, informative tone, no hype, no marketing language, no testimonials. Do not start with "Welcome to" or "Looking for". Do not use the word "comprehensive". Never use em dashes or en dashes; use plain hyphens only. Do not output anything except the paragraph itself, no preamble, no quotes, no markdown."""
 
 
 def city_prompt(city_name, state_name, clinic_count, avg_rating, top_clinics, services, chains_present):
@@ -100,7 +100,7 @@ def city_prompt(city_name, state_name, clinic_count, avg_rating, top_clinics, se
     rating_line = ''
     if avg_rating and avg_rating > 0:
         rating_line = f' The average Google rating across these clinics is {avg_rating:.1f} stars.'
-    return f"""Write a single concise paragraph (2-3 sentences, 40-65 words) introducing TRT and hormone therapy clinics in {city_name}, {state_name} for a directory listing page. Reference that there are {clinic_count} clinics cataloged in the city.{services_line}{chains_line}{rating_line} Write in a neutral, informative tone — no hype, no marketing. Do not start with "Welcome to" or "Looking for". Do not use the word "comprehensive" or "premier". Do not output anything except the paragraph itself — no preamble, no quotes, no markdown."""
+    return f"""Write a single concise paragraph (2-3 sentences, 40-65 words) introducing TRT and hormone therapy clinics in {city_name}, {state_name} for a directory listing page. Reference that there are {clinic_count} clinics cataloged in the city.{services_line}{chains_line}{rating_line} Write in a neutral, informative tone, no hype, no marketing. Do not start with "Welcome to" or "Looking for". Do not use the word "comprehensive" or "premier". Never use em dashes or en dashes; use plain hyphens only. Do not output anything except the paragraph itself, no preamble, no quotes, no markdown."""
 
 
 def summarize_state(all_clinics, state_slug):

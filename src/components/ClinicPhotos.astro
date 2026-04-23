@@ -18,7 +18,7 @@ interface Props {
 
 const { photos = [], clinicName, googleUrl } = Astro.props;
 
-// Safe to expose — must be domain-restricted in Cloud Console.
+// Safe to expose - must be domain-restricted in Cloud Console.
 const PHOTO_KEY = 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718';
 const photoUrl = (name: string, maxWidthPx: number) =>
   `https://places.googleapis.com/v1/${name}/media?maxWidthPx=${maxWidthPx}&key=${PHOTO_KEY}`;

@@ -47,7 +47,7 @@ const directionsUrl = clinic.lat && clinic.lng
 
 // LocalBusiness / MedicalBusiness structured data. Skipped on closed clinics
 // (we don't want rich snippets promoting a business that no longer exists).
-// The Places photo API key is public by design — restricted by HTTP Referer
+// The Places photo API key is public by design - restricted by HTTP Referer
 // in Cloud Console.
 const PHOTO_KEY = 'AIzaSyCIrnX_thibzANXFSbkyu04cFWoWMjK718';
 const heroImage = clinic.photos && clinic.photos[0]
@@ -101,8 +101,8 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
 ---
 <BaseLayout
   title={closed
-    ? `${clinic.name} — Permanently Closed | TRT Index`
-    : `${clinic.name} — ${clinic.city}, ${stateInfo?.abbr} | TRT Index`}
+    ? `${clinic.name} - Permanently Closed | TRT Index`
+    : `${clinic.name} - ${clinic.city}, ${stateInfo?.abbr} | TRT Index`}
   noindex={closed}
   jsonLd={jsonLd}
 >
