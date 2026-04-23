@@ -1,0 +1,43 @@
+---
+import Icon from './Icon.astro';
+import { formatPrice, formatStates } from '../data/telehealth.js';
+const { brand } = Astro.props;
+const price = formatPrice(brand);
+const states = formatStates(brand);
+---
+<a href={`/telehealth/${brand.slug}/`} class="card-lift group block h-full rounded-2xl bg-white ring-1 ring-ink-100 p-5">
+  <div class="flex items-start justify-between gap-3">
+    <div>
+      <h3 class="font-display text-lg font-semibold text-ink-900 group-hover:text-brand-700">{brand.name}</h3>
+      {brand.tagline && <p class="mt-1 text-sm text-ink-500 line-clamp-2">{brand.tagline}</p>}
+    </div>
+    <span class="shrink-0 inline-flex items-center gap-1 rounded-full bg-brand-50 text-brand-700 px-2.5 py-1 text-xs font-semibold">
+      <Icon name="dollar" size={14} /> {price}
+    </span>
+  </div>
+  <dl class="mt-4 grid grid-cols-2 gap-y-2 text-xs">
+    <dt class="text-ink-500">Coverage</dt>
+    <dd class="text-ink-800 font-medium text-right">{states}</dd>
+    {brand.consultModel && (
+      <>
+        <dt class="text-ink-500">Consults</dt>
+        <dd class="text-ink-800 font-medium text-right capitalize">{brand.consultModel === 'both' ? 'Sync + async' : brand.consultModel}</dd>
+      </>
+    )}
+    {brand.labsIncluded !== null && brand.labsIncluded !== undefined && (
+      <>
+        <dt class="text-ink-500">Labs included</dt>
+        <dd class="text-ink-800 font-medium text-right">{brand.labsIncluded ? 'Yes' : 'No'}</dd>
+      </>
+    )}
+    {Array.isArray(brand.treatmentOptions) && brand.treatmentOptions.length > 0 && (
+      <>
+        <dt class="text-ink-500">Delivery</dt>
+        <dd class="text-ink-800 font-medium text-right capitalize">{brand.treatmentOptions.slice(0, 3).join(', ')}</dd>
+      </>
+    )}
+  </dl>
+  <div class="mt-4 text-xs font-medium text-brand-700 group-hover:text-brand-800 inline-flex items-center gap-1">
+    Read review <Icon name="arrow-right" size={14} />
+  </div>
+</a>

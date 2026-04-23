@@ -1,0 +1,1346 @@
+[
+  {
+    "tagline": "Optimize You, Uplift Others",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 99,
+    "priceMax": 159,
+    "pricingTiers": [
+      {
+        "name": "Weight Loss Care",
+        "price": 99,
+        "period": "monthly",
+        "includes": "Medical oversight, telehealth consultations, unlimited asynchronous care, medical supplies, shipping"
+      },
+      {
+        "name": "Women's Hormone Care",
+        "price": 119,
+        "period": "monthly",
+        "includes": "TRT or Test-Boost included, medical oversight, unlimited asynchronous care, supplies and shipping"
+      },
+      {
+        "name": "Men's Hormone Care",
+        "price": 159,
+        "period": "monthly",
+        "includes": "TRT or Test-Boost included, medical oversight, unlimited asynchronous care, supplies and shipping"
+      },
+      {
+        "name": "Peptides & Longevity",
+        "price": 99,
+        "period": "quarterly",
+        "includes": "Medical oversight, unlimited asynchronous care, supplies and shipping"
+      }
+    ],
+    "prescriberModel": null,
+    "consultModel": "both",
+    "labsIncluded": true,
+    "labsShipped": true,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection"
+    ],
+    "insurance": false,
+    "fsaHsa": true,
+    "pros": [
+      "All-inclusive membership covers medical oversight, supplies, and shipping",
+      "At-home lab testing and direct-to-home medication delivery",
+      "FSA/HSA accepted, no insurance requirement",
+      "Month-to-month billing with no long-term contracts"
+    ],
+    "cons": [
+      "Coverage limited to select US states, not available nationwide",
+      "Treatment orders require 10-14 business days to process and ship",
+      "Broad service focus includes weight loss and peptides alongside TRT"
+    ],
+    "slug": "1st-optimal",
+    "name": "1st Optimal",
+    "website": "https://1stoptimal.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "membership",
+      "testosterone",
+      "how-it-works",
+      "trt",
+      "home",
+      "about",
+      "faq"
+    ]
+  },
+  {
+    "tagline": "Personalized Longevity Solutions",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": [
+      "FL",
+      "NC"
+    ],
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": null,
+    "consultModel": null,
+    "labsIncluded": null,
+    "labsShipped": null,
+    "medicationsShipped": null,
+    "treatmentOptions": [
+      "injection",
+      "cream",
+      "pellets",
+      "oral"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "20+ years in business with 92,000+ patients treated and 1500+ 5-star reviews",
+      "5+ physical locations plus nationwide virtual telehealth",
+      "Comprehensive functional medicine approach"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Broader wellness/medspa clinic rather than TRT-focused telehealth"
+    ],
+    "slug": "age-rejuvenation",
+    "name": "Age Rejuvenation",
+    "website": "https://agerejuvenation.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "pricing",
+      "membership",
+      "price",
+      "cost",
+      "plans",
+      "treatments",
+      "testosterone",
+      "how-it-works",
+      "process",
+      "trt"
+    ]
+  },
+  {
+    "tagline": "Feel Better. Look Better. Be Better.",
+    "founded": 2007,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": "PA-NP",
+    "consultModel": "both",
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": false,
+    "treatmentOptions": [
+      "injection"
+    ],
+    "insurance": true,
+    "fsaHsa": null,
+    "pros": [
+      "65+ clinic locations nationwide",
+      "Quick appointments (30 min or less, walk-in available)",
+      "Accepts most PPO insurance"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Injections administered at clinics only, not at-home",
+      "Compounded medications not FDA-approved"
+    ],
+    "slug": "ageless-mens-health",
+    "name": "Ageless Men's Health",
+    "website": "https://www.agelessmenshealth.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "home",
+      "about",
+      "faq",
+      "faqs",
+      "testimonials"
+    ]
+  },
+  {
+    "tagline": "Order online, treatment delivered.",
+    "founded": null,
+    "medicalDirector": "Saba Haq MD",
+    "statesCovered": null,
+    "priceMin": 98,
+    "priceMax": 129,
+    "pricingTiers": [
+      {
+        "name": "Annual",
+        "price": 98,
+        "period": "monthly",
+        "includes": "Treatment plan, medications and supplies shipped"
+      },
+      {
+        "name": "Every 6 Months",
+        "price": 109,
+        "period": "monthly",
+        "includes": "Treatment plan, medications and supplies shipped"
+      },
+      {
+        "name": "Monthly",
+        "price": 129,
+        "period": "monthly",
+        "includes": "Treatment plan, medications and supplies shipped"
+      }
+    ],
+    "prescriberModel": "mixed",
+    "consultModel": "sync",
+    "labsIncluded": true,
+    "labsShipped": true,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "cream",
+      "oral"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Free hormone testing kit included",
+      "20% discount for active military and veterans",
+      "Medications and supplies included in pricing",
+      "Multiple treatment delivery options"
+    ],
+    "cons": [
+      "Insurance acceptance not confirmed on public pages",
+      "Minimum 3-month commitment required"
+    ],
+    "slug": "alpha-md",
+    "name": "Alpha MD",
+    "website": "https://www.alphamd.org",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "providers",
+      "home",
+      "faqs"
+    ]
+  },
+  {
+    "tagline": "Optimize your hormones to help optimize your well-being",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": "mixed",
+    "consultModel": null,
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": false,
+    "treatmentOptions": [
+      "pellets"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "6+ million pellet insertions with established track record",
+      "Personalized therapy customized by lab results",
+      "Bioidentical hormones structurally match body's natural hormones"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Not direct-to-consumer telehealth; requires certified provider network",
+      "Pellet therapy only; no injection, cream, oral, or other delivery options"
+    ],
+    "slug": "biote",
+    "name": "Biote",
+    "website": "https://biote.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "home",
+      "faq",
+      "men",
+      "testimonials"
+    ]
+  },
+  {
+    "tagline": "Personalized Hormone & Wellness Care for Men & Women",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": "all",
+    "priceMin": 149,
+    "priceMax": 149,
+    "pricingTiers": [
+      {
+        "name": "BHRT Hormones",
+        "price": 59,
+        "period": "monthly",
+        "includes": "Customized hormone support based on clinical assessment"
+      },
+      {
+        "name": "Testosterone Replacement Therapy",
+        "price": 149,
+        "period": "monthly",
+        "includes": "Testosterone medication, hormone labs, clinician visits, coaching"
+      },
+      {
+        "name": "Sermorelin",
+        "price": 199,
+        "period": "monthly",
+        "includes": "Growth hormone support peptide"
+      },
+      {
+        "name": "Enclomiphene",
+        "price": 99,
+        "period": "monthly",
+        "includes": "Natural testosterone production support"
+      },
+      {
+        "name": "Complete Hormone Panel",
+        "price": 149,
+        "period": "one-time",
+        "includes": "56 hormone-related biomarkers"
+      },
+      {
+        "name": "Advanced Panel",
+        "price": 399,
+        "period": "one-time",
+        "includes": "71 biomarkers for hormones, metabolism, thyroid"
+      },
+      {
+        "name": "Comprehensive Panel",
+        "price": 699,
+        "period": "one-time",
+        "includes": "110 biomarkers comprehensive health assessment"
+      }
+    ],
+    "prescriberModel": null,
+    "consultModel": "sync",
+    "labsIncluded": true,
+    "labsShipped": true,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "cream",
+      "nasal"
+    ],
+    "insurance": false,
+    "fsaHsa": null,
+    "pros": [
+      "All 50 states coverage",
+      "Includes health coaching with treatment",
+      "Transparent pricing with no hidden fees",
+      "Science-backed approach with expert advisory board"
+    ],
+    "cons": [
+      "No insurance accepted"
+    ],
+    "slug": "blokes",
+    "name": "Blokes",
+    "website": "https://joiandblokes.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "how-it-works",
+      "trt",
+      "home",
+      "about",
+      "men"
+    ]
+  },
+  {
+    "tagline": "The World's Leading Hormone Replacement Clinic",
+    "founded": null,
+    "medicalDirector": "Dr. Justin Saya",
+    "statesCovered": null,
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": null,
+    "consultModel": null,
+    "labsIncluded": true,
+    "labsShipped": null,
+    "medicationsShipped": null,
+    "treatmentOptions": [
+      "injection",
+      "oral",
+      "IV"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Decade of hormone restoration experience",
+      "Comprehensive blood testing included",
+      "3,700+ positive reviews",
+      "Mobile phlebotomy available"
+    ],
+    "cons": [
+      "Pricing not disclosed",
+      "Insurance acceptance not specified"
+    ],
+    "slug": "defy-medical",
+    "name": "Defy Medical",
+    "website": "https://www.defymedical.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "services",
+      "home"
+    ]
+  },
+  {
+    "tagline": "Anti-aging and wellness made easy",
+    "founded": 2013,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": "physician",
+    "consultModel": "sync",
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection"
+    ],
+    "insurance": false,
+    "fsaHsa": null,
+    "pros": [
+      "Customized treatment plans tailored to individual needs",
+      "Remote telemedicine access eliminates distance barriers",
+      "Overnight medication delivery to home or office",
+      "Comprehensive hormone testing included"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages - consult required",
+      "Does not accept insurance or third-party payments"
+    ],
+    "slug": "elite-hrt",
+    "name": "EliteHRT",
+    "website": "https://www.elitehrt.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "treatments",
+      "home",
+      "about",
+      "faq",
+      "faqs",
+      "reviews"
+    ]
+  },
+  {
+    "tagline": "Your hormone health deserves expert attention",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 75,
+    "priceMax": null,
+    "pricingTiers": null,
+    "prescriberModel": null,
+    "consultModel": "both",
+    "labsIncluded": null,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "oral"
+    ],
+    "insurance": false,
+    "fsaHsa": true,
+    "pros": [
+      "Board-certified physicians specializing in hormone therapy",
+      "Customized treatment plans based on comprehensive lab work",
+      "Concierge-level telemedicine with dedicated care coordinators",
+      "HSA/FSA cards accepted for payment"
+    ],
+    "cons": [
+      "Does not accept insurance; out-of-pocket or HSA/FSA only",
+      "Medications take up to 10 business days to ship",
+      "Labs require visit to Labcorp location, not at-home collection"
+    ],
+    "slug": "evolve-telemed",
+    "name": "Evolve Telemedicine",
+    "website": "https://evolvetelemed.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "treatments",
+      "testosterone",
+      "process",
+      "services",
+      "home",
+      "faqs"
+    ]
+  },
+  {
+    "tagline": "Regain your youth and perform better everywhere it matters",
+    "founded": null,
+    "medicalDirector": "Doron Stember",
+    "statesCovered": [
+      "AL",
+      "AZ",
+      "CA",
+      "CO",
+      "CT",
+      "FL",
+      "GA",
+      "IL",
+      "IN",
+      "MI",
+      "NJ",
+      "NY",
+      "NC",
+      "OH",
+      "PA",
+      "TN",
+      "TX",
+      "VA",
+      "WA",
+      "WI"
+    ],
+    "priceMin": 199,
+    "priceMax": 199,
+    "pricingTiers": [
+      {
+        "name": "Fountain TRT",
+        "price": 199,
+        "period": "monthly",
+        "includes": "Medication, video visits, ongoing medical support, follow-up visits every 3-6 months"
+      }
+    ],
+    "prescriberModel": "physician",
+    "consultModel": "sync",
+    "labsIncluded": false,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "cream"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Online telehealth visits, no office visits required",
+      "Topical cream application, no needles",
+      "All-inclusive $199 per month with transparent pricing",
+      "Board-certified urologist-led care"
+    ],
+    "cons": [
+      "Available in 20 states only, nationwide expansion pending",
+      "Topical cream only, no other treatment options available"
+    ],
+    "slug": "fountain-trt",
+    "name": "Fountain TRT",
+    "website": "https://fountaintrt.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "home"
+    ]
+  },
+  {
+    "tagline": "Your Health, Simplified.",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 129,
+    "priceMax": 129,
+    "pricingTiers": [
+      {
+        "name": "Compounded TRT",
+        "price": 129,
+        "period": "monthly",
+        "includes": "Provider visits, labs, medication, supplies, shipping"
+      },
+      {
+        "name": "Oral KYZATREX",
+        "price": 179,
+        "period": "monthly",
+        "includes": "Provider visits, labs, medication, supplies, shipping"
+      }
+    ],
+    "prescriberModel": "mixed",
+    "consultModel": "both",
+    "labsIncluded": true,
+    "labsShipped": null,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "cream",
+      "oral"
+    ],
+    "insurance": false,
+    "fsaHsa": null,
+    "pros": [
+      "No long-term contracts, cancel anytime",
+      "All-inclusive monthly pricing covers visits, labs, meds, and shipping",
+      "Video consultations or provider review based on state",
+      "Compounded and FDA-approved treatment options"
+    ],
+    "cons": [
+      "Limited state availability, not nationwide",
+      "California patients experience extended fulfillment times",
+      "Age restrictions for eligibility (men 35-65, women 35-60)",
+      "Broader multi-service clinic focused on weight loss and hormones, not TRT-specialized"
+    ],
+    "slug": "henry-meds",
+    "name": "Henry Meds",
+    "website": "https://henrymeds.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "treatments",
+      "testosterone",
+      "how-it-works",
+      "home",
+      "faq"
+    ]
+  },
+  {
+    "tagline": "Unlocking energy and longevity",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 25,
+    "priceMax": 149,
+    "pricingTiers": [
+      {
+        "name": "Initial Test & Consult",
+        "price": 65,
+        "period": "one-time",
+        "includes": "40+ biomarker testing, telehealth consult with physician, personalized longevity plan"
+      },
+      {
+        "name": "Basic",
+        "price": 25,
+        "period": "monthly",
+        "includes": "40+ biomarker testing every 6 months, option to purchase consults, member pricing on medications"
+      },
+      {
+        "name": "Premium",
+        "price": 149,
+        "period": "monthly",
+        "includes": "40+ biomarker testing, telehealth consult, personalized protocols, retesting every 90 days"
+      }
+    ],
+    "prescriberModel": "physician",
+    "consultModel": "sync",
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "cream",
+      "oral"
+    ],
+    "insurance": false,
+    "fsaHsa": true,
+    "pros": [
+      "40+ comprehensive biomarker testing included",
+      "Board-certified physicians specializing in hormones and longevity",
+      "FSA/HSA eligible",
+      "Month-to-month membership with no cancellation penalty"
+    ],
+    "cons": [
+      "Medications and supplements charged separately from membership",
+      "Does not accept insurance coverage"
+    ],
+    "slug": "hone-health",
+    "name": "Hone Health",
+    "website": "https://honehealth.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "how-it-works",
+      "physicians",
+      "home",
+      "about"
+    ]
+  },
+  {
+    "tagline": "Bioidentical Hormones for Men and Women",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": [
+      "CA",
+      "FL",
+      "ID",
+      "ME",
+      "MN",
+      "MT",
+      "TN",
+      "TX",
+      "WA"
+    ],
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": null,
+    "consultModel": "both",
+    "labsIncluded": null,
+    "labsShipped": null,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Bioidentical hormones replicate body's natural hormones",
+      "Specialists with extensive hormone optimization experience",
+      "Requires face-to-face physician exam",
+      "Strong medication packaging and follow-up service"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Limited to 9 states"
+    ],
+    "slug": "hormone-logics",
+    "name": "Hormone Logics",
+    "website": "https://hormonelogics.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "home",
+      "frequently-asked-questions",
+      "testimonials"
+    ]
+  },
+  {
+    "tagline": "Comprehensive Men's TRT, ED & Weight Loss Solutions",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": [
+      "CA",
+      "WA"
+    ],
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": "mixed",
+    "consultModel": "both",
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "gel",
+      "patches",
+      "pellets",
+      "oral"
+    ],
+    "insurance": false,
+    "fsaHsa": true,
+    "pros": [
+      "Lab results in 15 minutes with in-clinic testing",
+      "Free consultation and testosterone testing",
+      "Fully online option with monthly medication delivery",
+      "All-inclusive membership covers meds, labs, and ongoing consultations"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Does not accept insurance",
+      "Limited to California and Washington"
+    ],
+    "slug": "huddle-mens-health",
+    "name": "Huddle Men's Health",
+    "website": "https://huddlemenshealth.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "treatments",
+      "testosterone",
+      "how-it-works",
+      "our-team",
+      "home"
+    ]
+  },
+  {
+    "tagline": "Reignite Your Health. Your Terms.",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": "all",
+    "priceMin": 75,
+    "priceMax": 340,
+    "pricingTiers": null,
+    "prescriberModel": "physician",
+    "consultModel": "async",
+    "labsIncluded": null,
+    "labsShipped": null,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "oral",
+      "nasal"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "35,000+ customers with 4.7/5 rating, licensed in all 50 states",
+      "Medications shipped from FDA-registered pharmacies",
+      "Licensed physicians provide clinical oversight"
+    ],
+    "cons": [
+      "GLP-1 weight loss focused; TRT limited to Enclomiphene, not direct testosterone replacement",
+      "Some compounded medications not FDA-approved"
+    ],
+    "slug": "invigor-medical",
+    "name": "Invigor Medical",
+    "website": "https://invigormedical.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "plans",
+      "testosterone",
+      "home",
+      "about",
+      "men",
+      "getting-started"
+    ]
+  },
+  {
+    "tagline": null,
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": null,
+    "consultModel": null,
+    "labsIncluded": null,
+    "labsShipped": null,
+    "medicationsShipped": null,
+    "treatmentOptions": [
+      "injection"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Growth hormone and testosterone replacement therapy available",
+      "Alternative therapies including sermorelin offered",
+      "Expert medical consultations provided"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Service delivery model details not clearly described"
+    ],
+    "slug": "kingsberg-medical",
+    "name": "Kingsberg Medical",
+    "website": "https://www.kingsbergmedical.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "services",
+      "home"
+    ]
+  },
+  {
+    "tagline": "Feel Better. Live Better. Excel.",
+    "founded": 2019,
+    "medicalDirector": "Peter Fotinos",
+    "statesCovered": null,
+    "priceMin": 120,
+    "priceMax": 132,
+    "pricingTiers": [
+      {
+        "name": "Oral Triclozene",
+        "price": 95,
+        "period": "monthly",
+        "includes": "Once-daily oral tablets with thyroid support"
+      },
+      {
+        "name": "Injectable Testosterone Cypionate",
+        "price": 120,
+        "period": "monthly",
+        "includes": "Once-daily injections with thyroid tablets"
+      },
+      {
+        "name": "Topical Testosterone Cream",
+        "price": 132,
+        "period": "monthly",
+        "includes": "Twice-daily cream application with thyroid support"
+      }
+    ],
+    "prescriberModel": "physician",
+    "consultModel": "both",
+    "labsIncluded": true,
+    "labsShipped": true,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "cream",
+      "oral"
+    ],
+    "insurance": false,
+    "fsaHsa": true,
+    "pros": [
+      "90-day money-back guarantee",
+      "Unlimited medical support and messaging included",
+      "No long-term contract, cancel anytime"
+    ],
+    "cons": [
+      "Medical membership required ($99/month) in addition to medication cost",
+      "Insurance not accepted",
+      "Initial consultation fee ($99) required before treatment starts"
+    ],
+    "slug": "male-excel",
+    "name": "Male Excel",
+    "website": "https://maleexcel.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "pricing",
+      "treatments",
+      "testosterone",
+      "how-it-works",
+      "trt",
+      "home"
+    ]
+  },
+  {
+    "tagline": "Feel Like You're 25 Again",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": [
+      "MO",
+      "OH",
+      "IA",
+      "MI",
+      "WI",
+      "NE",
+      "PA"
+    ],
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": "physician",
+    "consultModel": "sync",
+    "labsIncluded": true,
+    "labsShipped": true,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "oral",
+      "iv"
+    ],
+    "insurance": null,
+    "fsaHsa": true,
+    "pros": [
+      "Comprehensive 50+ biomarker blood panels",
+      "Telehealth appointments with zero wait times",
+      "Free discreet medication delivery",
+      "Unlimited provider messaging"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Insurance coverage not mentioned"
+    ],
+    "slug": "mantality-health",
+    "name": "Mantality Health",
+    "website": "https://mantalityhealth.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "pricing",
+      "membership",
+      "price",
+      "cost",
+      "plans",
+      "treatments"
+    ]
+  },
+  {
+    "tagline": "Raise your testosterone. Raise your game.",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 189.99,
+    "priceMax": 199.99,
+    "pricingTiers": [
+      {
+        "name": "Enclomiphene + Testosterone Cream",
+        "price": 189.99,
+        "period": "monthly",
+        "includes": "Topical testosterone, enclomiphene, free Tadalafil"
+      },
+      {
+        "name": "Enclomiphene + Oral Testosterone",
+        "price": 199.99,
+        "period": "monthly",
+        "includes": "Oral testosterone, enclomiphene, free Tadalafil"
+      }
+    ],
+    "prescriberModel": "physician",
+    "consultModel": null,
+    "labsIncluded": null,
+    "labsShipped": true,
+    "medicationsShipped": null,
+    "treatmentOptions": [
+      "cream",
+      "injection",
+      "oral",
+      "enclomiphene"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Patented fertility-friendly protocols maintaining testicular function",
+      "Led by prominent academic urologists with published research",
+      "Free Tadalafil add-on to all protocols"
+    ],
+    "cons": [
+      "Multi-service platform with major weight loss and peptide business beyond TRT",
+      "State availability varies; specific states not listed"
+    ],
+    "slug": "maximus-tribe",
+    "name": "Maximus",
+    "website": "https://www.maximustribe.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "home"
+    ]
+  },
+  {
+    "tagline": "Meet Nexel Medical, Your Local HRT Specialist",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": "all",
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": "physician",
+    "consultModel": "both",
+    "labsIncluded": false,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "patch",
+      "pellets",
+      "gel",
+      "oral"
+    ],
+    "insurance": true,
+    "fsaHsa": null,
+    "pros": [
+      "Experienced physicians specialize in hormone replacement therapy",
+      "Customized treatment programs for individual patient needs",
+      "Remote access to doctors and prescriptions",
+      "Testosterone therapy typically under $100 per month"
+    ],
+    "cons": [
+      "Exact pricing not disclosed on public pages",
+      "Limited physical office locations (CA, FL only)",
+      "Only treats adults age 30 and older",
+      "Some pre-existing conditions may exclude patients"
+    ],
+    "slug": "nexel-medical",
+    "name": "Nexel Medical",
+    "website": "https://www.nexelmedical.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "price",
+      "cost",
+      "testosterone",
+      "trt",
+      "doctors",
+      "home",
+      "about",
+      "faq"
+    ]
+  },
+  {
+    "tagline": "Your Florida Hormone & Wellness Specialists",
+    "founded": null,
+    "medicalDirector": "Timothy Mackey",
+    "statesCovered": [
+      "FL"
+    ],
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": null,
+    "prescriberModel": "physician",
+    "consultModel": "both",
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "gel",
+      "HCG"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Free initial phone consultation",
+      "Board-certified physician with 20 years TRT experience",
+      "Medications shipped directly to patients"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Requires in-person physical exam at one of two Florida locations",
+      "Limited to Florida (Jupiter and Fort Lauderdale)"
+    ],
+    "slug": "novagenix",
+    "name": "NovaGenix",
+    "website": "https://www.novagenix.org",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "home"
+    ]
+  },
+  {
+    "tagline": "Hormone Health, Reimagined",
+    "founded": null,
+    "medicalDirector": "Daniel M. Bryan",
+    "statesCovered": [
+      "FL",
+      "TX",
+      "OH",
+      "NV",
+      "CA",
+      "DE",
+      "KS",
+      "MD",
+      "NY",
+      "OR",
+      "UT",
+      "VA"
+    ],
+    "priceMin": null,
+    "priceMax": null,
+    "pricingTiers": null,
+    "prescriberModel": "mixed",
+    "consultModel": "sync",
+    "labsIncluded": false,
+    "labsShipped": null,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "oral",
+      "topical"
+    ],
+    "insurance": false,
+    "fsaHsa": true,
+    "pros": [
+      "Free initial consultation",
+      "100% online, no clinic visits required",
+      "Discreet home medication delivery",
+      "Board-certified providers specializing in hormone therapy"
+    ],
+    "cons": [
+      "Pricing not disclosed on public pages",
+      "Cash-pay only, does not accept insurance"
+    ],
+    "slug": "nrg-clinic",
+    "name": "NRG Clinic",
+    "website": "https://nrgclinic.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "trt",
+      "services",
+      "home",
+      "about",
+      "faq"
+    ]
+  },
+  {
+    "tagline": "Personalize Wellness Telemedicine Therapies",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 125,
+    "priceMax": null,
+    "pricingTiers": [],
+    "prescriberModel": "physician",
+    "consultModel": "sync",
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "cream",
+      "gel",
+      "oral"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "No contracts or cancellation fees",
+      "Bioidentical hormones with board-certified physician oversight",
+      "At-home telemedicine convenience",
+      "Affordable starting at $125/month"
+    ],
+    "cons": [
+      "Service areas not clearly specified beyond Florida address",
+      "Labs require visit to LabCorp/Quest locations, not at-home collection",
+      "Pricing maxes not disclosed on public pages"
+    ],
+    "slug": "peakperformax",
+    "name": "PeakPerforMAX",
+    "website": "https://www.peakperformax.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "treatments",
+      "home",
+      "about",
+      "faqs",
+      "reviews"
+    ]
+  },
+  {
+    "tagline": "Age Gracefully? Never.",
+    "founded": 1999,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 218,
+    "priceMax": null,
+    "pricingTiers": [
+      {
+        "name": "Inclusive Plan",
+        "price": 218,
+        "period": "monthly",
+        "includes": "Lab testing every 6 months, doctor oversight, medications shipped to home, health consultation team"
+      }
+    ],
+    "prescriberModel": "physician",
+    "consultModel": "sync",
+    "labsIncluded": true,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "oral",
+      "topical"
+    ],
+    "insurance": false,
+    "fsaHsa": null,
+    "pros": [
+      "Industry leader since 1999 with 25+ years of experience",
+      "Comprehensive hormone optimization beyond testosterone",
+      "At-home medication self-administration and delivery",
+      "Free consultation with no obligation to purchase"
+    ],
+    "cons": [
+      "Insurance not accepted",
+      "Virtual appointments available in most states, not all",
+      "Pricing limited to starting price only"
+    ],
+    "slug": "renew-youth",
+    "name": "Renew Youth",
+    "website": "https://www.renewyouth.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "how-it-works",
+      "trt",
+      "services",
+      "doctors",
+      "home",
+      "about",
+      "faq"
+    ]
+  },
+  {
+    "tagline": "Best & Affordable Hormone Therapy in U.S.",
+    "founded": null,
+    "medicalDirector": "Dagoberto Rodriguez",
+    "statesCovered": null,
+    "priceMin": 119,
+    "priceMax": 195,
+    "pricingTiers": [
+      {
+        "name": "Testosterone Only Therapy",
+        "price": 119,
+        "period": "monthly",
+        "includes": "testosterone injections, estrogen blocker, routine labs, physical exam"
+      },
+      {
+        "name": "All-Inclusive Testosterone Replacement Therapy",
+        "price": 195,
+        "period": "monthly",
+        "includes": "comprehensive hormone replacement therapy program"
+      }
+    ],
+    "prescriberModel": "physician",
+    "consultModel": null,
+    "labsIncluded": true,
+    "labsShipped": null,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "oral"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Price match guarantee beats competitor prices by 25%",
+      "All-inclusive pricing with no hidden fees (includes labs, medications, physicals, consultations)",
+      "Experienced medical director with 30+ years of hormone therapy practice"
+    ],
+    "cons": [
+      "Compounded medications not FDA-approved",
+      "Results not guaranteed and vary significantly by patient",
+      "Consultation delivery method not specified on public pages"
+    ],
+    "slug": "royal-medical-center",
+    "name": "Royal Medical Center",
+    "website": "https://royalmedicalcenters.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "home",
+      "about",
+      "men"
+    ]
+  },
+  {
+    "tagline": "Get your spark back.",
+    "founded": null,
+    "medicalDirector": null,
+    "statesCovered": null,
+    "priceMin": 99,
+    "priceMax": 180,
+    "pricingTiers": [
+      {
+        "name": "Testosterone",
+        "price": 99,
+        "period": "monthly",
+        "includes": "Testosterone injections, sustained energy, stable hormone levels"
+      },
+      {
+        "name": "Enclomiphene",
+        "price": 99,
+        "period": "monthly",
+        "includes": "Oral testosterone stimulant, preserves fertility, natural T boost"
+      },
+      {
+        "name": "TRT + HCG",
+        "price": 180,
+        "period": "monthly",
+        "includes": "Testosterone with HCG, optimized levels, supports fertility"
+      }
+    ],
+    "prescriberModel": null,
+    "consultModel": "both",
+    "labsIncluded": false,
+    "labsShipped": false,
+    "medicationsShipped": true,
+    "treatmentOptions": [
+      "injection",
+      "oral"
+    ],
+    "insurance": null,
+    "fsaHsa": null,
+    "pros": [
+      "Affordable pricing starting at $99/month",
+      "100% online consultations with no waiting rooms",
+      "Fast medication delivery within 1 week of approval",
+      "Free shipping on all medications"
+    ],
+    "cons": [
+      "Labs not included in monthly price (separate $129 fee)",
+      "Not available in all 50 states"
+    ],
+    "slug": "trt-nation",
+    "name": "TRT Nation",
+    "website": "https://trtnation.com",
+    "extractedAt": "2026-04-22",
+    "sourcePages": [
+      "testosterone",
+      "trt",
+      "home",
+      "about",
+      "faq",
+      "men",
+      "faqs"
+    ]
+  }
+]

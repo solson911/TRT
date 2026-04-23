@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { loadTelehealth, formatPrice, formatStates } from '../../data/telehealth.js';
+
+export async function getStaticPaths() {
+  return loadTelehealth().map((b) => ({ params: { brand: b.slug }, props: { brand: b } }));
+}
+
+const { brand } = Astro.props;
+
+// Very small markdown-to-HTML pass for the review body. We only need H2/H3,
+// paragraphs, and the occasional bold/italic - no lists or code blocks.
+function renderMd(md) {
+  if (!md) return '';
+  const lines = md.split('\n');
+  const out = [];
+  let para = [];
+  const flush = () => {
+    if (para.length) {
+      out.push(`<p>${inline(para.join(' ').trim())}</p>`);
+      para = [];
+    }
+  };
+  const inline = (s) => s
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-brand-700 hover:text-brand-800 underline">$1</a>');
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) { flush(); continue; }
+    if (line.startsWith('### ')) { flush(); out.push(`<h3 class="font-display text-xl font-semibold text-ink-900 mt-8 mb-2">${inline(line.slice(4))}</h3>`); continue; }
+    if (line.startsWith('## ')) { flush(); out.push(`<h2 class="font-display text-2xl font-semibold text-ink-900 mt-10 mb-3">${inline(line.slice(3))}</h2>`); continue; }
+    if (line.startsWith('# ')) { flush(); continue; }
+    para.push(line);
+  }
+  flush();
+  return out.join('\n');
+}
+
+const reviewHtml = renderMd(brand.review);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: brand.name,
+  url: brand.website,
+  description: brand.tagline || undefined,
+  areaServed: brand.statesCovered === 'all' ? 'US' : (Array.isArray(brand.statesCovered) ? brand.statesCovered : undefined),
+  priceRange: (brand.priceMin || brand.priceMax) ? `$${brand.priceMin || brand.priceMax}+` : undefined,
+};
+
+const title = `${brand.name} Review - Online TRT Telehealth | TRT Index`;
+const description = brand.tagline
+  ? `${brand.name}: ${brand.tagline} Pricing, state coverage, and honest review.`
+  : `${brand.name} online TRT telehealth review. Pricing, state coverage, prescriber model, pros and cons.`;
+---
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <section class="container-prose pt-16 md:pt-20 pb-6">
+    <nav class="text-xs text-ink-500 mb-4">
+      <a href="/" class="hover:text-ink-900">Home</a> /
+      <a href="/telehealth/" class="hover:text-ink-900">Telehealth</a> /
+      <span>{brand.name}</span>
+    </nav>
+    <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Telehealth review</p>
+    <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 leading-tight">{brand.name}</h1>
+    {brand.tagline && <p class="mt-4 max-w-2xl text-lg text-ink-600">{brand.tagline}</p>}
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href={brand.website} rel="nofollow noopener" target="_blank" class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-2.5 text-white font-semibold hover:bg-brand-700 transition-colors">
+        Visit {brand.name} <Icon name="arrow-right" size={16} />
+      </a>
+      <a href="/telehealth/" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-ink-800 font-semibold ring-1 ring-ink-200 hover:ring-ink-300 transition-colors">
+        Compare all providers
+      </a>
+    </div>
+  </section>
+
+  <section class="container-prose pb-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <aside class="lg:col-span-1 order-2 lg:order-1">
+        <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-6 sticky top-28">
+          <div class="font-semibold text-ink-900 mb-4">At a glance</div>
+          <dl class="space-y-3 text-sm">
+            <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+              <dt class="text-ink-500">Price</dt>
+              <dd class="text-ink-900 font-medium text-right">{formatPrice(brand)}</dd>
+            </div>
+            <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+              <dt class="text-ink-500">Coverage</dt>
+              <dd class="text-ink-900 font-medium text-right">{formatStates(brand)}</dd>
+            </div>
+            {brand.consultModel && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">Consults</dt>
+                <dd class="text-ink-900 font-medium text-right capitalize">{brand.consultModel === 'both' ? 'Sync + async' : brand.consultModel}</dd>
+              </div>
+            )}
+            {brand.prescriberModel && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">Prescribers</dt>
+                <dd class="text-ink-900 font-medium text-right">{brand.prescriberModel}</dd>
+              </div>
+            )}
+            {brand.labsIncluded !== null && brand.labsIncluded !== undefined && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">Labs</dt>
+                <dd class="text-ink-900 font-medium text-right">{brand.labsIncluded ? 'Included' : 'Separate'}</dd>
+              </div>
+            )}
+            {brand.medicationsShipped !== null && brand.medicationsShipped !== undefined && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">Ships medication</dt>
+                <dd class="text-ink-900 font-medium text-right">{brand.medicationsShipped ? 'Yes' : 'No'}</dd>
+              </div>
+            )}
+            {Array.isArray(brand.treatmentOptions) && brand.treatmentOptions.length > 0 && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">Delivery</dt>
+                <dd class="text-ink-900 font-medium text-right capitalize">{brand.treatmentOptions.join(', ')}</dd>
+              </div>
+            )}
+            {brand.fsaHsa !== null && brand.fsaHsa !== undefined && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">FSA / HSA</dt>
+                <dd class="text-ink-900 font-medium text-right">{brand.fsaHsa ? 'Yes' : 'No'}</dd>
+              </div>
+            )}
+            {brand.insurance !== null && brand.insurance !== undefined && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">Insurance</dt>
+                <dd class="text-ink-900 font-medium text-right">{brand.insurance ? 'Accepted' : 'Not accepted'}</dd>
+              </div>
+            )}
+            {brand.founded && (
+              <div class="flex justify-between gap-3 border-b border-ink-100 pb-2">
+                <dt class="text-ink-500">Founded</dt>
+                <dd class="text-ink-900 font-medium text-right">{brand.founded}</dd>
+              </div>
+            )}
+            {brand.medicalDirector && (
+              <div class="flex justify-between gap-3">
+                <dt class="text-ink-500">Medical director</dt>
+                <dd class="text-ink-900 font-medium text-right">{brand.medicalDirector}</dd>
+              </div>
+            )}
+          </dl>
+          <a href={brand.website} rel="nofollow noopener" target="_blank" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-white text-sm font-semibold hover:bg-brand-700 transition-colors">
+            Visit {brand.name}
+          </a>
+        </div>
+      </aside>
+
+      <article class="lg:col-span-2 order-1 lg:order-2 prose-article">
+        <div set:html={reviewHtml}></div>
+
+        {(Array.isArray(brand.pros) && brand.pros.length > 0) && (
+          <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-emerald-50 ring-1 ring-emerald-200 p-5">
+              <div class="font-display text-lg font-semibold text-emerald-900 mb-2">Pros</div>
+              <ul class="space-y-1.5 text-sm text-emerald-900">
+                {brand.pros.map((p) => (
+                  <li class="flex items-start gap-2"><Icon name="check" size={16} class="text-emerald-700 mt-0.5 shrink-0" /> {p}</li>
+                ))}
+              </ul>
+            </div>
+            {Array.isArray(brand.cons) && brand.cons.length > 0 && (
+              <div class="rounded-2xl bg-amber-50 ring-1 ring-amber-200 p-5">
+                <div class="font-display text-lg font-semibold text-amber-900 mb-2">Cons</div>
+                <ul class="space-y-1.5 text-sm text-amber-900">
+                  {brand.cons.map((p) => (
+                    <li class="flex items-start gap-2"><Icon name="x" size={16} class="text-amber-700 mt-0.5 shrink-0" /> {p}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
+        {Array.isArray(brand.pricingTiers) && brand.pricingTiers.length > 0 && (
+          <div class="mt-10">
+            <h2 class="font-display text-2xl font-semibold text-ink-900 mb-4">Pricing tiers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {brand.pricingTiers.map((t) => (
+                <div class="rounded-xl bg-white ring-1 ring-ink-100 p-5">
+                  <div class="font-semibold text-ink-900">{t.name}</div>
+                  <div class="mt-1 font-display text-2xl font-semibold text-brand-700">${t.price}<span class="text-sm text-ink-500 font-normal">/{t.period === 'one-time' ? 'once' : t.period?.replace('ly', '')}</span></div>
+                  {t.includes && <p class="mt-2 text-sm text-ink-600">{t.includes}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="mt-12 rounded-2xl bg-ink-50 ring-1 ring-ink-100 p-6 text-sm text-ink-600">
+          <strong class="text-ink-900">Disclosure.</strong> TRT Index is non-sponsored. We don't take money from any clinic to be listed or reviewed. Pricing and state coverage are pulled from each provider's own public pages; they change, so verify on the provider's site before signing up. This page is informational only and not medical advice.
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose-article :global(p) { margin-top: 1rem; line-height: 1.7; color: rgb(60 60 67); }
+  .prose-article :global(p:first-child) { margin-top: 0; }
+  .prose-article :global(h2) { margin-top: 2.5rem; }
+  .prose-article :global(h2:first-child) { margin-top: 0; }
+</style>

@@ -9,3 +9,6 @@ dist/
 logs/
 __pycache__/
 *.pyc
+
+# Raw scraped HTML - regeneratable; 100MB+ and not source material
+data/telehealth-raw/

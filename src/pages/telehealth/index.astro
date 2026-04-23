@@ -1,19 +1,112 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TelehealthCard from '../../components/TelehealthCard.astro';
+import Icon from '../../components/Icon.astro';
+import { loadTelehealth, telehealthSummary, formatPrice, formatStates } from '../../data/telehealth.js';
+
+const brands = loadTelehealth();
+const summary = telehealthSummary();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Online TRT telehealth providers',
+  itemListElement: brands.map((b, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://trtindex.com/telehealth/${b.slug}/`,
+    name: b.name,
+  })),
+};
 ---
-<BaseLayout title="Telehealth TRT clinics - coming soon | TRT Index">
-  <section class="container-prose pt-20 pb-24 max-w-2xl">
-    <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Coming soon</p>
-    <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold text-ink-900">
-      Telehealth TRT providers
+<BaseLayout
+  title="Online TRT Clinics - Telehealth Testosterone Therapy Compared"
+  description="A non-sponsored comparison of online TRT and hormone therapy telehealth providers - pricing, state coverage, prescriber model, and honest reviews."
+  jsonLd={jsonLd}
+>
+  <section class="container-prose pt-16 md:pt-20 pb-10">
+    <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Online TRT</p>
+    <h1 class="mt-3 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 max-w-3xl leading-tight">
+      The online TRT clinics worth knowing about.
     </h1>
-    <p class="mt-4 text-lg text-ink-600">
-      We're building a separate section for online-only TRT and HRT clinics - the ones that ship labs to your door and prescribe across multiple states. Until then, browse the state directory for in-person options.
+    <p class="mt-4 max-w-2xl text-lg text-ink-600">
+      Telehealth TRT lets a licensed provider evaluate your bloodwork and prescribe from anywhere they are licensed. These providers ship labs to your door, run a video visit, and mail your medication. We compare {summary.total} of the biggest names, non-sponsored.
     </p>
-    <div class="mt-8">
-      <a href="/clinics/" class="inline-flex items-center rounded-lg bg-brand-600 px-5 py-3 text-white font-semibold hover:bg-brand-700">
-        Browse by state instead →
-      </a>
+  </section>
+
+  {brands.length === 0 ? (
+    <section class="container-prose pb-24">
+      <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-8 text-ink-600">
+        <p>Telehealth reviews are being finalized. Check back shortly.</p>
+      </div>
+    </section>
+  ) : (
+    <>
+      <section class="container-prose pb-14">
+        <div class="overflow-x-auto rounded-2xl bg-white ring-1 ring-ink-100">
+          <table class="w-full text-sm">
+            <thead class="bg-ink-50 text-ink-600">
+              <tr class="text-left">
+                <th class="px-4 py-3 font-semibold">Provider</th>
+                <th class="px-4 py-3 font-semibold">Price</th>
+                <th class="px-4 py-3 font-semibold">Coverage</th>
+                <th class="px-4 py-3 font-semibold">Consults</th>
+                <th class="px-4 py-3 font-semibold">Labs</th>
+                <th class="px-4 py-3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {brands.map((b) => (
+                <tr class="border-t border-ink-100 hover:bg-brand-50/30">
+                  <td class="px-4 py-3">
+                    <a href={`/telehealth/${b.slug}/`} class="font-semibold text-ink-900 hover:text-brand-700">{b.name}</a>
+                    {b.tagline && <div class="text-xs text-ink-500 line-clamp-1 mt-0.5">{b.tagline}</div>}
+                  </td>
+                  <td class="px-4 py-3 whitespace-nowrap text-ink-800">{formatPrice(b)}</td>
+                  <td class="px-4 py-3 text-ink-800">{formatStates(b)}</td>
+                  <td class="px-4 py-3 text-ink-800 capitalize">{b.consultModel === 'both' ? 'Sync + async' : (b.consultModel || '-')}</td>
+                  <td class="px-4 py-3 text-ink-800">{b.labsIncluded === true ? 'Included' : b.labsIncluded === false ? 'Separate' : '-'}</td>
+                  <td class="px-4 py-3 text-right"><a href={`/telehealth/${b.slug}/`} class="text-brand-700 hover:text-brand-800 font-medium">Review →</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="container-prose pb-20">
+        <div class="flex items-end justify-between mb-6">
+          <h2 class="font-display text-2xl md:text-3xl font-semibold text-ink-900">All reviews</h2>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {brands.map((b) => (
+            <li><TelehealthCard brand={b} /></li>
+          ))}
+        </ul>
+      </section>
+    </>
+  )}
+
+  <section class="container-prose pb-24">
+    <div class="rounded-2xl bg-ink-900 text-white p-8 md:p-10">
+      <h2 class="font-display text-2xl md:text-3xl font-semibold">How we review telehealth TRT</h2>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-ink-200">
+        <div>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white"><Icon name="shield-check" size={20} /></span>
+          <div class="mt-3 font-semibold text-white">Non-sponsored</div>
+          <p class="mt-1 text-sm">No provider pays to be included. Placement and prose are independent of any affiliate arrangement.</p>
+        </div>
+        <div>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white"><Icon name="dollar" size={20} /></span>
+          <div class="mt-3 font-semibold text-white">Pricing from public pages</div>
+          <p class="mt-1 text-sm">Prices are pulled from each provider's own public site and dated. They change; check the provider before signing up.</p>
+        </div>
+        <div>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white"><Icon name="stethoscope" size={20} /></span>
+          <div class="mt-3 font-semibold text-white">Not medical advice</div>
+          <p class="mt-1 text-sm">Testosterone is a Schedule III controlled substance. Any legitimate provider will require a full evaluation and bloodwork.</p>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
