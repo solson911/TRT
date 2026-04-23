@@ -74,6 +74,8 @@ import Icon from './Icon.astro';
     return {
       cities: cityHits.slice(0, 5).map((h) => h.row),
       clinics: clinicHits.slice(0, 8).map((h) => h.row),
+      cityTotal: cityHits.length,
+      clinicTotal: clinicHits.length,
     };
   }
 
@@ -129,6 +131,13 @@ import Icon from './Icon.astro';
       }
       parts.push('</ul>');
     }
+    const hiddenClinics = Math.max(0, (results.clinicTotal || 0) - clinics.length);
+    const hiddenCities = Math.max(0, (results.cityTotal || 0) - cities.length);
+    if (hiddenClinics > 0 || hiddenCities > 0) {
+      const total = (results.clinicTotal || 0) + (results.cityTotal || 0);
+      const qs = `/search/?q=${encodeURIComponent(q)}`;
+      parts.push(`<a href="${qs}" class="ss-item block border-t border-ink-100 px-4 py-3 text-sm font-semibold text-brand-700 hover:bg-brand-50" tabindex="-1" data-url="${qs}">Show all ${total} matches for "${escapeHtml(q)}" &rarr;</a>`);
+    }
     panel.innerHTML = parts.join('');
     panel.classList.remove('hidden');
   }
@@ -170,9 +179,11 @@ import Icon from './Icon.astro';
       if (e.key === 'ArrowDown') { e.preventDefault(); setActive(activeIdx + 1); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(activeIdx - 1); }
       else if (e.key === 'Enter') {
+        e.preventDefault();
         if (activeIdx >= 0 && items[activeIdx]) {
-          e.preventDefault();
           window.location.href = items[activeIdx].dataset.url;
+        } else if (input.value.trim()) {
+          window.location.href = `/search/?q=${encodeURIComponent(input.value.trim())}`;
         }
       } else if (e.key === 'Escape') {
         panel.classList.add('hidden');

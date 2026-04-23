@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+---
+<BaseLayout title="Search TRT clinics - TRT Index" description="Search the full TRT Index directory of clinics and cities.">
+  <section class="container-prose pt-14 pb-6">
+    <nav class="text-sm text-ink-500 mb-3">
+      <a href="/" class="hover:text-ink-900">Home</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-ink-900">Search</span>
+    </nav>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-ink-900">Search</h1>
+    <p class="mt-3 text-ink-600" id="search-subhead">Every clinic and city in the directory.</p>
+  </section>
+
+  <section class="container-prose pb-4">
+    <form id="search-form" class="flex items-center gap-3 bg-white rounded-xl ring-1 ring-ink-100 p-3">
+      <span class="text-ink-400 pl-2"><Icon name="search" size={18} /></span>
+      <input
+        id="search-q"
+        type="search"
+        autocomplete="off"
+        placeholder="Clinic name, city, or chain..."
+        class="flex-1 bg-transparent text-base placeholder:text-ink-400 focus:outline-none"
+        autofocus
+      />
+    </form>
+  </section>
+
+  <section class="container-prose pb-24">
+    <div id="search-status" class="text-sm text-ink-500 mb-3"></div>
+    <div id="search-cities" class="mb-6"></div>
+    <div id="search-clinics"></div>
+    <div id="search-empty" class="hidden mt-8 p-6 rounded-xl bg-white ring-1 ring-ink-100 text-center text-ink-600">
+      No matches. Try a different term or <a href="/clinics/" class="text-brand-700 font-semibold hover:text-brand-800">browse by state</a>.
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    const form = document.getElementById('search-form');
+    const input = document.getElementById('search-q');
+    const subhead = document.getElementById('search-subhead');
+    const status = document.getElementById('search-status');
+    const cityBox = document.getElementById('search-cities');
+    const clinicBox = document.getElementById('search-clinics');
+    const empty = document.getElementById('search-empty');
+
+    let indexPromise = null;
+    function loadIndex() { return indexPromise ||= fetch('/search-index.json').then((r) => r.json()); }
+
+    function norm(s) { return (s || '').toLowerCase(); }
+    function escape(s) { return String(s).replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+    function highlight(text, q) {
+      const nq = norm(q); const nt = norm(text);
+      const p = nt.indexOf(nq);
+      if (p === -1 || !nq) return escape(text);
+      return escape(text.slice(0, p)) + '<mark class="bg-brand-100 text-brand-800 rounded-sm px-0.5">' + escape(text.slice(p, p + nq.length)) + '</mark>' + escape(text.slice(p + nq.length));
+    }
+
+    function filter(q, idx) {
+      const nq = norm(q).trim();
+      if (!nq) return { cities: [], clinics: [] };
+      const cityHits = [];
+      for (const row of idx.cities) {
+        const [name, stateAbbr,, , count] = row;
+        const hay = norm(name + ' ' + stateAbbr);
+        const pos = hay.indexOf(nq);
+        if (pos === -1) continue;
+        const starts = pos === 0 || hay[pos - 1] === ' ';
+        cityHits.push({ row, rank: (starts ? 0 : 1) * 1e9 - count });
+      }
+      cityHits.sort((a, b) => a.rank - b.rank);
+
+      const clinicHits = [];
+      for (const row of idx.clinics) {
+        const [name, city, stateAbbr] = row;
+        const hay = norm(name);
+        const cityHay = norm(city + ' ' + stateAbbr);
+        const pos = hay.indexOf(nq);
+        const cityPos = cityHay.indexOf(nq);
+        if (pos === -1 && cityPos === -1) continue;
+        const starts = pos === 0 || (pos > 0 && hay[pos - 1] === ' ');
+        const score = row[6] || 0;
+        const bucket = pos === 0 ? 0 : pos > 0 && starts ? 1 : pos > 0 ? 2 : 3;
+        clinicHits.push({ row, rank: bucket * 1e9 - score });
+      }
+      clinicHits.sort((a, b) => a.rank - b.rank);
+      return {
+        cities: cityHits.map((h) => h.row),
+        clinics: clinicHits.map((h) => h.row),
+      };
+    }
+
+    function render(q, results) {
+      const { cities, clinics } = results;
+      if (!cities.length && !clinics.length) {
+        subhead.textContent = `No matches for "${q}".`;
+        status.textContent = '';
+        cityBox.innerHTML = '';
+        clinicBox.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+      empty.classList.add('hidden');
+      subhead.textContent = `${clinics.length} clinic${clinics.length === 1 ? '' : 's'} and ${cities.length} ${cities.length === 1 ? 'city' : 'cities'} match "${q}".`;
+      status.textContent = '';
+
+      if (cities.length) {
+        const parts = ['<h2 class="font-display text-lg font-semibold text-ink-900 mb-2">Cities</h2>'];
+        parts.push('<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">');
+        for (const [name, stateAbbr, stateSlug, citySlug, count] of cities.slice(0, 30)) {
+          parts.push(`<li><a href="/clinics/${stateSlug}/${citySlug}/" class="flex items-center justify-between gap-3 rounded-xl bg-white ring-1 ring-ink-100 px-4 py-3 hover:ring-brand-300">
+            <span><span class="font-semibold text-ink-900">${highlight(name, q)}</span>, ${escape(stateAbbr)}</span>
+            <span class="text-xs text-ink-500">${count} clinic${count === 1 ? '' : 's'}</span>
+          </a></li>`);
+        }
+        parts.push('</ul>');
+        cityBox.innerHTML = parts.join('');
+      } else {
+        cityBox.innerHTML = '';
+      }
+
+      if (clinics.length) {
+        const parts = ['<h2 class="font-display text-lg font-semibold text-ink-900 mb-2 mt-4">Clinics</h2>'];
+        parts.push('<ul class="grid grid-cols-1 md:grid-cols-2 gap-3">');
+        for (const [name, city, stateAbbr, stateSlug, citySlug, slug, score] of clinics) {
+          parts.push(`<li><a href="/clinics/${stateSlug}/${citySlug}/${slug}/" class="block rounded-xl bg-white ring-1 ring-ink-100 p-4 hover:ring-brand-300">
+            <div class="font-semibold text-ink-900 leading-tight">${highlight(name, q)}</div>
+            <div class="mt-0.5 text-sm text-ink-500">${escape(city)}, ${escape(stateAbbr)}</div>
+          </a></li>`);
+        }
+        parts.push('</ul>');
+        clinicBox.innerHTML = parts.join('');
+      } else {
+        clinicBox.innerHTML = '';
+      }
+    }
+
+    async function run(q) {
+      if (!q.trim()) {
+        subhead.textContent = 'Every clinic and city in the directory.';
+        cityBox.innerHTML = ''; clinicBox.innerHTML = ''; empty.classList.add('hidden'); status.textContent = '';
+        return;
+      }
+      status.textContent = 'Searching...';
+      const idx = await loadIndex();
+      const results = filter(q, idx);
+      render(q, results);
+      const url = new URL(location.href);
+      url.searchParams.set('q', q);
+      history.replaceState(null, '', url.toString());
+    }
+
+    let debounce = 0;
+    input.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => run(input.value), 100);
+    });
+    form.addEventListener('submit', (e) => { e.preventDefault(); run(input.value); });
+
+    const params = new URLSearchParams(location.search);
+    const q0 = params.get('q') || '';
+    if (q0) { input.value = q0; run(q0); }
+  })();
+  </script>
+</BaseLayout>
