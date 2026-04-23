@@ -45,8 +45,34 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'clinics.min.json');
+const WRITEUPS_DIR = path.join(__dirname, '..', '..', 'data', 'clinic_writeups');
 
 const DIRECTORY_CLASSES = new Set(['primary_trt', 'offers_trt']);
+
+// Loaded lazily and cached; one file per placeId. Missing/skipped files are
+// treated as "no writeup" (detail page falls back to a default services block).
+let writeupCache = null;
+function loadWriteup(placeId) {
+  if (!placeId) return null;
+  if (!writeupCache) {
+    writeupCache = new Map();
+    if (fs.existsSync(WRITEUPS_DIR)) {
+      for (const f of fs.readdirSync(WRITEUPS_DIR)) {
+        if (!f.endsWith('.json')) continue;
+        try {
+          const raw = fs.readFileSync(path.join(WRITEUPS_DIR, f), 'utf8');
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.overview) {
+            writeupCache.set(f.slice(0, -5), parsed);
+          }
+        } catch {}
+      }
+    }
+  }
+  return writeupCache.get(placeId) || null;
+}
+
+export { loadWriteup };
 
 // Ghost listings: Google Places entries with no phone, no rating, and no hours.
 // These are usually thin brand-spam pins (one operator registering many pin
