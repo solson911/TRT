@@ -46,7 +46,7 @@ US_STATE_ABBRS = {
     'WV','WI','WY',
 }
 
-SYSTEM_PROMPT = """You classify business listings to decide whether they are TRT (Testosterone Replacement Therapy) or men's hormone clinics — the kind of clinic a man visits to have testosterone checked and treated.
+SYSTEM_PROMPT = """You classify business listings to decide whether they are TRT (Testosterone Replacement Therapy) or men's hormone clinics, the kind of clinic a man visits to have testosterone checked and treated.
 
 Categories:
 - "primary_trt": clinic's primary focus is TRT or men's hormone optimization. Examples: Gameday Men's Health, Low T Center, Craft Men's Clinic, Renew Vitality, clinics with "testosterone" or "TRT" or "men's health" in the name.
@@ -57,6 +57,11 @@ Rules:
 - If unsure, prefer "unrelated" with low confidence over guessing "offers_trt".
 - A weight-loss clinic is only "offers_trt" if name/website/types explicitly reference TRT or hormone therapy.
 - A med-spa is "offers_trt" only if hormone therapy is obviously part of the business.
+- A peptide therapy clinic (e.g., "Peptide Therapy", "Nova Peptide") is "unrelated" unless name/website explicitly references TRT or testosterone. Peptides alone (BPC-157, semaglutide, sermorelin) do NOT make a clinic TRT.
+- An IV hydration or IV therapy clinic is "unrelated" unless it clearly offers TRT.
+- An aesthetics, medical-aesthetics, or cosmetic clinic (Botox, filler, laser, body-contouring focus) is "unrelated" unless hormone therapy is obviously part of the business.
+- The word "hormone" or "wellness" alone is NOT enough. Require an actual TRT/testosterone signal (name, website copy, explicit service).
+- Never use em dashes or en dashes in reason text; use plain hyphens only.
 - Output ONLY a JSON object. No markdown fences, no prose outside the JSON."""
 
 BATCH_USER_TEMPLATE = """Classify each business below. Output ONLY a JSON array with one object per business, in the SAME ORDER as the input. Each object: {{"id": <int>, "classification":"primary_trt"|"offers_trt"|"unrelated", "confidence":"high"|"medium"|"low", "reason":"10-word explanation"}}.

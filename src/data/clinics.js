@@ -48,6 +48,19 @@ const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'clinics.min.json');
 
 const DIRECTORY_CLASSES = new Set(['primary_trt', 'offers_trt']);
 
+// Ghost listings: Google Places entries with no phone, no rating, and no hours.
+// These are usually thin brand-spam pins (one operator registering many pin
+// drops with no staffed presence) and have nothing useful to show on a detail
+// page. Closed records are allowed through so their "Permanently Closed"
+// pages still build.
+function isGhost(c) {
+  if (c.businessStatus === 'CLOSED_PERMANENTLY') return false;
+  const noPhone = !c.phone;
+  const noRating = !c.rating;
+  const noHours = !(Array.isArray(c.hours) && c.hours.length > 0);
+  return noPhone && noRating && noHours;
+}
+
 let cached = null;
 
 export function loadClinics() {
@@ -63,7 +76,7 @@ export function loadClinics() {
   // "permanently closed" pages with noindex + alternative-clinic suggestions) -
   // handy when someone searches the specific clinic name. Listing/roll-up
   // helpers below filter them out so they don't clutter live listings.
-  cached = all.filter((c) => DIRECTORY_CLASSES.has(c.classification));
+  cached = all.filter((c) => DIRECTORY_CLASSES.has(c.classification) && !isGhost(c));
   return cached;
 }
 
