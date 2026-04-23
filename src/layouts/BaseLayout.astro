@@ -31,6 +31,11 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL('/og-image.png', Astro.site ?? 'https://trtindex.com').toString()} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={new URL('/og-image.png', Astro.site ?? 'https://trtindex.com').toString()} />
 
     {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((doc) => (
       <script type="application/ld+json" set:html={JSON.stringify(doc)} />
@@ -43,9 +48,8 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
   <body class="bg-ink-50 text-ink-900">
     <header class="sticky top-0 z-40 border-b border-ink-100 bg-white/85 backdrop-blur">
       <div class="container-prose flex h-20 md:h-28 items-center justify-between">
-        <a href="/" class="flex items-baseline gap-1" aria-label="TRT Index - home">
-          <span class="font-display text-2xl md:text-3xl font-semibold tracking-tight text-brand-700">TRT</span>
-          <span class="font-display text-2xl md:text-3xl font-semibold tracking-tight text-ink-900">Index</span>
+        <a href="/" class="flex items-center" aria-label="TRT Index - home">
+          <img src="/logo.png" alt="TRT Index" width="1248" height="304" class="h-9 md:h-11 w-auto" />
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-ink-600">
           <a href="/clinics/" class="hover:text-ink-900">Find a clinic</a>
@@ -63,9 +67,8 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
     <footer class="mt-24 border-t border-ink-100 bg-white">
       <div class="container-prose py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
         <div class="md:col-span-1">
-          <a href="/" class="inline-flex items-baseline gap-1" aria-label="TRT Index - home">
-            <span class="font-display text-xl font-semibold tracking-tight text-brand-700">TRT</span>
-            <span class="font-display text-xl font-semibold tracking-tight text-ink-900">Index</span>
+          <a href="/" class="inline-flex items-center" aria-label="TRT Index - home">
+            <img src="/logo.png" alt="TRT Index" width="1248" height="304" class="h-8 w-auto" />
           </a>
           <p class="mt-3 text-ink-500">A non-sponsored directory of testosterone and hormone therapy clinics across the United States.</p>
         </div>
