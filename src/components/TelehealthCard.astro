@@ -7,9 +7,21 @@ const states = formatStates(brand);
 ---
 <a href={`/telehealth/${brand.slug}/`} class="card-lift group block h-full rounded-2xl bg-white ring-1 ring-ink-100 p-5">
   <div class="flex items-start justify-between gap-3">
-    <div>
-      <h3 class="font-display text-lg font-semibold text-ink-900 group-hover:text-brand-700">{brand.name}</h3>
-      {brand.tagline && <p class="mt-1 text-sm text-ink-500 line-clamp-2">{brand.tagline}</p>}
+    <div class="flex items-start gap-3 min-w-0">
+      <img
+        src={`/img/telehealth/${brand.slug}.png`}
+        alt=""
+        width="40"
+        height="40"
+        loading="lazy"
+        decoding="async"
+        class="h-10 w-10 shrink-0 rounded-lg bg-white ring-1 ring-ink-100 object-contain p-0.5"
+        onerror="this.style.visibility='hidden'"
+      />
+      <div class="min-w-0">
+        <h3 class="font-display text-lg font-semibold text-ink-900 group-hover:text-brand-700">{brand.name}</h3>
+        {brand.tagline && <p class="mt-1 text-sm text-ink-500 line-clamp-2">{brand.tagline}</p>}
+      </div>
     </div>
     <span class="shrink-0 inline-flex items-center gap-1 rounded-full bg-brand-50 text-brand-700 px-2.5 py-1 text-xs font-semibold">
       <Icon name="dollar" size={14} /> {price}

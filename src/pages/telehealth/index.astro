@@ -151,8 +151,22 @@ const jsonLd = {
                   data-name={b.name}
                 >
                   <td class="px-4 py-3">
-                    <a href={`/telehealth/${b.slug}/`} class="font-semibold text-ink-900 hover:text-brand-700">{b.name}</a>
-                    {b.tagline && <div class="text-xs text-ink-500 line-clamp-1 mt-0.5">{b.tagline}</div>}
+                    <div class="flex items-center gap-3">
+                      <img
+                        src={`/img/telehealth/${b.slug}.png`}
+                        alt=""
+                        width="32"
+                        height="32"
+                        loading="lazy"
+                        decoding="async"
+                        class="h-8 w-8 shrink-0 rounded-md bg-white ring-1 ring-ink-100 object-contain p-0.5"
+                        onerror="this.style.visibility='hidden'"
+                      />
+                      <div class="min-w-0">
+                        <a href={`/telehealth/${b.slug}/`} class="font-semibold text-ink-900 hover:text-brand-700">{b.name}</a>
+                        {b.tagline && <div class="text-xs text-ink-500 line-clamp-1 mt-0.5">{b.tagline}</div>}
+                      </div>
+                    </div>
                   </td>
                   <td class="px-4 py-3 whitespace-nowrap text-ink-800">{formatPrice(b)}</td>
                   <td class="px-4 py-3 text-ink-800">{formatStates(b)}</td>
