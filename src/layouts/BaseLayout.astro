@@ -9,7 +9,7 @@ interface Props {
   jsonLd?: unknown;
 }
 
-const { title, description = 'Find TRT and HRT clinics across the United States.', canonical, noindex = false, jsonLd } = Astro.props;
+const { title, description = 'Find TRT clinics across the United States.', canonical, noindex = false, jsonLd } = Astro.props;
 const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://trtindex.com').toString();
 ---
 <!doctype html>
@@ -70,7 +70,7 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
           <a href="/" class="inline-flex items-center" aria-label="TRT Index - home">
             <img src="/logo.png" alt="TRT Index" width="1248" height="304" class="h-8 w-auto" />
           </a>
-          <p class="mt-3 text-ink-500">A non-sponsored directory of testosterone and hormone therapy clinics across the United States.</p>
+          <p class="mt-3 text-ink-500">A directory of testosterone replacement therapy clinics across the United States.</p>
         </div>
         <div>
           <div class="font-semibold text-ink-900 mb-3">Directory</div>
@@ -99,7 +99,7 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
       <div class="border-t border-ink-100">
         <div class="container-prose py-5 text-xs text-ink-500 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div>© {new Date().getFullYear()} TRT Index. Informational directory - not medical advice.</div>
-          <div>Always consult a licensed healthcare provider before starting hormone therapy.</div>
+          <div>Always consult a licensed healthcare provider before starting testosterone therapy.</div>
         </div>
       </div>
     </footer>
