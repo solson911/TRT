@@ -10,13 +10,28 @@ import Icon from '../components/Icon.astro';
         <span class="mx-1.5">/</span>
         <span class="text-ink-900">About</span>
       </nav>
-      <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">About</p>
-      <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 max-w-3xl">
-        The independent TRT directory we wished existed
-      </h1>
-      <p class="mt-4 max-w-2xl text-ink-600 text-lg">
-        Nobody buys placement. Nobody gets removed for not paying. The directory exists so the guy who needs TRT can see every real option in his city - not just the three clinics with the biggest ad budgets.
-      </p>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+        <div class="md:col-span-3">
+          <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">About</p>
+          <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900">
+            The independent TRT directory we wished existed
+          </h1>
+          <p class="mt-4 text-ink-600 text-lg">
+            Nobody buys placement. Nobody gets removed for not paying. The directory exists so the guy who needs TRT can see every real option in his city - not just the three clinics with the biggest ad budgets.
+          </p>
+        </div>
+        <div class="md:col-span-2">
+          <img
+            src="/img/three-men-camaro.jpg"
+            alt="Three men gathered around a classic red Camaro in a driveway"
+            width="768"
+            height="1321"
+            class="w-full aspect-[3/4] object-cover rounded-2xl shadow-xl ring-1 ring-ink-100"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
