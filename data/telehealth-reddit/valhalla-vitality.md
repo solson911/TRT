@@ -1,0 +1,9 @@
+## What Reddit users say
+
+Valhalla Vitality draws consistent praise in r/trt and r/Testosterone for its competitive pricing, particularly on enclomiphene monotherapy and HCG, where users frequently cite it as meaningfully cheaper than alternatives like Maximus or Royal. Several posters highlight the low annual consultation fee and the ability to bundle multiple therapies - testosterone, peptides, and compounded tadalafil - under one provider. Responsive customer service earns repeated mentions, with users describing staff as professional, non-pushy, and willing to walk through treatment options in detail. A veteran discount is also noted as a differentiator.
+
+On the negative side, shipping costs draw consistent complaints - charges of $15 or more for a small bottle of pills are called excessive and aggravating, especially when competitors ship free or nearly free. Order processing times surface as a recurring frustration: multiple users report delays of two or more weeks from payment to delivery, with limited status updates along the way. A handful of posters describe missed virtual consultations and difficulty reaching support through the text-only contact line. Mixed outcomes on enclomiphene therapy itself are also noted, though most attribute these to the nature of SERM treatment rather than product quality concerns. One user specifically requested purity data and received it without issue.
+
+Overall the signal is moderate - enough posts to identify clear themes, but engagement is thin enough that outlier experiences carry more weight than they might for larger providers. Price-conscious users with patience for slower fulfillment report reasonable satisfaction; those needing faster turnaround or robust support should weigh that carefully.
+
+Source: aggregated Reddit discussions; individual experiences vary.

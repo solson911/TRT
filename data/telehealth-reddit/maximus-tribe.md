@@ -1,0 +1,9 @@
+## What Reddit users say
+
+Maximus Tribe draws consistently positive engagement around its enclomiphene protocol. Reddit users in r/trt and r/Testosterone frequently cite meaningful testosterone gains - sometimes dramatic ones - alongside improvements in energy, mood, body composition, and gym recovery. A recurring selling point is the perceived safety profile of enclomiphene compared to injectable TRT: no testicular atrophy, no fertility suppression, no liver impact from the oral testosterone variant, and no need for needles. Posters also highlight that lab work is ordered and physician-reviewed before dosing, which gives the medically inclined user more confidence. The oxytocin calming cream has attracted a smaller but vocal group of fans reporting better sleep and reduced anxiety, with some members of the brand's own subreddit sharing detailed before-and-after accounts.
+
+On the negative side, fulfillment and customer service problems surface repeatedly across multiple threads. Complaints include delayed or missing lab kits, unanswered emails, and a full voicemail inbox - experiences that left several posters feeling outright scammed. Pricing also draws criticism: the monthly cost runs higher than sourcing enclomiphene independently, and some users flag a bait-and-switch feel to how subscription tiers are advertised. A handful of posts note libido issues at higher enclomiphene doses, and a few commenters question the long-term evidence base for enclomiphene relative to conventional TRT.
+
+On balance, the signal is moderate - enough posts and engagement to draw real conclusions. Maximus Tribe appears to work well for many users, but operational reliability has been a genuine weak point, and skepticism about marketing claims runs throughout the threads.
+
+Source: aggregated Reddit discussions; individual experiences vary.

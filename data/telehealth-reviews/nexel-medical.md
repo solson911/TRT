@@ -1,23 +1,3 @@
-## How Nexel Medical works
-
-The process starts with an intake and consultation, which can happen either via telehealth video or in person at one of the California or Florida offices. Nexel uses physicians rather than nurse practitioners or physician assistants to evaluate and prescribe - a distinction the company leans into as a differentiator. After an initial consultation, the prescribing doctor works with the patient to land on a treatment protocol based on individual labs, symptoms, and health history.
-
-Labs are not bundled into the Nexel program. You'll need to get bloodwork done independently - through your own doctor, a walk-in lab like Quest or LabCorp, or a third-party service - before or alongside your intake. Nexel doesn't ship lab kits to patients, so if you're accustomed to fully at-home TRT programs where everything arrives in a box, the workflow here is a bit more DIY. That said, medications are shipped directly to patients once a prescription is in place.
-
-One thing worth knowing upfront: some pre-existing conditions may disqualify patients from treatment. The specifics aren't spelled out publicly, which isn't unusual for hormone clinics, but it does mean the intake process will include a medical review before anyone makes any commitments.
-
-## Pricing
-
-Public pricing isn't disclosed on Nexel's site in any detail - you'll get specifics after the intake process. That said, the company's own materials indicate testosterone therapy typically runs under $100 per month, which is on the lower end of what telehealth TRT providers charge. Whether that figure holds across all treatment types and patient situations isn't clear.
-
-Nexel does accept insurance, which is a genuine differentiator in the telehealth TRT market. Many competitors are cash-pay only, so if your plan covers hormone replacement therapy, there's a real chance Nexel can bill it. Whether FSA or HSA funds can be used isn't confirmed on their public pages - worth asking directly during intake if that matters to your situation.
-
-## What's included
-
-Nexel offers an unusually wide range of delivery methods for testosterone: injections, patches, pellets, gel, and oral formulations. Most telehealth TRT programs lean heavily on injections and gels, sometimes with a pellet option. Having all five available suggests the clinical team tailors delivery method to the patient rather than funneling everyone into the cheapest-to-ship format.
-
-Medications are shipped directly to patients. Labs are not included and not shipped - that's the patient's responsibility to arrange outside the program. Ongoing care includes remote access to doctors and prescription management, though the specifics of follow-up cadence and how frequently labs are reviewed aren't detailed publicly.
-
 ## Pros and cons
 
 The physician-only prescribing model stands out. Plenty of telehealth platforms rely on nurse practitioners or PAs, which is legally fine but not the same clinical depth that some patients want from a hormone specialist. Nexel also covers all 50 states and ships medication to patients' doors, so geography isn't a limiting factor beyond the age floor. The variety of treatment options is above average, and insurance acceptance opens a door that most competitors keep shut.

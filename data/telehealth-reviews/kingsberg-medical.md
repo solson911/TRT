@@ -1,17 +1,3 @@
-## How Kingsberg Medical works
-
-Kingsberg Medical is a telehealth hormone clinic that has been operating in the men's health space for a while, positioning itself around both testosterone replacement therapy and growth hormone treatment. That dual focus - testosterone and GH peptides like sermorelin - sets it apart from the leaner TRT-only platforms that dominate the telehealth market. If you're someone who wants to explore a broader hormonal workup rather than just a testosterone prescription, Kingsberg's menu is wider than most.
-
-The intake process follows a typical telehealth pattern: you fill out a health questionnaire, schedule a consultation with a medical provider, and discuss your symptoms and goals. The consult is where the actual evaluation happens - Kingsberg emphasizes that its staff includes experienced clinicians, which matters for anyone navigating a more complex protocol involving growth hormone alongside testosterone. What the site doesn't spell out clearly is how that consultation is structured, whether it's by phone or video, or how quickly you move from intake to prescription.
-
-## Pricing
-
-Public pricing isn't disclosed; you'll get a quote after the intake. This is a meaningful gap. Because Kingsberg offers both TRT and growth hormone therapies - which can range widely in cost depending on dosage and medication type - you're essentially going in blind until you've completed the consult. That's frustrating if you're comparison shopping, and it makes it hard to say whether the service represents good value. Plan for a conversation about cost before committing to any protocol.
-
-## What's included
-
-Kingsberg Medical ships injectable testosterone, which is the gold standard for bioavailability and dosing flexibility. On the alternative therapy side, sermorelin - a growth hormone-releasing hormone - is available for patients whose labs and goals point in that direction. What's less clear from public information is whether labs are included in the program cost or billed separately, whether blood draws happen at a home kit or a draw center, and what ongoing monitoring looks like once you're on a protocol. These are questions worth asking directly during your consultation.
-
 ## Pros and cons
 
 The case for Kingsberg starts with breadth. If you're interested in more than just a testosterone prescription - specifically growth hormone optimization or peptide therapy - you won't have to go to a separate provider. That's a real convenience for patients who want a single point of care for multiple hormonal concerns. The medical consultation emphasis also suggests this isn't a rubber-stamp operation; clinics that stress expert evaluation tend to take labs and symptom history more seriously than assembly-line platforms.

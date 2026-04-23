@@ -7,6 +7,20 @@ import { loadTelehealth, telehealthSummary, formatPrice, formatStates } from '..
 const brands = loadTelehealth();
 const summary = telehealthSummary();
 
+// Derive filter data-attributes once so the DOM stays cheap.
+function priceBucket(b) {
+  const p = b.priceMin || b.priceMax;
+  if (!p) return 'none';
+  if (p < 75) return 'lt75';
+  if (p < 150) return 'lt150';
+  return 'gte150';
+}
+function stateCount(b) {
+  if (b.statesCovered === 'all') return 50;
+  if (Array.isArray(b.statesCovered)) return b.statesCovered.length;
+  return 0;
+}
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -42,6 +56,59 @@ const jsonLd = {
     </section>
   ) : (
     <>
+      <section class="container-prose pb-6">
+        <div id="th-filters" class="rounded-2xl bg-white ring-1 ring-ink-100 p-4 md:p-5">
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+            <label class="block">
+              <span class="block text-xs font-semibold text-ink-600 mb-1">Price</span>
+              <select data-filter="price" class="w-full rounded-lg ring-1 ring-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="any">Any price</option>
+                <option value="lt75">Under $75/mo</option>
+                <option value="lt150">$75 - $149/mo</option>
+                <option value="gte150">$150+/mo</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="block text-xs font-semibold text-ink-600 mb-1">Consults</span>
+              <select data-filter="consult" class="w-full rounded-lg ring-1 ring-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="any">Any</option>
+                <option value="sync">Video (sync)</option>
+                <option value="async">Async</option>
+                <option value="both">Both</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="block text-xs font-semibold text-ink-600 mb-1">Labs</span>
+              <select data-filter="labs" class="w-full rounded-lg ring-1 ring-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="any">Any</option>
+                <option value="included">Included</option>
+                <option value="separate">Separate</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="block text-xs font-semibold text-ink-600 mb-1">FSA / HSA</span>
+              <select data-filter="fsa" class="w-full rounded-lg ring-1 ring-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="any">Any</option>
+                <option value="yes">Accepted</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="block text-xs font-semibold text-ink-600 mb-1">Sort by</span>
+              <select data-filter="sort" class="w-full rounded-lg ring-1 ring-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="name">Name (A-Z)</option>
+                <option value="price-asc">Price (low to high)</option>
+                <option value="price-desc">Price (high to low)</option>
+                <option value="coverage-desc">Coverage (most states)</option>
+              </select>
+            </label>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs text-ink-500">
+            <span><span id="th-count">{brands.length}</span> of {brands.length} providers</span>
+            <button type="button" id="th-reset" class="text-brand-700 hover:text-brand-800 font-semibold">Reset filters</button>
+          </div>
+        </div>
+      </section>
+
       <section class="container-prose pb-14">
         <div class="overflow-x-auto rounded-2xl bg-white ring-1 ring-ink-100">
           <table class="w-full text-sm">
@@ -55,9 +122,19 @@ const jsonLd = {
                 <th class="px-4 py-3"></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="th-table-body">
               {brands.map((b) => (
-                <tr class="border-t border-ink-100 hover:bg-brand-50/30">
+                <tr
+                  class="th-row border-t border-ink-100 hover:bg-brand-50/30"
+                  data-slug={b.slug}
+                  data-price-bucket={priceBucket(b)}
+                  data-price={(b.priceMin || b.priceMax || 9999)}
+                  data-consult={b.consultModel || 'none'}
+                  data-labs={b.labsIncluded === true ? 'included' : b.labsIncluded === false ? 'separate' : 'none'}
+                  data-fsa={b.fsaHsa === true ? 'yes' : 'no'}
+                  data-coverage={stateCount(b)}
+                  data-name={b.name}
+                >
                   <td class="px-4 py-3">
                     <a href={`/telehealth/${b.slug}/`} class="font-semibold text-ink-900 hover:text-brand-700">{b.name}</a>
                     {b.tagline && <div class="text-xs text-ink-500 line-clamp-1 mt-0.5">{b.tagline}</div>}
@@ -71,6 +148,7 @@ const jsonLd = {
               ))}
             </tbody>
           </table>
+          <div id="th-empty" class="hidden p-8 text-center text-sm text-ink-500">No providers match those filters. <button type="button" class="text-brand-700 hover:text-brand-800 font-semibold" data-reset>Reset</button>.</div>
         </div>
       </section>
 
@@ -78,9 +156,21 @@ const jsonLd = {
         <div class="flex items-end justify-between mb-6">
           <h2 class="font-display text-2xl md:text-3xl font-semibold text-ink-900">All reviews</h2>
         </div>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ul id="th-card-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {brands.map((b) => (
-            <li><TelehealthCard brand={b} /></li>
+            <li
+              class="th-card"
+              data-slug={b.slug}
+              data-price-bucket={priceBucket(b)}
+              data-price={(b.priceMin || b.priceMax || 9999)}
+              data-consult={b.consultModel || 'none'}
+              data-labs={b.labsIncluded === true ? 'included' : b.labsIncluded === false ? 'separate' : 'none'}
+              data-fsa={b.fsaHsa === true ? 'yes' : 'no'}
+              data-coverage={stateCount(b)}
+              data-name={b.name}
+            >
+              <TelehealthCard brand={b} />
+            </li>
           ))}
         </ul>
       </section>
@@ -110,3 +200,79 @@ const jsonLd = {
     </div>
   </section>
 </BaseLayout>
+
+<script is:inline>
+  // Client-side filter + sort for /telehealth/. Operates on the pre-rendered
+  // table rows and card grid using data-* attributes.
+  (() => {
+    const filterEl = document.getElementById('th-filters');
+    if (!filterEl) return;
+    const rows = Array.from(document.querySelectorAll('.th-row'));
+    const cards = Array.from(document.querySelectorAll('.th-card'));
+    const tbody = document.getElementById('th-table-body');
+    const grid = document.getElementById('th-card-grid');
+    const empty = document.getElementById('th-empty');
+    const countEl = document.getElementById('th-count');
+    const controls = filterEl.querySelectorAll('select[data-filter]');
+
+    const state = { price: 'any', consult: 'any', labs: 'any', fsa: 'any', sort: 'name' };
+
+    const matches = (el) => {
+      if (state.price !== 'any' && el.dataset.priceBucket !== state.price) return false;
+      if (state.consult !== 'any') {
+        // "both" matches sync, async, and both requests; otherwise require exact.
+        if (state.consult === 'sync' && !(el.dataset.consult === 'sync' || el.dataset.consult === 'both')) return false;
+        if (state.consult === 'async' && !(el.dataset.consult === 'async' || el.dataset.consult === 'both')) return false;
+        if (state.consult === 'both' && el.dataset.consult !== 'both') return false;
+      }
+      if (state.labs !== 'any' && el.dataset.labs !== state.labs) return false;
+      if (state.fsa === 'yes' && el.dataset.fsa !== 'yes') return false;
+      return true;
+    };
+
+    const sortKey = (el) => {
+      if (state.sort === 'price-asc') return parseFloat(el.dataset.price);
+      if (state.sort === 'price-desc') return -parseFloat(el.dataset.price);
+      if (state.sort === 'coverage-desc') return -parseInt(el.dataset.coverage, 10);
+      return el.dataset.name.toLowerCase();
+    };
+
+    const apply = () => {
+      let visible = 0;
+      for (const r of rows) {
+        if (matches(r)) { r.style.display = ''; visible++; } else { r.style.display = 'none'; }
+      }
+      for (const c of cards) {
+        c.style.display = matches(c) ? '' : 'none';
+      }
+      countEl.textContent = visible;
+      empty.classList.toggle('hidden', visible > 0);
+
+      // Sort both lists identically.
+      const sortedRows = [...rows].sort((a, b) => {
+        const ka = sortKey(a), kb = sortKey(b);
+        if (ka < kb) return -1; if (ka > kb) return 1; return 0;
+      });
+      sortedRows.forEach((r) => tbody.appendChild(r));
+      const sortedCards = [...cards].sort((a, b) => {
+        const ka = sortKey(a), kb = sortKey(b);
+        if (ka < kb) return -1; if (ka > kb) return 1; return 0;
+      });
+      sortedCards.forEach((c) => grid.appendChild(c));
+    };
+
+    controls.forEach((c) => c.addEventListener('change', (e) => {
+      const key = e.target.getAttribute('data-filter');
+      state[key] = e.target.value;
+      apply();
+    }));
+
+    const reset = () => {
+      Object.assign(state, { price: 'any', consult: 'any', labs: 'any', fsa: 'any', sort: 'name' });
+      controls.forEach((c) => { c.value = state[c.getAttribute('data-filter')]; });
+      apply();
+    };
+    document.getElementById('th-reset').addEventListener('click', reset);
+    document.querySelectorAll('[data-reset]').forEach((b) => b.addEventListener('click', reset));
+  })();
+</script>

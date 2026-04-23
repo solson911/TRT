@@ -1,25 +1,3 @@
-## How Defy Medical works
-
-The process starts with an intake consultation - typically a video or phone visit with one of the clinic's providers - followed by bloodwork. Defy Medical's medical director is Dr. Justin Saya, who is listed on the company's own site in that role. From there, a provider reviews your labs and symptoms to build a protocol, which may involve ongoing monitoring visits and periodic retesting.
-
-One notable practical detail: Defy Medical offers mobile phlebotomy in addition to standard lab draws at partner facilities. That means a technician can come to your home to collect bloodwork rather than requiring you to locate a LabCorp or Quest nearby. For patients in areas where convenient lab access is limited, or who simply prefer not to wait in a clinic waiting room, this is a meaningful differentiator.
-
-The clinic handles a broader range of treatments than many competitors. Delivery options include intramuscular or subcutaneous injections, oral testosterone, and IV therapy - the last of which is less common among telehealth-only providers. Whether IV therapy is appropriate or relevant for the average TRT patient is a separate clinical question, but its availability signals that Defy Medical is oriented toward a more comprehensive, multi-modality approach to hormone optimization rather than a single-SKU operation.
-
-## Pricing
-
-Pricing is not disclosed publicly. You'll need to complete an intake and receive a quote directly from the clinic. This is a real friction point - it makes comparison shopping harder and means you're committing time to an intake process before knowing what you're getting into financially. The lack of published pricing also makes it difficult to assess whether Defy Medical is positioned at the budget end, the mid-range, or the premium tier of the telehealth TRT market. Based on the clinic's positioning, service breadth, and reputation, it's reasonable to expect pricing toward the higher end of what telehealth providers charge. Whether that's worth it depends on your priorities.
-
-Insurance acceptance is also unspecified publicly. If you're counting on coverage to offset cost, confirm directly with the clinic before starting the intake process.
-
-## What's included
-
-Bloodwork is included as part of the program - a standard expectation for any legitimate TRT provider, but worth confirming since some competitors bill labs separately or require you to order your own. The inclusion of mobile phlebotomy as an option adds convenience that cash-pay patients elsewhere typically have to source themselves.
-
-Treatment options across injection, oral, and IV formats give Defy Medical more flexibility than most. Which medications are available, how frequently they're shipped, and whether compounded or brand-name products are used aren't detailed in public materials, so those are questions to raise during your consultation.
-
-The clinic does not appear to accept insurance based on available information, though this isn't confirmed explicitly - another reason to ask directly before getting started.
-
 ## Pros and cons
 
 Defy Medical's strongest argument is longevity. A decade-plus of practice in hormone restoration means they've seen more patient cases, adapted to more regulatory changes, and refined their clinical approach more than most competitors who launched in the last two or three years. The 3,700-plus positive reviews lend some weight to that track record, though reviews alone don't tell you about pricing, access, or clinical quality.

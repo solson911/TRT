@@ -1,0 +1,32 @@
+{
+  "slug": "reup-mens-clinic",
+  "name": "ReUP Men's Clinic",
+  "aliases": [
+    "ReUP Men's Clinic",
+    "ReUPMensClinic"
+  ],
+  "harvestedAt": "2026-04-23",
+  "postCount": 2,
+  "posts": [
+    {
+      "id": "2se6p",
+      "subreddit": null,
+      "title": "Testosterone",
+      "selftext": "",
+      "score": 0,
+      "num_comments": 0,
+      "url": "https://www.reddit.com",
+      "comments": []
+    },
+    {
+      "id": "2qius",
+      "subreddit": null,
+      "title": "TRT",
+      "selftext": "",
+      "score": 0,
+      "num_comments": 0,
+      "url": "https://www.reddit.com",
+      "comments": []
+    }
+  ]
+}

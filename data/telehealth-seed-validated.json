@@ -1,53 +1,8 @@
 [
   {
-    "slug": "1st-optimal",
-    "name": "1st Optimal",
-    "website": "https://1stoptimal.com"
-  },
-  {
-    "slug": "age-rejuvenation",
-    "name": "Age Rejuvenation",
-    "website": "https://agerejuvenation.com"
-  },
-  {
-    "slug": "ageless-mens-health",
-    "name": "Ageless Men's Health",
-    "website": "https://www.agelessmenshealth.com"
-  },
-  {
-    "slug": "alpha-md",
-    "name": "Alpha MD",
-    "website": "https://www.alphamd.org"
-  },
-  {
-    "slug": "biote",
-    "name": "Biote",
-    "website": "https://biote.com"
-  },
-  {
-    "slug": "blokes",
-    "name": "Blokes",
-    "website": "https://joiandblokes.com"
-  },
-  {
-    "slug": "defy-medical",
-    "name": "Defy Medical",
-    "website": "https://www.defymedical.com"
-  },
-  {
-    "slug": "elite-hrt",
-    "name": "EliteHRT",
-    "website": "https://www.elitehrt.com"
-  },
-  {
-    "slug": "evolve-telemed",
-    "name": "Evolve Telemedicine",
-    "website": "https://evolvetelemed.com"
-  },
-  {
-    "slug": "fountain-trt",
-    "name": "Fountain TRT",
-    "website": "https://fountaintrt.com"
+    "slug": "hone-health",
+    "name": "Hone Health",
+    "website": "https://honehealth.com"
   },
   {
     "slug": "henry-meds",
@@ -55,54 +10,9 @@
     "website": "https://henrymeds.com"
   },
   {
-    "slug": "hims",
-    "name": "Hims",
-    "website": "https://www.hims.com"
-  },
-  {
-    "slug": "hone-health",
-    "name": "Hone Health",
-    "website": "https://honehealth.com"
-  },
-  {
-    "slug": "hormone-logics",
-    "name": "Hormone Logics",
-    "website": "https://hormonelogics.com"
-  },
-  {
-    "slug": "huddle-mens-health",
-    "name": "Huddle Men's Health",
-    "website": "https://huddlemenshealth.com"
-  },
-  {
-    "slug": "innovative-men",
-    "name": "Innovative Men's Health",
-    "website": "https://innovativemen.com"
-  },
-  {
-    "slug": "invigor-medical",
-    "name": "Invigor Medical",
-    "website": "https://invigormedical.com"
-  },
-  {
-    "slug": "jase-medical",
-    "name": "Jase Medical",
-    "website": "https://jase.com"
-  },
-  {
-    "slug": "kingsberg-medical",
-    "name": "Kingsberg Medical",
-    "website": "https://www.kingsbergmedical.com"
-  },
-  {
-    "slug": "male-excel",
-    "name": "Male Excel",
-    "website": "https://maleexcel.com"
-  },
-  {
-    "slug": "mantality-health",
-    "name": "Mantality Health",
-    "website": "https://mantalityhealth.com"
+    "slug": "maximus-tribe",
+    "name": "Maximus",
+    "website": "https://www.maximustribe.com"
   },
   {
     "slug": "marek-health",
@@ -110,54 +20,24 @@
     "website": "https://marekhealth.com"
   },
   {
-    "slug": "maximus-tribe",
-    "name": "Maximus",
-    "website": "https://www.maximustribe.com"
+    "slug": "blokes",
+    "name": "Blokes",
+    "website": "https://joiandblokes.com"
   },
   {
-    "slug": "nexel-medical",
-    "name": "Nexel Medical",
-    "website": "https://www.nexelmedical.com"
+    "slug": "fountain-trt",
+    "name": "Fountain TRT",
+    "website": "https://fountaintrt.com"
   },
   {
-    "slug": "novagenix",
-    "name": "NovaGenix",
-    "website": "https://www.novagenix.org"
+    "slug": "defy-medical",
+    "name": "Defy Medical",
+    "website": "https://www.defymedical.com"
   },
   {
-    "slug": "nrg-clinic",
-    "name": "NRG Clinic",
-    "website": "https://nrgclinic.com"
-  },
-  {
-    "slug": "optimale",
-    "name": "Optimale",
-    "website": "https://optimale.co.uk"
-  },
-  {
-    "slug": "peakperformax",
-    "name": "PeakPerforMAX",
-    "website": "https://www.peakperformax.com"
-  },
-  {
-    "slug": "peter-md",
-    "name": "PeterMD",
-    "website": "https://peter.md"
-  },
-  {
-    "slug": "regenesis-health",
-    "name": "Regenesis Health",
-    "website": "https://regenesishealth.com"
-  },
-  {
-    "slug": "renew-youth",
-    "name": "Renew Youth",
-    "website": "https://www.renewyouth.com"
-  },
-  {
-    "slug": "revive-mens-health",
-    "name": "Revive Men's Health",
-    "website": "https://revivemenshealth.com"
+    "slug": "hims",
+    "name": "Hims",
+    "website": "https://www.hims.com"
   },
   {
     "slug": "ro",
@@ -165,18 +45,253 @@
     "website": "https://ro.co"
   },
   {
-    "slug": "royal-medical-center",
-    "name": "Royal Medical Center",
-    "website": "https://royalmedicalcenters.com"
-  },
-  {
     "slug": "trt-nation",
     "name": "TRT Nation",
     "website": "https://trtnation.com"
   },
   {
+    "slug": "elite-hrt",
+    "name": "EliteHRT",
+    "website": "https://www.elitehrt.com"
+  },
+  {
+    "slug": "male-excel",
+    "name": "Male Excel",
+    "website": "https://maleexcel.com"
+  },
+  {
+    "slug": "jase-medical",
+    "name": "Jase Medical",
+    "website": "https://jase.com"
+  },
+  {
+    "slug": "invigor-medical",
+    "name": "Invigor Medical",
+    "website": "https://invigormedical.com"
+  },
+  {
+    "slug": "mantality-health",
+    "name": "Mantality Health",
+    "website": "https://mantalityhealth.com"
+  },
+  {
+    "slug": "huddle-mens-health",
+    "name": "Huddle Men's Health",
+    "website": "https://huddlemenshealth.com"
+  },
+  {
+    "slug": "novagenix",
+    "name": "NovaGenix",
+    "website": "https://www.novagenix.org"
+  },
+  {
+    "slug": "alpha-md",
+    "name": "Alpha MD",
+    "website": "https://www.alphamd.org"
+  },
+  {
+    "slug": "revive-mens-health",
+    "name": "Revive Men's Health",
+    "website": "https://revivemenshealth.com"
+  },
+  {
+    "slug": "kingsberg-medical",
+    "name": "Kingsberg Medical",
+    "website": "https://www.kingsbergmedical.com"
+  },
+  {
+    "slug": "nrg-clinic",
+    "name": "NRG Clinic",
+    "website": "https://nrgclinic.com"
+  },
+  {
+    "slug": "1st-optimal",
+    "name": "1st Optimal",
+    "website": "https://1stoptimal.com"
+  },
+  {
+    "slug": "innovative-men",
+    "name": "Innovative Men's Health",
+    "website": "https://innovativemen.com"
+  },
+  {
+    "slug": "peakperformax",
+    "name": "PeakPerforMAX",
+    "website": "https://www.peakperformax.com"
+  },
+  {
     "slug": "vault-health",
     "name": "Vault Health",
     "website": "https://www.vaulthealth.com"
+  },
+  {
+    "slug": "hormone-logics",
+    "name": "Hormone Logics",
+    "website": "https://hormonelogics.com"
+  },
+  {
+    "slug": "nexel-medical",
+    "name": "Nexel Medical",
+    "website": "https://www.nexelmedical.com"
+  },
+  {
+    "slug": "renew-youth",
+    "name": "Renew Youth",
+    "website": "https://www.renewyouth.com"
+  },
+  {
+    "slug": "biote",
+    "name": "Biote",
+    "website": "https://biote.com"
+  },
+  {
+    "slug": "age-rejuvenation",
+    "name": "Age Rejuvenation",
+    "website": "https://agerejuvenation.com"
+  },
+  {
+    "slug": "evolve-telemed",
+    "name": "Evolve Telemedicine",
+    "website": "https://evolvetelemed.com"
+  },
+  {
+    "slug": "ageless-mens-health",
+    "name": "Ageless Men's Health",
+    "website": "https://www.agelessmenshealth.com"
+  },
+  {
+    "slug": "optimale",
+    "name": "Optimale",
+    "website": "https://optimale.co.uk"
+  },
+  {
+    "slug": "regenesis-health",
+    "name": "Regenesis Health",
+    "website": "https://regenesishealth.com"
+  },
+  {
+    "slug": "royal-medical-center",
+    "name": "Royal Medical Center",
+    "website": "https://royalmedicalcenters.com"
+  },
+  {
+    "slug": "rise-mens-health",
+    "name": "Rise Men's Health",
+    "website": "https://risemenshealth.com"
+  },
+  {
+    "slug": "hrt-club",
+    "name": "HRT Club",
+    "website": "https://thehrtclub.com"
+  },
+  {
+    "slug": "thrive-lab",
+    "name": "Thrive Lab",
+    "website": "https://www.thrivelab.com"
+  },
+  {
+    "slug": "amazing-meds",
+    "name": "Amazing Meds",
+    "website": "https://amazing-meds.com"
+  },
+  {
+    "slug": "mens-t-clinic",
+    "name": "Men's T Clinic",
+    "website": "https://www.menstclinic.com"
+  },
+  {
+    "slug": "advanced-trt-clinic",
+    "name": "Advanced TRT Clinic",
+    "website": "https://advancedtrtclinic.com"
+  },
+  {
+    "slug": "regenx-health",
+    "name": "REGENX Health",
+    "website": "https://www.regenxhealth.com"
+  },
+  {
+    "slug": "alyn-md",
+    "name": "AlynMD",
+    "website": "https://alynmd.com"
+  },
+  {
+    "slug": "getpetermd",
+    "name": "PeterMD",
+    "website": "https://getpetermd.com"
+  },
+  {
+    "slug": "reup-mens-clinic",
+    "name": "ReUP Men's Clinic",
+    "website": "https://reupmensclinic.com"
+  },
+  {
+    "slug": "modern-wellness-clinic",
+    "name": "Modern Wellness Clinic",
+    "website": "https://www.modernwellnessclinic.com"
+  },
+  {
+    "slug": "gameday-mens-health",
+    "name": "Gameday Men's Health",
+    "website": "https://gamedaymenshealth.com"
+  },
+  {
+    "slug": "low-t-center",
+    "name": "Low T Center",
+    "website": "https://lowtcenter.com"
+  },
+  {
+    "slug": "bodylogicmd",
+    "name": "BodyLogicMD",
+    "website": "https://www.bodylogicmd.com"
+  },
+  {
+    "slug": "cenegenics",
+    "name": "Cenegenics",
+    "website": "https://cenegenics.com"
+  },
+  {
+    "slug": "numale-medical",
+    "name": "NuMale Medical Center",
+    "website": "https://vidavitalmedical.com"
+  },
+  {
+    "slug": "limitless-male",
+    "name": "Limitless Male",
+    "website": "https://limitlessmale.com"
+  },
+  {
+    "slug": "mint-mens-health",
+    "name": "Mint Men's Health",
+    "website": "https://mintmenshealth.com"
+  },
+  {
+    "slug": "forum-health",
+    "name": "Forum Health",
+    "website": "https://forumhealth.com"
+  },
+  {
+    "slug": "valhalla-vitality",
+    "name": "Valhalla Vitality",
+    "website": "https://valhallavitality.com"
+  },
+  {
+    "slug": "modernmen",
+    "name": "ModernMen",
+    "website": "https://modernmenshealth.com"
+  },
+  {
+    "slug": "hormone-therapeutics",
+    "name": "Hormone Therapeutics",
+    "website": "https://www.hormonetherapeutics.com"
+  },
+  {
+    "slug": "mens-vitality-center",
+    "name": "Men's Vitality Center",
+    "website": "https://mensvitalitycenter.com"
+  },
+  {
+    "slug": "boost-mens-health",
+    "name": "Boost Men's Health",
+    "website": "https://www.boostmenshealth.com"
   }
 ]

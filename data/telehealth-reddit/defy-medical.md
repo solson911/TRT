@@ -1,0 +1,9 @@
+## What Reddit users say
+
+Defy Medical draws consistent praise in r/trt and r/Testosterone for the depth of its initial consultations. Posters frequently describe hour-long intake calls where providers walked through bloodwork line by line, covered estrogen management, and fielded questions beyond the immediate scope of the visit - a contrast users draw against other telehealth clinics that reportedly rushed through onboarding. Patients in r/Menopause also highlighted the approachability of the staff after being dismissed by conventional providers. Long-term users cite reliability and few prescription errors as reasons they have stayed for multiple years, and the clinic's willingness to route prescriptions to local pharmacies (cutting costs substantially) is flagged as an underappreciated option.
+
+The most persistent complaints center on logistics and communication rather than clinical quality. Multiple posters report difficulty reaching staff through the patient portal, with email and phone cited as the only reliably responsive channels. Medication fulfillment delays - including a shipping incident affecting injectable estrogen - drew frustration in r/Menopause. Pricing through Defy's in-house pharmacy is called out as high relative to retail alternatives, and several users note the website feels more like a storefront than a medical platform. A recurring critical take is that Defy excels for patients who already understand their own protocols but offers less guidance to those who need more hand-holding.
+
+Overall, Reddit sentiment skews positive for clinical depth and long-term reliability, with operational friction being the main caveat. Signal here is reasonably strong - multiple engaged threads across several relevant subreddits.
+
+Source: aggregated Reddit discussions; individual experiences vary.

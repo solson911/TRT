@@ -1,0 +1,609 @@
+{
+  "slug": "1st-optimal",
+  "name": "1st Optimal",
+  "aliases": [
+    "1st Optimal",
+    "1stOptimal"
+  ],
+  "harvestedAt": "2026-04-23",
+  "postCount": 20,
+  "posts": [
+    {
+      "id": "1ox1hx",
+      "subreddit": "Planetside",
+      "title": "We're very close to a PTS deployment for the 1st optimization update...",
+      "selftext": "",
+      "score": 110,
+      "num_comments": 83,
+      "url": "https://www.reddit.com/r/Planetside/comments/1ox1hx/were_very_close_to_a_pts_deployment_for_the_1st/",
+      "comments": [
+        {
+          "body": "An important second tweet in that series: they still want to release it to live on the 30^th this month.",
+          "score": 30,
+          "author": "Manae"
+        },
+        {
+          "body": "The 30th is a week and a half away. Even if the patch goes to PTS tomorrow, can they realistically gather test data and feedback, make changes and test them in time to make that date?\n\nI have a bad feeling about this.",
+          "score": 17,
+          "author": "Wolf-Blitzer"
+        },
+        {
+          "body": "they won't stop until Smeds happy",
+          "score": 11,
+          "author": "Van_Dax"
+        },
+        {
+          "body": "The *1st* optimization update?",
+          "score": 10,
+          "author": "indiecore"
+        },
+        {
+          "body": "I just hope they get back to fixing the game balance and adding in some more content soon.  The game is really starting to feel a bit stale.  ",
+          "score": 9,
+          "author": "Locke66"
+        },
+        {
+          "body": "PRAISE HIGBY\n\n^^^and ^^^all ^^^others ^^^involved",
+          "score": 7,
+          "author": "ClearlyaWizard"
+        },
+        {
+          "body": "I think it's time we organize a series of large community battles on PTS. Set dates and times for both US and EU servers, probably over the weekend. At least 2 per region, so they gather enough data.\n\nSay Thursday and Saturday, 7pm GMT for the EU servers, 7pm PT for US?",
+          "score": 5,
+          "author": "MrEclectic"
+        },
+        {
+          "body": "More like they need to do all the optimzation, and then release Hossin and Nexus as \"expansions\" so they can advertise \"RISE OF THE NEXUS\" or something. They cant just advertise the game. They got to do it WoW does it. Treat an expo like a new game. ",
+          "score": 5,
+          "author": "Phrygen"
+        },
+        {
+          "body": "How are the optimizations going to be deployed?  Is there going to be waves of optimizations for PTS and then one large one for the live server?",
+          "score": 4,
+          "author": "NaumNaumers2"
+        },
+        {
+          "body": "After all this optimization is complete soe better have a huge advertising campaign similar to battlefield 4 if u have seen them on youtube. So many people have given up on planetside because of preformance issues, being confused or just getting bored. The servers really need to gain more people and i really hope with some advertising and the optimization that planetside will become successful again",
+          "score": 4,
+          "author": "Ticklemonster25"
+        },
+        {
+          "body": "[**@mhigby**](https://twitter.com/mhigby):\n&gt;[2013-10-21 18:11:01 UTC](https://twitter.com/mhigby/status/392352339001999361)\n\n&gt;We're very close to a PTS deployment for the 1st optimization update, will have a forum post up this afternoon w/ more details!\n\n----\n\n[^[Mistake?]](http://www.reddit.com/message/compose/?to=TweetPoster&amp;subject=Error%20Report&amp;message=http://reddit.com/1ox1hx%0A%0APlease leave above link unaltered.)\n[^[Suggestion]](http://www.reddit.com/message/compose/?to=TweetPoster&amp;subject=Suggestion)\n[^[FAQ]](http://www.reddit.com/r/TweetPoster/comments/13relk/)\n[^[Code]](https://github.com/buttscicles/TweetPoster)\n[^[Issues]](https://github.com/buttscicles/TweetPoster/issues)\n",
+          "score": 4,
+          "author": "TweetPoster"
+        },
+        {
+          "body": "When I first started playing around January the game felt smooth. I had stable 40 fps in big fights and this was with a laptop. But with every update and hotfix it just kept going downhill. With the latest hotfix from last week the game went downright ugly. I'm beginning to think this is all a clever ploy by SOE to make it as bad as it can get right before an \"optimization\" since all they have to do is revert back to old vanilla files and everyone will jump in joy and circlejerk each other forgetting the optimization they are seeing is just a rollback :P",
+          "score": 4,
+          "author": "BigOrbitalStrike"
+        },
+        {
+          "body": "The devs have said that there is no \"definitive\" date when the optimization patch will hit live. It is very likely that there will be plenty more things to fine tune after the patch rolls out on PTS.\n\nWhat you should take away from this tweet is that it's coming, and soon!",
+          "score": 3,
+          "author": "xManlyManManson"
+        },
+        {
+          "body": "YES! WE CAN ALL ENJOY INDAR AT 80 FPS YES! ITS HAPPENING",
+          "score": 3,
+          "author": "ArcFault"
+        },
+        {
+          "body": "nerf TR, release hossin = win",
+          "score": 2,
+          "author": "nitramlondon"
+        }
+      ]
+    },
+    {
+      "id": "1dglw0u",
+      "subreddit": "SunnySideGame",
+      "title": "Tips for Early SunnySide Success!",
+      "selftext": "I thought it would be a good idea to drop some tips for success, especially since this isn't a game that holds your hand (...it has a bit of a learning curve).\n\n1. Optimization issues:  the devs are currently working on a patch, but reportedly if you turn off vsync and reduce the shadow quality that really helps.  There's also an issue with some graphics cards (and if you have issues you should... join the discord for more information/fixes).  Also, make sure your antivirus software is behaving itself by allowing SunnySide through or turning it off while playing.  \\[1st optimization patch has been released as of June 18, 2024\\]\n2. Read the dialogue, read the tutorials, and look over the game settings.  A lot of the negative steam reviews are easily because they didn't pay attention to any of this.   ie:  World feels empty (explained by the story), I got stuck (there's an option on the pause screen that fixes you), music is too loud (there's a literal preset for ambience focused rather than music focused... and there's sliders).\n3. Join the discord if you have questions.  The devs are super involved and lots of people there in general are super willing to help! \\[Edit: The discord server is called RainyGames\\]\n4. The in-game phone has a journal app.  The quest showing on your screen probably isn't your only quest! You can change the active quest on the HUD by changing the page the journal is on.\n5. Some items are locked behind story progression.  So keep checking that journal and you will unlock things.   You get a lot of items for free from the NPCs (&gt;!bicycle, rice cooker, hot plate, machete, pickaxe, drone!&lt; etc) if you just keep following those quests!\n6. Time stops, on purpose, at about 9:15pm on day 1.  This is your best opportunity for early in-game money.  There are loads of berry bushes &amp; mushrooms around the map.  Forage everything you can find.  I save the mushrooms for eating, and sell the berries.  Without even trying hard to find every berry b",
+      "score": 69,
+      "num_comments": 89,
+      "url": "https://www.reddit.com/r/SunnySideGame/comments/1dglw0u/tips_for_early_sunnyside_success/",
+      "comments": [
+        {
+          "body": "Hey there great tips! I played for round 15h now and barely touched the surface lol.\n\nMaybe another to add:\nI always use the \"hangouts\" feature when I want to fast travel. Need to get to the city while at the beach/lab? Just text someone and ask to hang out with them in the city.\nYou boost the friendship and get there in a blink of an eye!",
+          "score": 10,
+          "author": "Vaaskael"
+        },
+        {
+          "body": "Honestly, the biggest issue for me was the mini-map compared to the whole map; it was somewhat confusing trying to navigate and figure out which way to go",
+          "score": 8,
+          "author": "donkeyjr"
+        },
+        {
+          "body": "Yea, it's kind of like IRL Japan where the small downs are dying because people are choosing to live in cities instead for better opportunities.",
+          "score": 8,
+          "author": "peppermintblue"
+        },
+        {
+          "body": "I believe there is a setting in settings to set the mini map as north facing... or to just turn it off.   I'm directionally challenged, and it took a little bit to orientate myself and know by instinct which direction to go.",
+          "score": 7,
+          "author": "peppermintblue"
+        },
+        {
+          "body": "So far I have found him at the pier by the ocean..... and think I saw him at Sunday's farmers market, but don't quote me.",
+          "score": 6,
+          "author": "peppermintblue"
+        },
+        {
+          "body": "Ohhhh okay, thanks for this!! I was wondering why the world/town felt emptyish. Or like the villagers never really do anything or go anywhere. So that's explained in the story/dialogue at some point?? I''ve only been able to play a few days so far so I'm still getting a feel for the game and learning all the things. These tips are great!",
+          "score": 4,
+          "author": "OneFishToRuleThemAll"
+        },
+        {
+          "body": "Ooooooh yea, that's kinda what I've already been doing recently without even thinking about it.  Thanks for pointing that out!",
+          "score": 3,
+          "author": "peppermintblue"
+        },
+        {
+          "body": "Hey, so the \"stick garden barrier\" is enough to keep critters out?",
+          "score": 3,
+          "author": "tinyimagination"
+        },
+        {
+          "body": "Thank you so much! I\u2019m so excited to play!",
+          "score": 3,
+          "author": "prncsrainbow"
+        },
+        {
+          "body": "I know there are sexualities in the game, but is there a list of character's preferences up yet? \n\nI'm curious to see what characters I can romance on each playthrough.",
+          "score": 3,
+          "author": "Sata1991"
+        },
+        {
+          "body": "On the discord there is a channel called #romance-investigations and people have been working on discovering the preferences there.  A couple of charts are in the works, but not every NPCs full preferences have been figured out yet.",
+          "score": 3,
+          "author": "peppermintblue"
+        },
+        {
+          "body": "I found a butterfly on my shed wall",
+          "score": 3,
+          "author": "tinyimagination"
+        },
+        {
+          "body": "I can only help with one question, as I haven't really explored cooking yet.   Did you turn on the burner / rice cooker?  Apparently they need to be turned on....  Someone on discord had trouble cooking and this was what they missed doing.",
+          "score": 3,
+          "author": "peppermintblue"
+        },
+        {
+          "body": "Mine is just figurng out how to do anything. Make tea...alright i have tea have water, im in the kettle menu, says zero tea... \n\nOkay maybe raw tea leaves isnt the deal. Every just says dry it....okay how?! Do i need and oven? Is there a  drying rack. Why is there zero explanation!",
+          "score": 2,
+          "author": "HubristicFallacy"
+        },
+        {
+          "body": "Yep, that's the one! I didn't have the game open and couldn't remember the exact name of the fence.  lol  I made that fence when I planted my 2 potatoes &amp; 10 strawberry seeds, and not a single one got disturbed!    \nI believe the devs confirmed this on Discord as well.",
+          "score": 2,
+          "author": "peppermintblue"
+        }
+      ]
+    },
+    {
+      "id": "19cv283",
+      "subreddit": "Testosterone",
+      "title": "Do you mind sharing the cost of your TRT?",
+      "selftext": "Hello all, been lurking for a while. I\u2019m starting TRT this week, having completed my lab work, donating blood, completing medical history, and meeting with a physician. In retrospect, I should have talked to more than one clinic to evaluate their process and fees. I live in Denver, so multiple business are available. TRT is in the mail, 10 weeks @ $675. Also $125 for HCG. Having not looked at other clinics and their prices (yes, I realize this was foolish) I am wondering if some of you would enlighten me as to whether this is somewhat of an \u2018across the board\u2019 cost of treatment, if I\u2019m getting hosed and should look around, or it\u2019s reasonable. I appreciate your time responding because at the core of my question is my own laziness, so thank you \ud83d\ude4f\n\n\nEdit: Update\nThank you all so much for taking the time to respond. As I suspected I\u2019m definitely getting taken here. I just ask my coordinator for a copy of my script so that I can go my own way about getting T, and y\u2019all have presented me with many great options that should save me, well, thousands of $ / year. Bless you all \ud83d\ude4f ",
+      "score": 48,
+      "num_comments": 313,
+      "url": "https://www.reddit.com/r/Testosterone/comments/19cv283/do_you_mind_sharing_the_cost_of_your_trt/",
+      "comments": [
+        {
+          "body": "So crazy what people have to pay vs UGL pricing. Definitely some gouging going on.",
+          "score": 41,
+          "author": "wy_will"
+        },
+        {
+          "body": "$20 per month for testosterone cypionate (prescribed by urologist) using Goodrx app at CVS. Labs covered by health insurance.",
+          "score": 33,
+          "author": "Ok-Obligation-9695"
+        },
+        {
+          "body": "10bucks a month. Prescribed by my dr and covered by my blue cross/blue shield.",
+          "score": 31,
+          "author": "jjc155"
+        },
+        {
+          "body": "Most don't give 2 shits, they are 1 step above drug dealers really.",
+          "score": 24,
+          "author": "frogmonster12"
+        },
+        {
+          "body": "TRTNation $150/month for T and HCG.  Includes needles and alcohol wipes. Labs are $129.  They require labs (or submit your own) at the start, at 8 weeks, and then every 6 months thereafter.  If you sign up for them, scour the internet for promo codes. I got 20% off my first two months.",
+          "score": 21,
+          "author": "localbacon"
+        },
+        {
+          "body": "&gt;\"10 weeks @ $675.\"\n\nI have about 1.5 years of trt or 2 blasts at this price from mu ugl",
+          "score": 10,
+          "author": "[deleted]"
+        },
+        {
+          "body": "Viking Therapeutic is $250 every 10 weeks. Lab work costs $125 through lab corp.",
+          "score": 9,
+          "author": "Potential_Speaker834"
+        },
+        {
+          "body": "The code get20 was working a few weeks ago still",
+          "score": 7,
+          "author": "crAckZ0p"
+        },
+        {
+          "body": "Like 15 dollars per month through walgreens with insurance. 25 dollars every 3 months for doctor follow up.",
+          "score": 6,
+          "author": "Beefcrustycurtains"
+        },
+        {
+          "body": "Omg samesies!!!!",
+          "score": 5,
+          "author": "[deleted]"
+        },
+        {
+          "body": "Same",
+          "score": 5,
+          "author": "ihatefear83843"
+        },
+        {
+          "body": "$90 for 10ml vial Cypionate which should last me \\~5 months, $25 for hundred syringes and alcohol wipes. All of the preceding was self funded. Labs $150 (but this also included a full STI panel) and I'll get another set of labs in about 6 weeks. The lab work is through regular doctor and insurance. $415/5 = $53/month",
+          "score": 5,
+          "author": "NightHawkFliesSolo"
+        },
+        {
+          "body": "What does UGL stand for?",
+          "score": 4,
+          "author": "hello_yousif"
+        },
+        {
+          "body": "Same",
+          "score": 4,
+          "author": "seifer717"
+        },
+        {
+          "body": "Yeah, same, I think I pay $5 for 3 weeks of 200mg a week.",
+          "score": 3,
+          "author": "AddendumDifferent719"
+        }
+      ]
+    },
+    {
+      "id": "1qvwwzi",
+      "subreddit": "losangeleskings",
+      "title": "Who else is terrified Holland is about to leverage our future for Panarin?",
+      "selftext": "I fully expect 2/3 of Laffy, Greentree, and George to be gone, along with at least one 1st round pick. They brought Holland in to win *now*, he doesn\u2019t care how he affects this franchise 3 years from now.",
+      "score": 34,
+      "num_comments": 55,
+      "url": "https://www.reddit.com/r/losangeleskings/comments/1qvwwzi/who_else_is_terrified_holland_is_about_to/",
+      "comments": [
+        {
+          "body": "How about Greentree and a 3rd?",
+          "score": 33,
+          "author": "zzx101"
+        },
+        {
+          "body": "It would destroy any future this team has if Greentree and George both left. As great as it would be to have Panarin, we would give up too much for a team that is in no way, shape, or form capable of winning it this season.",
+          "score": 28,
+          "author": "Blutroyale-_-"
+        },
+        {
+          "body": "Turns out it was just Greentree and a pick.  Smooth moves Holland.",
+          "score": 21,
+          "author": "aughtrocktalk"
+        },
+        {
+          "body": "A team that leads the league in overtime losses isn\u2019t a team I expect to contend for the cup. That being said a few teams have gotten hot at the right moment and won the cup after making the right trade.\n\nI don\u2019t think adding panarin will make this Kings roster that team. I\u2019ll happily be wrong.",
+          "score": 16,
+          "author": "piddlesthethug"
+        },
+        {
+          "body": "Our future is already fucked either way. Might as well make it less boring with a talent like Panarin",
+          "score": 12,
+          "author": "tdbauer97"
+        },
+        {
+          "body": "That is what they took.",
+          "score": 9,
+          "author": "aztecannie99"
+        },
+        {
+          "body": "Sounds like TB may be the front runner on him, so probably not a lot to worry about.",
+          "score": 8,
+          "author": "ConsciousTitle"
+        },
+        {
+          "body": "Remember when there was talk of poaching Jon Cooper to coach the Kings, but he wanted to be GM as well so the whole prospect kinda fizzled out?\n\nhttps://preview.redd.it/g2sc3v9gyihg1.jpeg?width=1080&amp;format=pjpg&amp;auto=webp&amp;s=ae64497d3f96274e5e3198e303b5713dee634b56",
+          "score": 7,
+          "author": "UncommonPizzazz"
+        },
+        {
+          "body": "\ud83e\udd1e",
+          "score": 7,
+          "author": "ZiggyPalffyLA"
+        },
+        {
+          "body": "Seriously, well done. I was a little worried about Greentree\u2019s development progression anyway.",
+          "score": 6,
+          "author": "ZiggyPalffyLA"
+        },
+        {
+          "body": "It would be like when we got Kovalchuk",
+          "score": 6,
+          "author": "GB_Alph4"
+        },
+        {
+          "body": "We just traded for him",
+          "score": 6,
+          "author": "atreyu1rckr"
+        },
+        {
+          "body": "I genuinely don\u2019t think he\u2019ll go to a team that isn\u2019t a cup contender. We don\u2019t have anything to worry about",
+          "score": 5,
+          "author": "Rosemary-Sea-Salt"
+        },
+        {
+          "body": "I think we as fans overrate our prospects massively. Greentree by most accounts doesn\u2019t project to be anything more than a decent NHLer. I would have no compunction trading him for a player of Panarin\u2019s caliber, especially because this organization is not interested in blowing it up and starting a genuine rebuild under this leadership, so we might as well try and acquire someone who can actually score.\n\nThat being said I have no interest in Panarin because there are some pretty concerning allegations re: his behavior toward women. So yes, I suppose I\u2019m terrified, but not for the same reasons you are.",
+          "score": 4,
+          "author": "DalekEvan"
+        },
+        {
+          "body": "It won't surprise me if he does something stupid like this. This guy is going to end up setting us back and hopefully when he gets fired Luc is shown the door alongside hime",
+          "score": 4,
+          "author": "72FJ"
+        }
+      ]
+    },
+    {
+      "id": "1q0huid",
+      "subreddit": "Texans",
+      "title": "It's in the teams hands - would we rather play Jacksonville as the 6th/7th seed, or the Ravens WITH Lamar at the 5th seed??",
+      "selftext": "Lamar looks to play this weekend, will most likely be healthier come playoffs. Rivers out, Jags playing starters (no chance they lose to Titans), Texans....?\n\nBasically, the only variable left to decide is in the title - who do we have the best chance against?\n\nI think I personally have a hangup against Lamar - he seems to be the Texans Kryptonite. Have we EVER beat him??\n\nThe Texans have the power to make their own choice here, most likely. Odds are saying the Ravens beat the Steelers and claim the division. With Rivers out, I think Texans can take care of business with the FTC. If we win...its the Ravens next week. If we lose, its the Jags.\n\nAs much as I HATE this sort of approach and result, I may be leaning towards resting our starters and throwing the game against the Colts so we can get the Jags week one.  I think we have a better chance advancing against the Jags in Jacksonville than we do against the Ravens with Lamar in Baltimore.\n\nThoughts? Why would you feel differently? Am I missing something?",
+      "score": 20,
+      "num_comments": 135,
+      "url": "https://www.reddit.com/r/Texans/comments/1q0huid/its_in_the_teams_hands_would_we_rather_play/",
+      "comments": [
+        {
+          "body": "Do everything we can to win the division and have a home game.",
+          "score": 84,
+          "author": "No-String-3978"
+        },
+        {
+          "body": "No... I think the Ravens have been a mess, Lamar has not looked good all season pretty much. Much rather play a team with an injured QB.",
+          "score": 52,
+          "author": "thecarlesscat"
+        },
+        {
+          "body": "I do not fear any teams in the playoffs. I dont care who we face, when we face them or on what field. We are battle tested and have the best defense in the league.",
+          "score": 21,
+          "author": "htownballa1"
+        },
+        {
+          "body": "At the end of the day thats still Lamar tho injured or not he is still capable of taking over a game.",
+          "score": 13,
+          "author": "SonsChild"
+        },
+        {
+          "body": "Man but the Ravens are scary to me.  The whole week leading up to the game will be nothing but how we destroyed their injury riddled team earlier in the year.  I'm not sure I want to play them at their house when they have a HUGE chip on their shoulder.  It's the one team I don't want to face.\n\nAt least with the Jags the narrative be about how both our teams have been great down the stretch and it'll be a great game and either team can come out with a win.  It'll be a tough game, but mentally I don't think either team will have an edge.",
+          "score": 11,
+          "author": "[deleted]"
+        },
+        {
+          "body": "anyone who says we stand a better chance against the Jags than the Ravens right now is insane lol. Jags probably the best team in the AFC right now",
+          "score": 9,
+          "author": "Colonel_Janus"
+        },
+        {
+          "body": "That'd land us with one of Buffalo / LA / Jacksonville, no?",
+          "score": 8,
+          "author": "Jeff__Skilling"
+        },
+        {
+          "body": "This. \n\nTheres also outside chance if other wildcard games are upsets you can host Divisional or Championship game \n\nAs 5th seed you have no chance to host a Divisional game.",
+          "score": 8,
+          "author": "jiggeroni"
+        },
+        {
+          "body": "This right here\u2026.\u00a0",
+          "score": 8,
+          "author": "swakid8"
+        },
+        {
+          "body": "If we don\u2019t win the south I\u2019d say ravens &gt; Steelers &gt; pats &gt;&gt; jags in terms of preference, mostly based inversely on how difficult I imagine the matchups would be and consistency of the team \n\nEven if Lamar is has our number in the playoffs they have not been playing anywhere near like the same ravens team that swept us in 2023 and essentially shut us out in 2024. Im not gonna vehemently underestimate them, but they have been a mess. \n\nAlso, the ravens defense is simply not good, dare I say awful at times. That would be the one upper 4 matchup we would have the most offensive affinity against. And our defense this year has been able to keep mobile QBs at a manageable level as well\n\nOnly other major factor is that it\u2019ll probably be cold as hell which sucks but regardless of who we play in the AFCN that seems unavoidable unless the weather turns out nice \n\nTLDR: I\u2019d most like to play the ravens",
+          "score": 8,
+          "author": "Magistrate18D"
+        },
+        {
+          "body": "Listen, I always say there are only three NFL players I get nervous about when it comes to the Texans: T.Y. Hilton, Patrick Mahomes, and Derrick Henry.\n\nI know yall wanna play badass but if theres any chance to get away from Derick Henry I\u2019ll take it",
+          "score": 8,
+          "author": "Such-Television4624"
+        },
+        {
+          "body": "I think people are underestimating the mental side of the game a bit here and don't understand the motivation the Ravens will have to play us again.",
+          "score": 6,
+          "author": "[deleted]"
+        },
+        {
+          "body": "I\u2019d rather take whoever wins the AFC North. Steelers/Ravens have been inconsistent all year, Jags are feeling themselves right now and I\u2019d love to see a Jags/Texans AFC Championship game.",
+          "score": 6,
+          "author": "1337m347"
+        },
+        {
+          "body": "That would shut up the \"AFC south is a weak division\" pundits!",
+          "score": 6,
+          "author": "BulgyBananaHammock_"
+        },
+        {
+          "body": "https://preview.redd.it/lfptfgebxnag1.jpeg?width=1290&amp;format=pjpg&amp;auto=webp&amp;s=b0f0c1d3070295679440802b62e128217cd7405d\n\n\"Lamar has not looked good all season\"....have some shame",
+          "score": 5,
+          "author": "goke89"
+        }
+      ]
+    },
+    {
+      "id": "18lytx9",
+      "subreddit": "ouraring",
+      "title": "1st \u201cOptimal\u201d Breathing Regularity",
+      "selftext": "I\u2019ve been wearing the Oura ring since Sept 1. My breathing regularity is normally \u201cFair\u201d, but often dips to \u201cPay Attention\u201d if I\u2019ve had a few drinks. I\u2019ve recorded a handful of \u201cGood\u201d (honestly 6-7 total nights). Last night was my first \u201cOptimal\u201d. \n\nAny insights from people diagnosed with sleep apnea?  I\u2019ve always snored. I had 1 sleep test back in 2011, and it came back as \u201ceverything is fine\u201d. Curious what others might think.",
+      "score": 2,
+      "num_comments": 2,
+      "url": "https://www.reddit.com/r/ouraring/comments/18lytx9/1st_optimal_breathing_regularity/",
+      "comments": [
+        {
+          "body": "If your breathing regularity is being flagged by Oura as fair and pay attention, it cannot hurt to talk to a sleep and breathing specialist again. I lot of time has passed since 2011. \n\nThat said, look at your other data too, are you seeing corresponding HR spikes or low HRV that closely align with breathing irregularity marks\u2026 if so, that can be another indicator of a spike in adrenaline to get your body sleep to start breathing again. \n\nFull Disclosure: I no longer suffer from SA, I was diagnosed with SA about 20 years ago after 3 sleep studies. I used a cpap for over a decade, (loved it really because it was the first complete sleeps I had in years) and then due to other life factors got serious about my health and lost 70lbs, started eating better and doing a lot of running and strength training. Toward the end of the weight loss, the cpap was actually keeping me wide awake at night with the extra forced O2. Two more sleep studies concluded I no longer was experiencing SA breathing incidents and variations.  \n\nSleep is something I take very seriously (health wise) now.",
+          "score": 2,
+          "author": "scott_weidig"
+        },
+        {
+          "body": "Thanks. I do see some corresponding data between the three. Was planning on asking my primary for another sleep study in Jan. Appreciate the insight.",
+          "score": 1,
+          "author": "G8R_HATR"
+        }
+      ]
+    },
+    {
+      "id": "1qwtnji",
+      "subreddit": "1stoptimal",
+      "title": "Struggling with Energy and Weight After 30? Here\u2019s What You Might Be Missing",
+      "selftext": "As we get older, one of the biggest challenges many of us face is managing our weight, energy, and overall health. It\u2019s easy to chalk it up to \u201cgetting older\u201d and resign yourself to feeling tired or gaining weight around the middle, but I\u2019m here to tell you it doesn\u2019t have to be that way.\n\nAt 1st Optimal, we focus on **functional medicine** and **personalized health solutions** to help high-achieving adults, especially those of us in our 30s, 40s, and beyond, optimize our hormones, energy, and weight. It\u2019s all about **getting to the root causes** rather than just managing symptoms.\n\nHere\u2019s a big takeaway: **hormones play a major role** in weight management. As we age, things like cortisol (stress hormone) and thyroid hormones can become imbalanced, making it harder to lose or maintain weight, even if you\u2019re hitting the gym and eating right. Hormonal shifts can also leave us feeling drained, foggy, and less motivated to work out.\n\nBut the good news is, these imbalances can be corrected. Through advanced diagnostics and **lab-driven insights**, we can uncover where your hormones might be out of sync and develop a **customized plan** to bring them back into balance. This could involve everything from **nutrition and lifestyle changes** to targeted therapies like hormone replacement (for those in perimenopause or menopause) or peptide therapies.\n\nWhat has worked for you in managing energy or hormones as you've hit your 40s? Have you made any changes to your routine that have helped you feel more energized or shed those extra pounds?",
+      "score": 2,
+      "num_comments": 1,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1qwtnji/struggling_with_energy_and_weight_after_30_heres/",
+      "comments": [
+        {
+          "body": "1st Optimal has been great for me.",
+          "score": 1,
+          "author": "TheeBuddylee1"
+        }
+      ]
+    },
+    {
+      "id": "1gbalwt",
+      "subreddit": "trt",
+      "title": "Anyone heard of 1stOptimal ?",
+      "selftext": "\nCame across their page while looking to switch providers, can\u2019t find anything on them probably because they are a new company. They are a membership based provider with decent pricing but would like to know if they are legitimate. ",
+      "score": 3,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/trt/comments/1gbalwt/anyone_heard_of_1stoptimal/",
+      "comments": []
+    },
+    {
+      "id": "1g9rsdi",
+      "subreddit": "trt",
+      "title": "1stoptimal",
+      "selftext": "Has anyone used them? It\u2019s a membership based clinic.",
+      "score": 3,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/trt/comments/1g9rsdi/1stoptimal/",
+      "comments": []
+    },
+    {
+      "id": "1q5m07k",
+      "subreddit": "1stoptimal",
+      "title": "Gut &amp; Hormone Health Tips for Women | 1st Optimal",
+      "selftext": "**Balancing Gut Health and Hormones in Your 30s &amp; 40s: What\u2019s Really Going On?**\n\nIt\u2019s no secret, midlife brings its share of changes. If you're in your 30s or 40s, you might already be feeling the effects of hormone shifts, whether it's fatigue, weight fluctuations, or those stubborn mood swings. But here's a piece of the puzzle that's often overlooked: **gut health**.\n\nThe connection between gut health and hormones is often talked about in vague terms, but there's real science behind it. Our gut does more than just digest food\u2014it plays a crucial role in regulating hormones, influencing everything from **estrogen metabolism** to **insulin sensitivity**. And as we age, an imbalanced gut can contribute to hormonal imbalances that affect everything from energy to fat storage.\n\nSo, what\u2019s really happening in our gut as we get older? Well, for one, the balance of good vs. bad bacteria in our digestive system can start to shift, especially during perimenopause or menopause for women. This can lead to **leaky gut**, inflammation, and poor nutrient absorption, all of which impact hormone function.\n\nHere\u2019s a quick overview of how gut health can throw off your hormones:\n\n1. **Estrogen and Gut Health**: Your gut plays a role in **estrobolome**, which helps metabolize estrogen. A poor gut balance can lead to estrogen dominance, potentially causing weight gain, mood swings, and more.\n2. **Cortisol Regulation**: Chronic stress is a biggie. High cortisol levels can wreak havoc on both gut health and hormone balance. If you\u2019re not managing your stress, you could be affecting your entire metabolic system.\n3. **Thyroid Function**: Around 20% of the thyroid hormone conversion happens in the gut. If your gut is inflamed or dysregulated, it may hinder thyroid performance, leading to low energy and metabolism issues.\n\nThe good news is that by targeting **gut health optimization**, you can see significant improvements in hormone balance, mood, and energy. From the right probiotic str",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1q5m07k/gut_hormone_health_tips_for_women_1st_optimal/",
+      "comments": []
+    },
+    {
+      "id": "1irjl5a",
+      "subreddit": "jiujitsu",
+      "title": "Optimize Your Life With \"1st Optimal\" (Episode 351)",
+      "selftext": "",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/jiujitsu/comments/1irjl5a/optimize_your_life_with_1st_optimal_episode_351/",
+      "comments": []
+    },
+    {
+      "id": "1iiog2j",
+      "subreddit": "1stoptimal",
+      "title": "1st Optimal Podcast",
+      "selftext": "",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1iiog2j/1st_optimal_podcast/",
+      "comments": []
+    },
+    {
+      "id": "1r8aig3",
+      "subreddit": "1stoptimal",
+      "title": "Managing Weight and Hormones After 30: What\u2019s Working for You?",
+      "selftext": "As we age, hormone changes often make it harder to manage weight, energy, and overall health. At 1st Optimal, we\u2019ve seen how things like elevated cortisol, low testosterone, or thyroid imbalances can throw off our bodies\u2019 ability to lose weight or maintain energy, even with the same diet and exercise routines.\n\nBy using advanced diagnostics, we pinpoint these issues and create personalized plans that address the root causes, from hormone optimization to lifestyle tweaks. The results? More consis",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1r8aig3/managing_weight_and_hormones_after_30_whats/",
+      "comments": []
+    },
+    {
+      "id": "1r7gj4m",
+      "subreddit": "1stoptimal",
+      "title": "The Essential Guide to Vitamin D: Why It\u2019s Key to Your Health (and What You Might Be Missing)",
+      "selftext": "Vitamin D is often called the \"sunshine vitamin\" and for good reason. It\u2019s one of the most essential nutrients for hormone regulation, immunity, bone health, and even mood. But here\u2019s the thing: most of us are probably not getting enough of it.\n\nStudies show that a large percentage of the population, especially those living in northern latitudes or with limited sun exposure, are deficient in Vitamin D. Even if you\u2019re eating well and taking supplements, you might still not be getting the optimal ",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1r7gj4m/the_essential_guide_to_vitamin_d_why_its_key_to/",
+      "comments": []
+    },
+    {
+      "id": "1r3toin",
+      "subreddit": "1stoptimal",
+      "title": "Why Insulin Sensitivity Matters for Your Fitness &amp; Health Goals \u2013 The Secret to Muscle Growth, Fat Loss, and Hormone Balance",
+      "selftext": "As we age, staying in top shape becomes more challenging, but not for the reasons most people think. It\u2019s not just about lifting more weight or running longer. One of the hidden players in the game is insulin sensitivity. If you\u2019re in your 30s or 40s and struggling with stubborn weight, energy crashes, or even muscle recovery, it might be time to focus on this often-overlooked aspect of health.\n\nHere\u2019s the deal: Insulin isn\u2019t just about controlling blood sugar. It plays a huge role in muscle gro",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1r3toin/why_insulin_sensitivity_matters_for_your_fitness/",
+      "comments": []
+    },
+    {
+      "id": "1r07omb",
+      "subreddit": "1stoptimal",
+      "title": "Best Places to Buy Testosterone Injections Online (Safely &amp; Legally)",
+      "selftext": "I\u2019ve been seeing the same question pop up a lot in fitness and health circles lately, especially from people in their late 30s to early 50s: *\u201cAt what point do hormones actually matter for energy, fat loss, and performance?\u201d*\n\nShort answer: usually earlier than people think.\n\nBy the time someone hits their late 30s or 40s, things like low energy, stubborn fat, poor recovery, sleep issues, or tanking motivation often get blamed on stress, aging, or \u201cjust life.\u201d Sometimes that\u2019s true. A lot of the",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1r07omb/best_places_to_buy_testosterone_injections_online/",
+      "comments": []
+    },
+    {
+      "id": "1qxy4y0",
+      "subreddit": "1stoptimal",
+      "title": "How Testosterone Replacement Therapy Can Boost Energy and Longevity for Men Over 40",
+      "selftext": "As we hit our 40s, many of us start noticing subtle shifts in our bodies, lower energy, less muscle mass, and that overall \"sluggish\" feeling we can't seem to shake. For some men, this can point to a drop in testosterone levels, a natural part of aging but one that can affect everything from mental clarity to physical performance.\n\nTestosterone replacement therapy (TRT) has been a game-changer for many in my practice, especially for those struggling with fatigue, weight gain, and even mood swing",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1qxy4y0/how_testosterone_replacement_therapy_can_boost/",
+      "comments": []
+    },
+    {
+      "id": "1rckljv",
+      "subreddit": "1stoptimal",
+      "title": "Your Complete Telehealth TRT Program Setup Guide",
+      "selftext": "",
+      "score": 2,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/1stoptimal/comments/1rckljv/your_complete_telehealth_trt_program_setup_guide/",
+      "comments": []
+    },
+    {
+      "id": "1gbesl8",
+      "subreddit": "Testosterone",
+      "title": "Provider legitimacy information ",
+      "selftext": "Has anyone heard of a new provider called 1stOptimal? Can\u2019t find anything on them besides their new socials and website. Prices are par but hesitant to send information .",
+      "score": 1,
+      "num_comments": 1,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1gbesl8/provider_legitimacy_information/",
+      "comments": []
+    },
+    {
+      "id": "1qu1p79",
+      "subreddit": "u_jiujitsuPT",
+      "title": "TRT, Peptides, and Gut Health With Allison From 1st Optimal (Episode 400)",
+      "selftext": "",
+      "score": 1,
+      "num_comments": 0,
+      "url": "https://www.reddit.com/r/u_jiujitsuPT/comments/1qu1p79/trt_peptides_and_gut_health_with_allison_from_1st/",
+      "comments": []
+    }
+  ]
+}

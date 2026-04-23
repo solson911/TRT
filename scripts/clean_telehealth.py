@@ -27,6 +27,14 @@ DROP = {
     # brands with no extracted price AND no useful pages - nothing to stand on
     'marek-health': 'only 1 scraped page, all data fields null',
     'innovative-men': 'local Seattle clinic with no telehealth price data',
+    # pharmacy-discount membership, not a prescribing TRT clinic
+    'hrt-club': 'discount pharmacy membership, does not prescribe; directs users elsewhere',
+}
+
+# Brands whose extracted priceMin is clearly a membership/consult fee rather than
+# real TRT drug cost. Blank out the misleading price; card falls back to "Quote only".
+PRICE_NULLIFY = {
+    'thrive-lab': '$40 is membership fee only; medications are separate $80+/mo',
 }
 
 
@@ -81,6 +89,8 @@ def main():
             lo, hi = prices
             if b.get('priceMin') != lo or b.get('priceMax') != hi:
                 b['priceMin'], b['priceMax'] = lo, hi
+        elif slug in PRICE_NULLIFY:
+            b['priceMin'], b['priceMax'] = None, None
 
         kept.append(b)
 

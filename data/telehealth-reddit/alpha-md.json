@@ -1,0 +1,213 @@
+{
+  "slug": "alpha-md",
+  "name": "Alpha MD",
+  "aliases": [
+    "AlphaMD",
+    "alpha-md",
+    "alphamd.org"
+  ],
+  "harvestedAt": "2026-04-23",
+  "postCount": 20,
+  "posts": [
+    {
+      "id": "1qr19df",
+      "subreddit": "ClaudeAI",
+      "title": "Claude Code + Obsidian - How I use it &amp; Short Guide",
+      "selftext": "[Cluade Code \\&lt;3 Obsidian](https://i.redd.it/jsgje5a9jggg1.gif)\n\n**EDIT 20/03/26:** **CPR Skills** for Claude Code are now live here [https://github.com/EliaAlberti/cpr-compress-preserve-resume/tree/main](https://github.com/EliaAlberti/cpr-compress-preserve-resume/tree/main) Go and grab the **/compress, /preserve and /resume** skills which I talked about and explained in this article.   \n  \nRead more about them here [https://www.reddit.com/r/ClaudeAI/comments/1rzr5uw/cpr\\_for\\_claude\\_code\\_3\\_skills\\_1\\_memory/](https://www.reddit.com/r/ClaudeAI/comments/1rzr5uw/cpr_for_claude_code_3_skills_1_memory/)  \n  \nPlease consider a \u2b50\ufe0f on the repo if you found it useful, it would mean a lot! \ud83d\ude42\n\n  \nI've spent the last year trying to solve a problem that's been bugging me since I started taking notes seriously.\n\nYou capture information. Meetings, ideas, project details, random thoughts. It all goes somewhere and then... it kind of disappears into the void. You know it's there. You just can't find it when you need it or worse, you forget it exists entirely.\n\nI tried tagging systems. Folder structures. Daily notes. Weekly reviews. Some of it helped. Most of it became another thing to maintain.\n\nThen I connected Claude Code to my Obsidian vault and I didn't just connect it, I built a system around it. Custom skills. Session memory. Automatic syncing. The whole package.\n\nNow when I start a work session, my AI assistant already knows what I was doing yesterday. It can search through months of notes in seconds. It creates and organises files without me touching anything and when I'm done, it saves everything we discussed so future me (or future AI) can pick up exactly where I left off.\n\nHere's how to build one.\n\n# Part 1 - The Philosophy\n\nBefore we get into setup, I want to explain the thinking behind it. Because the tools only matter if the structure makes sense.\n\n# Write Once, Surface Everywhere\n\nHere's the core idea:\n\nYou should never have to enter the same information twice.",
+      "score": 305,
+      "num_comments": 88,
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1qr19df/claude_code_obsidian_how_i_use_it_short_guide/",
+      "comments": []
+    },
+    {
+      "id": "1o2h3hm",
+      "subreddit": "Menopause",
+      "title": "Anyone found a legit telehealth clinic for HRT? I\u2019m so over being dismissed",
+      "selftext": "I\u2019ve been to a couple of OB-GYNs lately, and both basically told me I\u2019m *too young* for perimenopause, even though I\u2019ve got all the classic stuff: awful sleep, constant heat and sweating, dry skin, dry eyes, and zero libido.\n\nI\u2019m 39, and honestly, I\u2019ve felt like crap for a year. My GP\u2019s advice was to see a neurologist for sleep issues. \ud83d\ude43 Like\u2026 how is that helpful?\n\nSo now I\u2019m looking into telehealth or concierge-style clinics that actually deal with hormones and don\u2019t just push birth control or antidepressants.\n\nI don\u2019t mind paying out of pocket if it\u2019s worth it \u2014 maybe something in the $100\u2013$150/month range.  \nHas anyone here found a legit HRT provider online that actually listens and adjusts treatment based on *you* instead of just your age or labs?\u00a0\n\nAppreciate the advice!",
+      "score": 150,
+      "num_comments": 248,
+      "url": "https://www.reddit.com/r/Menopause/comments/1o2h3hm/anyone_found_a_legit_telehealth_clinic_for_hrt_im/",
+      "comments": []
+    },
+    {
+      "id": "18gcs58",
+      "subreddit": "trt",
+      "title": "Well everyone I tried...and I got ridiculed",
+      "selftext": "I am a family medicine resident doctor and I had a conversation with my attending about how the testosterone normal range doesn't take into account age specific ranges and is ridiculous. I am 25 and mentioned I had levels that are 350 and although that is technically \"normal\" it is not for my age. I have been struggling with anxiety and depression for a while now and was put on an SSRI although I knew TRT would be the answer. I was bullied and made fun of and told there are no guidelines to back up the fact that giving a trial of testosterone for patients with low-normal values is warranted and it's just enforcing steroid drug seeking behaviour. I realized I could not argue with her and realized how badly informed some doctors are. I want to apologize to so many patients who dealt with incompetent physicians who were given an SSRI like me and were told that it's more likely psychological and I should seek therapy for depression and anxiety.  \n\nI am feeling super fatigued, no erections, no drive or motivation, horrible anxiety and bad outlook on life. I could be losing my job. I had to contact an online clinic who directly prescribed me TRT which I will be starting next week. I can't wait to start feeling better.  Wanted to share this as I think so many people need to realize this.  I don't even care about the muscle, I just want to be well enough to be able to care well for others.",
+      "score": 102,
+      "num_comments": 150,
+      "url": "https://www.reddit.com/r/trt/comments/18gcs58/well_everyone_i_triedand_i_got_ridiculed/",
+      "comments": []
+    },
+    {
+      "id": "1qg5ofo",
+      "subreddit": "Testosterone",
+      "title": "250mg testosterone only",
+      "selftext": "Guess the body weight but feeling super strong and finally like a man after having test levels less than 300 for years\u2026 ",
+      "score": 100,
+      "num_comments": 135,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1qg5ofo/250mg_testosterone_only/",
+      "comments": []
+    },
+    {
+      "id": "16kfx22",
+      "subreddit": "Testosterone",
+      "title": "TRT Providers: Ask Us Anything (#14)",
+      "selftext": "Good morning [r/Testosterone](https://www.reddit.com/r/Testosterone/)\n\nWe are an account that does AMAs on [r/TRT](https://www.reddit.com/r/TRT/) &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n&amp;#x200B;\n\nThe last AMA weekend we did here had \\~30k views &amp; 300 comments, it was great to answer so many questions. We'll be pulling a few questions from those previous threads that didn't make it in time for that weekend and answer them here.\n\n&amp;#x200B;\n\nDisclaimer: Even if you ask specific questions regarding your health, answers will be provided in a general sense, and should not be considered medical advice.\n\nWho are we? We're a telemedicine Men's Health company passionate about hormone optimization: [https://www.alphamd.org/](https://www.alphamd.org/)\n\n&amp;#x200B;\n\nWe've gone from $149 a month to **$129 a month**, still no hidden fees, same great service. If you're looking for a consultation, you can use \"**RedditAlphas**\" is turned back on this weekend to get **20% off**.\n\n\\_\\_\\_\n\nOur [YouTube Channel](https://www.youtube.com/channel/UCiJwNOkWD0OUuTPT6Q5nSgg). \n\nPrevious threads: [#1](https://www.reddit.com/r/trt/comments/107pva9/ama_ask_professionals_alphamd/), [#2](https://www.reddit.com/r/trt/comments/10dxspj/ama_ask_professionals_alphamd_2/), [#3](https://www.reddit.com/r/trt/comments/10m773e/ama_ask_professionals_alphamd_3/), [#4](https://www.reddit.com/r/trt/comments/112meat/ama_ask_a_trt_company_alphamd_4/), [#5](https://www.reddit.com/r/trt/comments/11ek555/ama_sarms_with_trt_providers_alphamd_5/), [#6](https://www.reddit.com/r/trt/comments/11txkiz/ama_trt_providers_6/), [#7](https://www.reddit.com/r/trt/comments/12veqnl/ama_trt_providers_7/), [#8](https://www.reddit.com/r/Testosterone/comments/1334nsf/trt_providers_ask_us_anything/), [#9](htt",
+      "score": 58,
+      "num_comments": 353,
+      "url": "https://www.reddit.com/r/Testosterone/comments/16kfx22/trt_providers_ask_us_anything_14/",
+      "comments": []
+    },
+    {
+      "id": "19cv283",
+      "subreddit": "Testosterone",
+      "title": "Do you mind sharing the cost of your TRT?",
+      "selftext": "Hello all, been lurking for a while. I\u2019m starting TRT this week, having completed my lab work, donating blood, completing medical history, and meeting with a physician. In retrospect, I should have talked to more than one clinic to evaluate their process and fees. I live in Denver, so multiple business are available. TRT is in the mail, 10 weeks @ $675. Also $125 for HCG. Having not looked at other clinics and their prices (yes, I realize this was foolish) I am wondering if some of you would enlighten me as to whether this is somewhat of an \u2018across the board\u2019 cost of treatment, if I\u2019m getting hosed and should look around, or it\u2019s reasonable. I appreciate your time responding because at the core of my question is my own laziness, so thank you \ud83d\ude4f\n\n\nEdit: Update\nThank you all so much for taking the time to respond. As I suspected I\u2019m definitely getting taken here. I just ask my coordinator for a copy of my script so that I can go my own way about getting T, and y\u2019all have presented me with many great options that should save me, well, thousands of $ / year. Bless you all \ud83d\ude4f ",
+      "score": 48,
+      "num_comments": 313,
+      "url": "https://www.reddit.com/r/Testosterone/comments/19cv283/do_you_mind_sharing_the_cost_of_your_trt/",
+      "comments": []
+    },
+    {
+      "id": "1e83g6f",
+      "subreddit": "Testosterone",
+      "title": "TRT Providers: Ask Us Anything (#24). HCG Edition.",
+      "selftext": "Good morning\u00a0[](https://www.reddit.com/r/Testosterone/),\n\nWe are an account that does AMAs on\u00a0[](https://www.reddit.com/r/TRT/)\u00a0&amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.  \n\n\nThis month we'd like to focus on **HCG**, **Human Chorionic Gonadotropin**. A popular addition to TRT care as a means to maintain fertility while on treatment, address cosmetic testicle size reduction on TRT, and in some cases perform HCG-monotherapy for patients who would prefer to avoid direct Testosterone. With more &amp; more companies TRT companies being unable to source this medication (TRT Nation being the latest), we've seen a surge in requests for information around it this month. It seemed like a good time to answer questions &amp; share knowledge.\n\n  \nDisclaimer: Even if you ask specific questions regarding your health, answers will be provided in a general sense, and should not be considered medical advice.\n\nWho are we? We're a telemedicine Men's Health company passionate about hormone optimization:\u00a0[https://www.alphamd.org/](https://www.alphamd.org/)\n\nWe've gone to $129 a month, still no hidden fees, same great service. If you're looking for a consultation, you can use \"**RedditAlphas**\" turned back on this weekend to get\u00a0**20% off**. We proudly offer a 20% discount for Veterans &amp; active military.\n\n\\_\\_\\_\n\nOur\u00a0[YouTube Channel](https://www.youtube.com/channel/UCiJwNOkWD0OUuTPT6Q5nSgg).\n\nPrevious threads:\u00a0[#1](https://www.reddit.com/r/trt/comments/107pva9/ama_ask_professionals_alphamd/),\u00a0[#2](https://www.reddit.com/r/trt/comments/10dxspj/ama_ask_professionals_alphamd_2/),\u00a0[#3](https://www.reddit.com/r/trt/comments/10m773e/ama_ask_professionals_alphamd_3/),\u00a0[#4](https://www.reddit.com/r/trt/comments/112meat/ama_ask_a_trt_company_alphamd_4/),\u00a0[#5](https://www.reddit.com/",
+      "score": 47,
+      "num_comments": 168,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1e83g6f/trt_providers_ask_us_anything_24_hcg_edition/",
+      "comments": []
+    },
+    {
+      "id": "1anogb8",
+      "subreddit": "trt",
+      "title": "TRT Providers: Ask Us Anything (#20)",
+      "selftext": "Good morning [r/trt](https://www.reddit.com/r/trt/),\n\n&amp;#x200B;\n\nWe are an account that does AMAs on [r/Testosterone](https://www.reddit.com/r/Testosterone/) &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n&amp;#x200B;\n\nDisclaimer: Even if you ask specific questions regarding your health, answers will be provided in a general sense, and should not be considered medical advice.\n\nWe're also happy to answer questions about Semaglutide &amp; Tirzepatiode (brand names of Wegovy, Ozempic, Zepbound,&amp; Mounjaro). We've started working with them &amp; have not only injectables but also oral (sublingual tablets) medication on the table. [https://www.alphamd.org/semaglutide](https://www.alphamd.org/semaglutide)\n\n&amp;#x200B;\n\nWho are we? We're a telemedicine Men's Health company passionate about hormone optimization: [https://www.alphamd.org/](https://www.alphamd.org/)\n\nWe've gone to $129 a month, still no hidden fees, same great service. If you're looking for a consultation, you can use \"**RedditAlphas**\" turned back on this weekend to get **20% off**. We've recently launched a 20% discount for Veterans &amp; active military.\n\n&amp;#x200B;\n\n\\_\\_\\_\n\nOur [YouTube Channel](https://www.youtube.com/channel/UCiJwNOkWD0OUuTPT6Q5nSgg).\n\nPrevious threads: [#1](https://www.reddit.com/r/trt/comments/107pva9/ama_ask_professionals_alphamd/), [#2](https://www.reddit.com/r/trt/comments/10dxspj/ama_ask_professionals_alphamd_2/), [#3](https://www.reddit.com/r/trt/comments/10m773e/ama_ask_professionals_alphamd_3/), [#4](https://www.reddit.com/r/trt/comments/112meat/ama_ask_a_trt_company_alphamd_4/), [#5](https://www.reddit.com/r/trt/comments/11ek555/ama_sarms_with_trt_providers_alphamd_5/), [#6](https://www.reddit.com/r/trt/comments/11txkiz/ama_trt_providers_6/), [#7](https://www.r",
+      "score": 40,
+      "num_comments": 219,
+      "url": "https://www.reddit.com/r/trt/comments/1anogb8/trt_providers_ask_us_anything_20/",
+      "comments": []
+    },
+    {
+      "id": "1jmsfse",
+      "subreddit": "Testosterone",
+      "title": "TRT Providers: Ask Us Anything (#28) - $98/Month New Pricing",
+      "selftext": "Good morning\u00a0r/Testosterone,\n\nWe are an account that does AMAs on\u00a0r/trt &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions? This weekend we plan to focus on questions related to fitness &amp; weight loss, so if you have any, shoot them out!\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n**Update:** Thank you everyone to participated this weekend, we are wrapping things up! Feel free to leave additional questions &amp; we will quote/reply to them in the next AMA weekend.\n\nWe've recently added some additional pricing options to help with the tight economy. In addition to normal monthly rates, we now offer 6 month &amp; 12 month options, going as low as $98 a month before veteran's discounts. Feel free to give us some feedback on how this looks to you, we're only launching it today: [https://www.alphamd.org/](https://www.alphamd.org/)\n\nDuring this AMA weekend, we're offering\u00a0**50%**\u00a0your initial consultation for TRT. Just use \"**RedditAlphas**\" during registration. We also proudly offer a 20% discount for Veterans &amp; active military.\n\nDisclaimer: Even if you ask specific questions regarding your health, answers will be provided in a general sense, and should not be considered medical advice.\n\n\\_\\_\\_\n\nOur\u00a0[YouTube Channel](https://www.youtube.com/channel/UCiJwNOkWD0OUuTPT6Q5nSgg).\n\nPrevious threads:\u00a0[\\#1](https://www.reddit.com/r/trt/comments/107pva9/ama_ask_professionals_alphamd/),\u00a0[\\#2](https://www.reddit.com/r/trt/comments/10dxspj/ama_ask_professionals_alphamd_2/),\u00a0[\\#3](https://www.reddit.com/r/trt/comments/10m773e/ama_ask_professionals_alphamd_3/),\u00a0[\\#4](https://www.reddit.com/r/trt/comments/112meat/ama_ask_a_trt_company_alphamd_4/),\u00a0[\\#5](https://www.reddit.com/r/trt/comments/11ek555/ama_sarms_with_trt_providers_alphamd_5/),\u00a0[\\#6](https://www.reddit.com/r/trt/comments/11txkiz/ama_trt_providers_6/),\u00a0[\\#7](",
+      "score": 35,
+      "num_comments": 146,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1jmsfse/trt_providers_ask_us_anything_28_98month_new/",
+      "comments": []
+    },
+    {
+      "id": "1e83g8t",
+      "subreddit": "trt",
+      "title": "TRT Providers: Ask Us Anything (#24). HCG Edition.",
+      "selftext": "Good morning\u00a0r/trt,\n\nWe are an account that does AMAs on\u00a0r/Testosterone &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.  \n\n\nThis month we'd like to focus on **HCG**, **Human Chorionic Gonadotropin**. A popular addition to TRT care as a means to maintain fertility while on treatment, address cosmetic testicle size reduction on TRT, and in some cases perform HCG-monotherapy for patients who would prefer to avoid direct Testosterone. With more &amp; more companies TRT companies being unable to sell this medication (TRT Nation being the latest), we've seen a surge in requests for information around it this month. It seemed like a good time to answer questions &amp; share knowledge.\n\n  \nDisclaimer: Even if you ask specific questions regarding your health, answers will be provided in a general sense, and should not be considered medical advice.\n\nWho are we? We're a telemedicine Men's Health company passionate about hormone optimization:\u00a0[https://www.alphamd.org/](https://www.alphamd.org/)\n\nWe've gone to $129 a month, still no hidden fees, same great service. If you're looking for a consultation, you can use \"**RedditAlphas**\" turned back on this weekend to get\u00a0**20% off**. We proudly offer a 20% discount for Veterans &amp; active military.\n\n\\_\\_\\_\n\nOur\u00a0[YouTube Channel](https://www.youtube.com/channel/UCiJwNOkWD0OUuTPT6Q5nSgg).\n\nPrevious threads:\u00a0[#1](https://www.reddit.com/r/trt/comments/107pva9/ama_ask_professionals_alphamd/),\u00a0[#2](https://www.reddit.com/r/trt/comments/10dxspj/ama_ask_professionals_alphamd_2/),\u00a0[#3](https://www.reddit.com/r/trt/comments/10m773e/ama_ask_professionals_alphamd_3/),\u00a0[#4](https://www.reddit.com/r/trt/comments/112meat/ama_ask_a_trt_company_alphamd_4/),\u00a0[#5](https://www.reddit.com/r/trt/comments/11ek555/ama_sarms_with_trt_providers_alpham",
+      "score": 31,
+      "num_comments": 272,
+      "url": "https://www.reddit.com/r/trt/comments/1e83g8t/trt_providers_ask_us_anything_24_hcg_edition/",
+      "comments": []
+    },
+    {
+      "id": "1m0l0w6",
+      "subreddit": "Testosterone",
+      "title": "Online TRT Clinics....who do you trust?",
+      "selftext": "Looking for recommendations for people who have not started TRT and want the option of dealing solely with an online TRT clinic or provider.  Understanding that it might not be covered by insurance at all, who do some of you use?  Or did everyone start with testing in person and then only move online for supplies? If you do use an online TRT clinic how is their pricing after you've actually gone through with seeing them and getting past the initial web site promises?",
+      "score": 33,
+      "num_comments": 117,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1m0l0w6/online_trt_clinicswho_do_you_trust/",
+      "comments": []
+    },
+    {
+      "id": "1fwx8cl",
+      "subreddit": "trt",
+      "title": "TRT Providers: Ask Us Anything (#25)",
+      "selftext": "Good morning\u00a0r/trt,\n\nWe are an account that does AMAs on\u00a0r/Testosterone &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\nAs a relevant topic to changing regulations, we still offer **HCG**,\u00a0**Human Chorionic Gonadotropin**. A popular addition to TRT care as a means to maintain fertility whi",
+      "score": 28,
+      "num_comments": 285,
+      "url": "https://www.reddit.com/r/trt/comments/1fwx8cl/trt_providers_ask_us_anything_25/",
+      "comments": []
+    },
+    {
+      "id": "1689mig",
+      "subreddit": "Testosterone",
+      "title": "TRT Providers: Ask Us Anything (#13)",
+      "selftext": " Good morning [r/Testosterone](https://www.reddit.com/r/Testosterone/)\n\nWe are an account that does AMAs on [r/TRT](https://www.reddit.com/r/TRT/) &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n&amp;#x200B;\n\nDisclaimer: Even if you ask specific questions regarding your health, answers wil",
+      "score": 26,
+      "num_comments": 159,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1689mig/trt_providers_ask_us_anything_13/",
+      "comments": []
+    },
+    {
+      "id": "1baqujb",
+      "subreddit": "trt",
+      "title": "TRT Providers: Ask Us Anything (#21)",
+      "selftext": "Good morning [r/trt](https://www.reddit.com/r/trt/),\n\n&amp;#x200B;\n\nWe are an account that does AMAs on [r/Testosterone](https://www.reddit.com/r/Testosterone/) &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n&amp;#x200B;\n\nDisclaimer: Even if you ask specific questions regarding your healt",
+      "score": 25,
+      "num_comments": 181,
+      "url": "https://www.reddit.com/r/trt/comments/1baqujb/trt_providers_ask_us_anything_21/",
+      "comments": []
+    },
+    {
+      "id": "1kz13ai",
+      "subreddit": "Testosterone",
+      "title": "My experience in the first 9 weeks of beginning TRT",
+      "selftext": "I'll begin by stating this, I am in no way recommending this is how YOU should do this. Just documenting how i did it, and how it's gone for me. This is not medical advice. \n\nIm making this post to give a realistic expectation on what SOME can expect from starting TRT. I say some, because everyone will respond differently. Some guys can get the full benefits on 80mg a week and others, some of which I know personally, need 300mg a week just to be in the top normal range. Everyone is different. I ",
+      "score": 38,
+      "num_comments": 19,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1kz13ai/my_experience_in_the_first_9_weeks_of_beginning/",
+      "comments": []
+    },
+    {
+      "id": "1baquhp",
+      "subreddit": "Testosterone",
+      "title": "TRT Providers: Ask Us Anything (#21)",
+      "selftext": "Good morning [r/Testosterone](https://www.reddit.com/r/Testosterone/),\n\n&amp;#x200B;\n\nWe are an account that does AMAs on [r/TRT](https://www.reddit.com/r/TRT/) &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n&amp;#x200B;\n\nDisclaimer: Even if you ask specific questions regarding your healt",
+      "score": 24,
+      "num_comments": 176,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1baquhp/trt_providers_ask_us_anything_21/",
+      "comments": []
+    },
+    {
+      "id": "1rzy4dn",
+      "subreddit": "Testosterone",
+      "title": "TRT Providers: Ask Us Anything (#36) | Switching TRT Providers? $78/Month Pricing",
+      "selftext": "Welcome to AlphaMD\u2019s **TRT Myth Madness AMA: What\u2019s Real and What\u2019s Not About Testosterone Therapy**\n\n**Starts:** Saturday at 2PM EST  \n**Runs through:** Sunday at 6PM EST  \n**Ask questions anytime. We\u2019ll be answering throughout the weekend.**\n\nThis AMA is focused on **debunking the biggest myths about testosterone replacement therapy**, while also helping men navigate a changing TRT landscape.\n\nWe\u2019ll be discussing questions like:\n\n* Does TRT cause infertility?\n* Once I start, do I have to stay ",
+      "score": 25,
+      "num_comments": 99,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1rzy4dn/trt_providers_ask_us_anything_36_switching_trt/",
+      "comments": []
+    },
+    {
+      "id": "1899p8q",
+      "subreddit": "Testosterone",
+      "title": "TRT Providers: Ask Us Anything (#17)",
+      "selftext": "Good morning [r/Testosterone](https://www.reddit.com/r/Testosterone/)\n\nWe are an account that does AMAs on [r/TRT](https://www.reddit.com/r/TRT/) &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n&amp;#x200B;\n\nDisclaimer: Even if you ask specific questions regarding your health, answers will",
+      "score": 23,
+      "num_comments": 128,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1899p8q/trt_providers_ask_us_anything_17/",
+      "comments": []
+    },
+    {
+      "id": "1689mnl",
+      "subreddit": "trt",
+      "title": "TRT Providers: Ask Us Anything (#13)",
+      "selftext": " Good morning [r/TRT](https://www.reddit.com/r/TRT/),\n\nWe are an account that does AMAs on [r/Testosterone](https://www.reddit.com/r/Testosterone/) &amp; here about Testosterone &amp; all things TRT. Are you interested in TRT? Are you new to it? Do you have questions?\n\nAsk us, we're happy to help. Your questions will be answered by our licensed medical providers (MD/DO, NP, PA) throughout the weekend.\n\n&amp;#x200B;\n\nDisclaimer: Even if you ask specific questions regarding your health, answers wi",
+      "score": 22,
+      "num_comments": 157,
+      "url": "https://www.reddit.com/r/trt/comments/1689mnl/trt_providers_ask_us_anything_13/",
+      "comments": []
+    },
+    {
+      "id": "1jtzj8w",
+      "subreddit": "Testosterone",
+      "title": "What is the best online testosterone clinic that doesn\u2019t over price",
+      "selftext": "",
+      "score": 25,
+      "num_comments": 71,
+      "url": "https://www.reddit.com/r/Testosterone/comments/1jtzj8w/what_is_the_best_online_testosterone_clinic_that/",
+      "comments": []
+    }
+  ]
+}

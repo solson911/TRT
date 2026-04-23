@@ -1,0 +1,9 @@
+## What Reddit users say
+
+Ageless Men's Health draws a modest but consistent pool of Reddit discussion, with most posts focused on specific patient experiences rather than broad praise. Long-term users report that the clinic accepts insurance at many locations, offers flexible in-clinic injection schedules, and can accommodate split-dose protocols. Posters note that initial onboarding is straightforward and that some locations allow self-administration after the first month, which is a practical plus for patients who want convenience.
+
+The negatives come through more clearly and repeatedly. Multiple posters describe Ageless as a volume-driven operation that treats patients as numbers rather than individuals - dosage changes appear to follow internal thresholds rather than personal history or patient input. Complaints center on protocol management: erratic dose adjustments without clear communication, limited estrogen management expertise, and a reliance on "stay the course" guidance when patients report worsening symptoms. One detailed account describes a difficult estrogen-related experience that required outside urological care to resolve. Several others mention that bloodwork panels are narrower than they would like, and at least one poster flagged high out-of-pocket costs for self-pay patients. Insurance coverage makes the clinic viable for some, but those paying cash find the value questionable compared to online alternatives.
+
+The overall Reddit signal on Ageless Men's Health is mixed but skews cautious. It appears workable for straightforward, stable cases - particularly for insured patients near a convenient location - but posters with more complex hormonal profiles report frustration with the level of clinical attention available.
+
+Source: aggregated Reddit discussions; individual experiences vary.

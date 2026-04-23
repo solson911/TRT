@@ -39,6 +39,7 @@ function renderMd(md) {
 }
 
 const reviewHtml = renderMd(brand.review);
+const redditHtml = renderMd(brand.redditSummary);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -173,6 +174,13 @@ const description = brand.tagline
                 </ul>
               </div>
             )}
+          </div>
+        )}
+
+        {brand.redditSummary && (
+          <div class="mt-10 rounded-2xl bg-brand-50/60 ring-1 ring-brand-100 p-6">
+            <div set:html={redditHtml}></div>
+            <p class="mt-3 text-xs text-ink-500">Reddit themes summarized by TRT Index editors from aggregated discussions across r/trt, r/Testosterone, and related subreddits. We do not reproduce user posts verbatim.</p>
           </div>
         )}
 

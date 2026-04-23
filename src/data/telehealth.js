@@ -35,6 +35,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_FILE = path.join(__dirname, '..', '..', 'data', 'telehealth.json');
 const REVIEWS_DIR = path.join(__dirname, '..', '..', 'data', 'telehealth-reviews');
+const REDDIT_DIR = path.join(__dirname, '..', '..', 'data', 'telehealth-reddit');
 
 let cached = null;
 
@@ -51,6 +52,10 @@ export function loadTelehealth() {
     const md = path.join(REVIEWS_DIR, `${b.slug}.md`);
     if (fs.existsSync(md)) {
       b.review = fs.readFileSync(md, 'utf8');
+    }
+    const reddit = path.join(REDDIT_DIR, `${b.slug}.md`);
+    if (fs.existsSync(reddit)) {
+      b.redditSummary = fs.readFileSync(reddit, 'utf8');
     }
   }
   // Only surface brands that have at least a review body OR a price signal.
