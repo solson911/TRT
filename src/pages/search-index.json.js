@@ -1,6 +1,6 @@
-// Static search index for the homepage typeahead. Generated at build time.
-// Format is compact positional arrays to keep the payload small:
-//   clinics: [name, city, stateAbbr, stateSlug, citySlug, slug, score]
+// Static search index for the homepage typeahead + radius search. Generated
+// at build time. Format is compact positional arrays to keep the payload small:
+//   clinics: [name, city, stateAbbr, stateSlug, citySlug, slug, score, lat, lng]
 //   cities:  [cityName, stateAbbr, stateSlug, citySlug, clinicCount]
 import { loadClinics, isPermanentlyClosed, primaryChain } from '../data/clinics.js';
 import { STATE_BY_SLUG } from '../data/states.js';
@@ -26,6 +26,8 @@ export async function GET() {
       c.citySlug,
       c.slug,
       Math.round(score * 10) / 10,
+      typeof c.lat === 'number' ? Math.round(c.lat * 1e4) / 1e4 : null,
+      typeof c.lng === 'number' ? Math.round(c.lng * 1e4) / 1e4 : null,
     ]);
   }
 

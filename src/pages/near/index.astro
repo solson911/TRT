@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+---
+<BaseLayout title="Find TRT clinics near you - TRT Index" description="Search TRT clinics by ZIP code and radius.">
+  <section class="container-prose pt-14 pb-6">
+    <nav class="text-sm text-ink-500 mb-3">
+      <a href="/" class="hover:text-ink-900">Home</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-ink-900">Search near me</span>
+    </nav>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-ink-900">
+      TRT clinics near <span id="near-heading-zip" class="text-brand-700">you</span>
+    </h1>
+    <p class="mt-3 text-ink-600" id="near-subhead">Enter a ZIP code and pick a radius.</p>
+  </section>
+
+  <section class="container-prose pb-4">
+    <form id="near-form" class="flex flex-wrap items-end gap-3 bg-white rounded-xl ring-1 ring-ink-100 p-4">
+      <div class="flex-1 min-w-[140px]">
+        <label for="near-zip" class="block text-xs font-medium text-ink-500 mb-1">ZIP code</label>
+        <input
+          id="near-zip"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]{5}"
+          maxlength="5"
+          placeholder="e.g. 75201"
+          class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100"
+          required
+        />
+      </div>
+      <div>
+        <label for="near-radius" class="block text-xs font-medium text-ink-500 mb-1">Within</label>
+        <select
+          id="near-radius"
+          class="rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100"
+        >
+          <option value="10">10 miles</option>
+          <option value="25" selected>25 miles</option>
+          <option value="50">50 miles</option>
+          <option value="100">100 miles</option>
+        </select>
+      </div>
+      <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-white font-semibold hover:bg-brand-700 transition-colors">
+        <Icon name="search" size={18} /> Find clinics
+      </button>
+    </form>
+  </section>
+
+  <section class="container-prose pb-24">
+    <div id="near-status" class="text-sm text-ink-500 mb-3"></div>
+    <ul id="near-results" class="grid grid-cols-1 md:grid-cols-2 gap-4"></ul>
+    <div id="near-empty" class="hidden mt-8 p-6 rounded-xl bg-white ring-1 ring-ink-100 text-center">
+      <p class="text-ink-600">No clinics within that radius.</p>
+      <p class="mt-1 text-sm text-ink-500">Try expanding to 50 or 100 miles, or <a href="/clinics/" class="text-brand-700 hover:text-brand-800 font-semibold">browse by state</a>.</p>
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    const form = document.getElementById('near-form');
+    const zipInput = document.getElementById('near-zip');
+    const radiusSelect = document.getElementById('near-radius');
+    const status = document.getElementById('near-status');
+    const results = document.getElementById('near-results');
+    const empty = document.getElementById('near-empty');
+    const heading = document.getElementById('near-heading-zip');
+    const subhead = document.getElementById('near-subhead');
+
+    let zipsPromise = null;
+    let searchPromise = null;
+    function loadZips() { return zipsPromise ||= fetch('/zip-index.json').then((r) => r.json()); }
+    function loadSearch() { return searchPromise ||= fetch('/search-index.json').then((r) => r.json()); }
+
+    function haversineMi(lat1, lon1, lat2, lon2) {
+      const R = 3958.8;
+      const toRad = (d) => (d * Math.PI) / 180;
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+      return 2 * R * Math.asin(Math.sqrt(a));
+    }
+
+    function escape(s) { return String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+    function stars(rating) {
+      if (!rating) return '';
+      const parts = [];
+      for (let i = 1; i <= 5; i++) {
+        const cls = rating >= i ? 'text-amber-500' : rating >= i - 0.5 ? 'text-amber-500/60' : 'text-ink-200';
+        parts.push(`<svg class="${cls} inline-block" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>`);
+      }
+      return parts.join('');
+    }
+
+    function renderCards(rows, zip) {
+      results.innerHTML = '';
+      if (!rows.length) { empty.classList.remove('hidden'); return; }
+      empty.classList.add('hidden');
+      const frag = document.createDocumentFragment();
+      for (const r of rows) {
+        const li = document.createElement('li');
+        const [name, city, stateAbbr, stateSlug, citySlug, slug, score, lat, lng, dist, rating, reviews] = r;
+        const url = `/clinics/${stateSlug}/${citySlug}/${slug}/`;
+        li.innerHTML = `
+          <a href="${url}" class="card-lift group block rounded-2xl border border-ink-100 bg-white p-5 h-full">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <h3 class="font-display text-lg font-semibold leading-tight text-ink-900 group-hover:text-brand-700">${escape(name)}</h3>
+                <p class="mt-1 text-sm text-ink-500">${escape(city)}, ${escape(stateAbbr)}</p>
+              </div>
+              <div class="shrink-0 text-right">
+                <div class="inline-flex items-center gap-1 rounded-full bg-brand-50 text-brand-700 px-2.5 py-1 text-xs font-semibold">${dist.toFixed(1)} mi</div>
+                ${rating ? `<div class="mt-1">${stars(rating)}</div>` : ''}
+              </div>
+            </div>
+          </a>
+        `;
+        frag.appendChild(li);
+      }
+      results.appendChild(frag);
+    }
+
+    async function run(zip, radius) {
+      zip = String(zip).padStart(5, '0');
+      if (!/^\d{5}$/.test(zip)) { status.textContent = 'Enter a valid 5-digit ZIP.'; return; }
+      status.textContent = 'Loading...';
+      try {
+        const [zips, idx] = await Promise.all([loadZips(), loadSearch()]);
+        const origin = zips[zip];
+        if (!origin) { status.textContent = `ZIP ${zip} not found.`; return; }
+        const [oLat, oLng] = origin;
+        const r = Number(radius);
+        const within = [];
+        for (const row of idx.clinics) {
+          const lat = row[7], lng = row[8];
+          if (lat == null || lng == null) continue;
+          const d = haversineMi(oLat, oLng, lat, lng);
+          if (d <= r) within.push([...row, d, null, null]);
+        }
+        within.sort((a, b) => a[9] - b[9]);
+        heading.textContent = zip;
+        subhead.textContent = `${within.length} clinic${within.length === 1 ? '' : 's'} within ${r} miles of ${zip}.`;
+        status.textContent = '';
+        renderCards(within.slice(0, 60), zip);
+        const qs = new URLSearchParams({ zip, r: String(r) });
+        history.replaceState(null, '', `/near/?${qs.toString()}`);
+      } catch (e) {
+        status.textContent = 'Something went wrong. Try again.';
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      run(zipInput.value.trim(), radiusSelect.value);
+    });
+
+    const params = new URLSearchParams(location.search);
+    const qZip = params.get('zip');
+    const qR = params.get('r');
+    if (qZip) {
+      zipInput.value = qZip;
+      if (qR && ['10','25','50','100'].includes(qR)) radiusSelect.value = qR;
+      run(qZip, radiusSelect.value);
+    }
+  })();
+  </script>
+</BaseLayout>
