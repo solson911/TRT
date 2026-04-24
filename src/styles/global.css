@@ -44,3 +44,47 @@ body { min-height: 100vh; }
 /* Subtle card lift */
 .card-lift { transition: transform 160ms ease, box-shadow 160ms ease; }
 .card-lift:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -12px rgb(14 17 26 / 0.18); }
+
+/* Clinic directory cards — crisper delineation against the ink-50 page bg.
+   Resting state has a soft two-layer shadow + ring; hover deepens and
+   switches the left accent rail to brand tone. */
+.clinic-card {
+  position: relative;
+  transition: transform 180ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  box-shadow:
+    0 1px 2px rgb(14 17 26 / 0.05),
+    0 2px 8px -3px rgb(14 17 26 / 0.06);
+}
+.clinic-card::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--color-brand-100);
+  transition: background-color 200ms ease, width 200ms ease;
+}
+.clinic-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-brand-200);
+  box-shadow:
+    0 1px 2px rgb(14 17 26 / 0.06),
+    0 18px 32px -16px rgb(10 58 107 / 0.22);
+}
+.clinic-card:hover::before {
+  background: var(--color-brand-500);
+  width: 4px;
+}
+.clinic-card:focus-visible {
+  outline: none;
+  border-color: var(--color-brand-400);
+  box-shadow:
+    0 0 0 4px rgb(26 82 131 / 0.18),
+    0 18px 32px -16px rgb(10 58 107 / 0.22);
+}
+.clinic-card:focus-visible::before {
+  background: var(--color-brand-500);
+  width: 4px;
+}

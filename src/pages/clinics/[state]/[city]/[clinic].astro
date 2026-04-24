@@ -351,7 +351,7 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
         </h2>
         <a href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/`} class="text-sm font-medium text-brand-700 hover:text-brand-800">See all →</a>
       </div>
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
         {siblings.map((c) => (
           <li><ClinicCard clinic={c} /></li>
         ))}

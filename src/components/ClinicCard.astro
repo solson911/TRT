@@ -68,19 +68,19 @@ const monogram = (clinic.name || '?')
 ---
 <a
   href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/${clinic.slug}/`}
-  class="card-lift group block rounded-2xl border border-ink-100 bg-white p-5 h-full"
+  class="clinic-card group block rounded-2xl border border-ink-100 bg-white pl-6 pr-5 py-5 h-full"
 >
   <div class="flex items-start gap-4">
-    <div class="shrink-0 relative h-12 w-12 rounded-xl bg-ink-50 ring-1 ring-ink-100 overflow-hidden grid place-items-center">
-      <span class="absolute inset-0 grid place-items-center font-display text-sm font-semibold text-ink-500">{monogram}</span>
+    <div class="shrink-0 relative h-14 w-14 rounded-xl bg-ink-50 ring-1 ring-ink-100 overflow-hidden grid place-items-center">
+      <span class="absolute inset-0 grid place-items-center font-display text-base font-semibold text-ink-500">{monogram}</span>
       <img
         src={faviconPath}
         alt=""
-        width="40"
-        height="40"
+        width="48"
+        height="48"
         loading="lazy"
         decoding="async"
-        class="relative h-10 w-10 object-contain"
+        class="relative h-12 w-12 object-contain"
         onerror="this.style.display='none'"
       />
     </div>
@@ -141,7 +141,7 @@ const monogram = (clinic.name || '?')
       ))}
     </div>
   )}
-  <div class="mt-4 flex items-center gap-4 text-xs text-ink-500">
+  <div class="mt-4 pt-3 border-t border-ink-100 flex items-center gap-4 text-xs text-ink-500">
     {clinic.phone && (
       <span class="inline-flex items-center gap-1">
         <Icon name="phone" size={12} class="text-ink-400" />
