@@ -54,8 +54,10 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-ink-600">
           <a href="/clinics/" class="hover:text-ink-900">Find a clinic</a>
           <a href="/guides/" class="hover:text-ink-900">Guides</a>
+          <a href="/news/" class="hover:text-ink-900">News</a>
           <a href="/telehealth/" class="hover:text-ink-900">Telehealth</a>
           <a href="/about/" class="hover:text-ink-900">About</a>
+          <a href="/for-clinics/" class="inline-flex items-center rounded-lg bg-ink-900 px-3 py-1.5 text-white hover:bg-ink-700">For clinics</a>
         </nav>
       </div>
     </header>
@@ -92,13 +94,16 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
           <div class="font-semibold text-ink-900 mb-3">Site</div>
           <ul class="space-y-2 text-ink-500">
             <li><a href="/about/" class="hover:text-ink-900">About</a></li>
+            <li><a href="/news/" class="hover:text-ink-900">News & research</a></li>
             <li><a href="/guides/" class="hover:text-ink-900">All guides</a></li>
+            <li><a href="/for-clinics/" class="hover:text-ink-900">For clinics</a></li>
+            <li><a href="/terms/" class="hover:text-ink-900">Terms of service</a></li>
           </ul>
         </div>
       </div>
       <div class="border-t border-ink-100">
         <div class="container-prose py-5 text-xs text-ink-500 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          <div>© {new Date().getFullYear()} TRT Index. Informational directory - not medical advice.</div>
+          <div>© {new Date().getFullYear()} TRT Index. Informational directory; not medical advice.</div>
           <div>Always consult a licensed healthcare provider before starting testosterone therapy.</div>
         </div>
       </div>

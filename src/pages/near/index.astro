@@ -69,9 +69,14 @@ import Icon from '../../components/Icon.astro';
     const subhead = document.getElementById('near-subhead');
 
     let zipsPromise = null;
-    let searchPromise = null;
+    let metaPromise = null;
     function loadZips() { return zipsPromise ||= fetch('/zip-index.json').then((r) => r.json()); }
-    function loadSearch() { return searchPromise ||= fetch('/search-index.json').then((r) => r.json()); }
+    function loadMeta() { return metaPromise ||= fetch('/sx/meta.json').then((r) => r.json()); }
+    function loadAllShards(states) {
+      return Promise.all(states.map((s) =>
+        fetch(`/sx/s/${s}.json`).then((r) => r.json()).then((d) => d.rows || []).catch(() => [])
+      )).then((arrs) => arrs.flat());
+    }
 
     function haversineMi(lat1, lon1, lat2, lon2) {
       const R = 3958.8;
@@ -127,15 +132,16 @@ import Icon from '../../components/Icon.astro';
       if (!/^\d{5}$/.test(zip)) { status.textContent = 'Enter a valid 5-digit ZIP.'; return; }
       status.textContent = 'Loading...';
       try {
-        const [zips, idx] = await Promise.all([loadZips(), loadSearch()]);
+        const [zips, meta] = await Promise.all([loadZips(), loadMeta()]);
         const origin = zips[zip];
         if (!origin) { status.textContent = `ZIP ${zip} not found.`; return; }
         const [oLat, oLng] = origin;
         const r = Number(radius);
+        const allRows = await loadAllShards(meta.states || []);
         const within = [];
-        for (const row of idx.clinics) {
+        for (const row of allRows) {
           const lat = row[7], lng = row[8];
-          if (lat == null || lng == null) continue;
+          if (lat == null || lng == null || lat === 0 || lng === 0) continue;
           const d = haversineMi(oLat, oLng, lat, lng);
           if (d <= r) within.push([...row, d, null, null]);
         }

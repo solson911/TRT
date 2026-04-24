@@ -3,15 +3,15 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
-import { loadClinics, isPermanentlyClosed } from './src/data/clinics.js';
+import { loadClinics, isPermanentlyClosed, isHoneytoken } from './src/data/clinics.js';
 
-// Build a set of URL paths for permanently-closed clinics so we can exclude
-// them from the sitemap. Their pages still build (with noindex meta) so people
-// searching the specific clinic name still find an informational landing page,
-// but we don't want to actively advertise them to crawlers.
-const closedPaths = new Set(
+// Sitemap exclusions: permanently-closed clinics (their detail pages still
+// build with noindex so name-search still lands somewhere informative) and
+// honeytoken/sentinel listings (kept out of search engines so they don't
+// pollute results, but still rendered in shards/listings to catch scrapers).
+const excludedPaths = new Set(
   loadClinics()
-    .filter(isPermanentlyClosed)
+    .filter((c) => isPermanentlyClosed(c) || isHoneytoken(c))
     .map((c) => `https://trtindex.com/clinics/${c.stateSlug}/${c.citySlug}/${c.slug}/`)
 );
 
@@ -23,5 +23,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [mdx(), sitemap({ filter: (page) => !closedPaths.has(page) })],
+  integrations: [mdx(), sitemap({ filter: (page) => !excludedPaths.has(page) })],
 });

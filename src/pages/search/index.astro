@@ -46,8 +46,18 @@ import Icon from '../../components/Icon.astro';
     const clinicBox = document.getElementById('search-clinics');
     const empty = document.getElementById('search-empty');
 
-    let indexPromise = null;
-    function loadIndex() { return indexPromise ||= fetch('/search-index.json').then((r) => r.json()); }
+    let metaPromise = null;
+    function loadMeta() { return metaPromise ||= fetch('/sx/meta.json').then((r) => r.json()); }
+    function loadShards(states) {
+      return Promise.all(states.map((s) =>
+        fetch(`/sx/s/${s}.json`).then((r) => r.json()).then((d) => d.rows || []).catch(() => [])
+      )).then((arrs) => arrs.flat());
+    }
+    async function loadIndex() {
+      const meta = await loadMeta();
+      const clinics = await loadShards(meta.states || []);
+      return { cities: meta.cities || [], clinics };
+    }
 
     function norm(s) { return (s || '').toLowerCase(); }
     function escape(s) { return String(s).replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }

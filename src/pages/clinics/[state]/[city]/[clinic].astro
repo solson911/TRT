@@ -5,7 +5,7 @@ import ClinicPhotos from '../../../../components/ClinicPhotos.astro';
 import ClinicReviews from '../../../../components/ClinicReviews.astro';
 import Icon from '../../../../components/Icon.astro';
 import { STATE_BY_SLUG } from '../../../../data/states.js';
-import { loadClinics, clinicsByCity, primaryChain, isBiote, isPermanentlyClosed, isTemporarilyClosed, amenities, loadWriteup } from '../../../../data/clinics.js';
+import { loadClinics, clinicsByCity, primaryChain, isBiote, isPermanentlyClosed, isTemporarilyClosed, amenities, loadWriteup, isHoneytoken } from '../../../../data/clinics.js';
 import { clinicCrumbs, breadcrumbJsonLd } from '../../../../data/breadcrumbs.js';
 
 export function getStaticPaths() {
@@ -25,6 +25,7 @@ const chain = primaryChain(clinic);
 const biote = isBiote(clinic);
 const closed = isPermanentlyClosed(clinic);
 const tempClosed = isTemporarilyClosed(clinic);
+const honeytoken = isHoneytoken(clinic);
 const amenityList = amenities(clinic);
 const writeup = loadWriteup(clinic.placeId);
 
@@ -128,8 +129,8 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
   title={closed
     ? `${clinic.name} - Permanently Closed | TRT Index`
     : `${clinic.name} - ${clinic.city}, ${stateInfo?.abbr} | TRT Index`}
-  noindex={closed}
-  jsonLd={jsonLd}
+  noindex={closed || honeytoken}
+  jsonLd={honeytoken ? [] : jsonLd}
 >
   {closed && (
     <section class="bg-amber-50 border-y border-amber-200">
@@ -138,6 +139,18 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
         <div>
           <div class="font-semibold text-amber-900">This clinic has permanently closed</div>
           <p class="text-sm text-amber-800 mt-0.5">The information below is preserved for reference. See alternative TRT clinics in {clinic.city} further down, or <a href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/`} class="underline font-medium">browse all clinics in {clinic.city}</a>.</p>
+        </div>
+      </div>
+    </section>
+  )}
+  {honeytoken && (
+    <section class="bg-rose-50 border-y border-rose-200">
+      <div class="container-prose py-4 flex items-start gap-3">
+        <Icon name="info" size={20} class="text-rose-700 mt-0.5 shrink-0" />
+        <div>
+          <div class="font-semibold text-rose-900">This is a sentinel listing</div>
+          <p class="text-sm text-rose-800 mt-0.5">This is not a real clinic. It's a watermark we publish to detect unauthorized scraping and republication of TRT Index data. If you found your way here from another site, that site is republishing our data without permission. Browse <a href={`/clinics/${clinic.stateSlug}/${clinic.citySlug}/`} class="underline font-medium">real clinics in {clinic.city}</a>.</p>
+          <p class="mt-1 text-xs text-rose-700/80 font-mono">{clinic.watermark}</p>
         </div>
       </div>
     </section>

@@ -12,3 +12,23 @@ __pycache__/
 
 # Raw scraped HTML - regeneratable; 100MB+ and not source material
 data/telehealth-raw/
+
+# Raw fetched clinic website text - regeneratable summarizer input (45MB+).
+# The clinic_writeups/ output IS committed (tiny JSON used at build time).
+data/clinic_pages/
+
+# News pipeline working state - runtime-managed by News Board, not source.
+news-pipeline/candidates/
+news-pipeline/scored/
+news-pipeline/selected/
+news-pipeline/drafts/
+news-pipeline/reviews/
+news-pipeline/reworks/
+news-pipeline/dropped/
+news-pipeline/decisions/
+news-pipeline/images/
+news-pipeline/logs/
+news-pipeline/runs/
+news-pipeline/summaries/
+news-pipeline/digests/
+news-pipeline/state.json

@@ -1,0 +1,147 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { frontmatter } = Astro.props;
+const {
+  title = 'News',
+  description = '',
+  category = 'News',
+  date,
+  image,
+  source,
+  sourceUrl,
+  author = 'TRT Index Editorial',
+} = frontmatter ?? {};
+
+const siteUrl = 'https://trtindex.com';
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+
+const articleSchema: Record<string, any> = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  headline: title,
+  description,
+  author: { '@type': 'Organization', name: author === 'TRT Index Editorial' ? 'TRT Index' : author },
+  publisher: { '@type': 'Organization', name: 'TRT Index', url: siteUrl },
+  mainEntityOfPage: canonical,
+};
+if (date) articleSchema.datePublished = new Date(date).toISOString();
+if (image) articleSchema.image = new URL(image, siteUrl).toString();
+
+const displayDate = date ? new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
+---
+<BaseLayout title={`${title} | TRT Index`} description={description} canonical={canonical} jsonLd={articleSchema}>
+  <article class="container-prose py-10 md:py-14 max-w-3xl">
+    <nav class="text-sm text-ink-500 mb-5">
+      <a href="/" class="hover:text-ink-900">Home</a>
+      <span class="mx-1.5">/</span>
+      <a href="/news/" class="hover:text-ink-900">News</a>
+    </nav>
+
+    <header class="mb-8">
+      <span class="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 uppercase tracking-wide">
+        {category}
+      </span>
+      <h1 class="mt-4 font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink-900">
+        {title}
+      </h1>
+      {description && (
+        <p class="mt-4 text-lg text-ink-600 leading-relaxed">{description}</p>
+      )}
+      <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-500">
+        <span>By <strong class="text-ink-800">{author}</strong></span>
+        {displayDate && (
+          <>
+            <span aria-hidden="true">•</span>
+            <time datetime={date}>{displayDate}</time>
+          </>
+        )}
+        {source && (
+          <>
+            <span aria-hidden="true">•</span>
+            <span>
+              Source:{' '}
+              {sourceUrl ? (
+                <a href={sourceUrl} rel="noopener nofollow" target="_blank" class="underline hover:text-ink-800">{source}</a>
+              ) : (
+                <span>{source}</span>
+              )}
+            </span>
+          </>
+        )}
+      </div>
+    </header>
+
+    {image && (
+      <figure class="mb-10">
+        <img src={image} alt="" width="1536" height="1024" class="w-full rounded-2xl ring-1 ring-ink-100" loading="eager" />
+      </figure>
+    )}
+
+    <div class="prose prose-ink max-w-none">
+      <slot />
+    </div>
+
+    <aside class="mt-14 rounded-2xl bg-ink-50 ring-1 ring-ink-100 p-6 md:p-8">
+      <h2 class="font-display text-xl font-semibold text-ink-900">Get the TRT Index briefing</h2>
+      <p class="mt-2 text-sm text-ink-700">A short weekly digest of TRT research, FDA news, and clinic trends. No spam, unsubscribe in one click.</p>
+      <form id="trt-subscribe-article" class="mt-4 flex flex-col sm:flex-row gap-3" novalidate>
+        <label class="sr-only" for="sub-email-article">Email</label>
+        <input id="sub-email-article" name="email" type="email" required autocomplete="email" placeholder="you@example.com"
+          class="flex-1 rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        <button type="submit"
+          class="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-white font-semibold hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          Subscribe
+        </button>
+      </form>
+      <p id="sub-msg-article" class="mt-3 text-sm text-ink-600 hidden"></p>
+    </aside>
+
+    <div class="mt-10 text-xs text-ink-500">
+      TRT Index publishes editorial summaries of public news and research. Nothing here is medical advice. Always consult a licensed clinician before starting testosterone therapy.
+    </div>
+  </article>
+
+  <script is:inline>
+    (function () {
+      const form = document.getElementById('trt-subscribe-article');
+      if (!form) return;
+      const msg = document.getElementById('sub-msg-article');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const email = form.querySelector('input[name="email"]').value.trim();
+        if (!email) return;
+        btn.disabled = true;
+        const originalLabel = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        msg.classList.add('hidden');
+        try {
+          const res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, source: 'news-article' }),
+          });
+          if (res.ok) {
+            msg.textContent = 'Thanks! Check your inbox for the first briefing.';
+            msg.classList.remove('hidden');
+            msg.classList.add('text-emerald-800');
+            form.reset();
+          } else {
+            const body = await res.json().catch(() => ({}));
+            msg.textContent = body.error || 'Something went wrong. Please try again.';
+            msg.classList.remove('hidden');
+            msg.classList.add('text-rose-800');
+          }
+        } catch {
+          msg.textContent = 'Network error. Please try again.';
+          msg.classList.remove('hidden');
+          msg.classList.add('text-rose-800');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+        }
+      });
+    })();
+  </script>
+</BaseLayout>

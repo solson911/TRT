@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = '2026-04-23';
+---
+<BaseLayout
+  title="Terms of Service - TRT Index"
+  description="Terms of service for TRT Index, including acceptable use, no-scraping rules, and republication policy."
+>
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="container-prose pt-14 pb-10">
+      <nav class="text-sm text-ink-500 mb-4">
+        <a href="/" class="hover:text-ink-900">Home</a>
+        <span class="mx-1.5">/</span>
+        <span class="text-ink-900">Terms of Service</span>
+      </nav>
+      <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Legal</p>
+      <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900">
+        Terms of Service
+      </h1>
+      <p class="mt-3 text-sm text-ink-500">Last updated {updated}.</p>
+    </div>
+  </section>
+
+  <section class="container-prose pb-24">
+    <article class="prose prose-ink max-w-none mt-8 text-ink-700">
+      <h2>1. About this site</h2>
+      <p>
+        TRT Index is an independent editorial directory of testosterone replacement therapy (TRT) clinics in the United States. The directory mixes publicly available business information (names, addresses, phone numbers, ratings) with our own editorial work (classification, summaries, services tags, photos, and curated review excerpts).
+      </p>
+
+      <h2>2. Not medical advice</h2>
+      <p>
+        Nothing on TRT Index is medical advice. We do not provide care, prescribe medication, or guarantee the quality of any clinic listed. Always verify a clinic's credentials and consult a licensed physician before starting any hormone therapy.
+      </p>
+
+      <h2>3. Acceptable use</h2>
+      <p>You may use TRT Index to:</p>
+      <ul>
+        <li>Find and contact clinics for your own care.</li>
+        <li>Link to individual clinic pages from articles, social posts, or personal sites.</li>
+        <li>Cite small, attributed excerpts in editorial work, with a clear backlink to the source page.</li>
+      </ul>
+
+      <h2>4. Prohibited use</h2>
+      <p>You may not, without our prior written permission:</p>
+      <ul>
+        <li>Scrape, crawl, harvest, or otherwise bulk-extract data from this site, including via headless browsers, residential proxies, or distributed request patterns.</li>
+        <li>Republish, syndicate, mirror, or sublicense the directory data (in whole or in substantial part) on any other site, app, dataset, feed, or API.</li>
+        <li>Use TRT Index data to train, fine-tune, or evaluate machine learning models, including large language models and embedding models.</li>
+        <li>Resell access to TRT Index data or build a competing directory using TRT Index as a source.</li>
+        <li>Circumvent rate limits, bot-protection measures, or the directives in <a href="/robots.txt">/robots.txt</a>.</li>
+      </ul>
+      <p>
+        Substantial extraction of the directory, including its compiled structure (state/city/clinic taxonomy, service tags, editorial summaries, classifications), is protected as a compilation under U.S. copyright law and is not permitted under fair use.
+      </p>
+
+      <h2>5. Sentinel listings and detection</h2>
+      <p>
+        TRT Index publishes a small number of clearly labeled <strong>sentinel listings</strong> (also called "honeytokens" or "canary records") inside the directory. Sentinel listings carry a unique watermark phrase and a visible "This is a sentinel listing" banner on the page. They are excluded from our sitemap and are marked <code>noindex</code> for search engines.
+      </p>
+      <p>
+        If a sentinel listing or its watermark appears in any third-party site, dataset, model output, feed, or API, that strongly indicates the third party scraped the TRT Index directory in violation of these Terms. We treat presence of a sentinel as evidence of unauthorized copying and reserve all available legal remedies, including takedown notices, contractual claims, and copyright/database-right claims.
+      </p>
+
+      <h2>6. Featured and verified placements</h2>
+      <p>
+        Clinics may contact us to discuss featured or verified placement via the <a href="/for-clinics/">For clinics</a> page. Featured placement is editorially gated: we do not list clinics that fail our classification criteria, and any commercial relationship is disclosed on the relevant page.
+      </p>
+
+      <h2>7. Inaccurate information</h2>
+      <p>
+        We do our best to keep listings accurate, but data drifts. If a listing is wrong, out of date, or should be removed, contact us via the link on <a href="/about/">About</a> and we'll review it.
+      </p>
+
+      <h2>8. Changes</h2>
+      <p>
+        We may update these Terms from time to time. The "Last updated" date above reflects the most recent change. Continued use of the site after a change constitutes acceptance of the new Terms.
+      </p>
+
+      <h2>9. Contact</h2>
+      <p>
+        Questions about these Terms, or to request permission for any of the prohibited uses listed in section 4, should be directed via the contact link on the <a href="/about/">About</a> page.
+      </p>
+    </article>
+  </section>
+</BaseLayout>

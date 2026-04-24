@@ -46,6 +46,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'clinics.min.json');
 const WRITEUPS_DIR = path.join(__dirname, '..', '..', 'data', 'clinic_writeups');
+const HONEYTOKENS_PATH = path.join(__dirname, '..', '..', 'data', 'honeytokens.json');
 
 const DIRECTORY_CLASSES = new Set(['primary_trt', 'offers_trt']);
 
@@ -89,6 +90,21 @@ function isGhost(c) {
 
 let cached = null;
 
+function loadHoneytokens() {
+  if (!fs.existsSync(HONEYTOKENS_PATH)) return [];
+  try {
+    const raw = fs.readFileSync(HONEYTOKENS_PATH, 'utf8');
+    const parsed = JSON.parse(raw);
+    return (parsed.clinics || []).map((c) => ({ ...c, _honeytoken: true }));
+  } catch {
+    return [];
+  }
+}
+
+export function isHoneytoken(clinic) {
+  return !!clinic?._honeytoken;
+}
+
 export function loadClinics() {
   if (cached) return cached;
   if (!fs.existsSync(DATA_PATH)) {
@@ -102,7 +118,11 @@ export function loadClinics() {
   // "permanently closed" pages with noindex + alternative-clinic suggestions) -
   // handy when someone searches the specific clinic name. Listing/roll-up
   // helpers below filter them out so they don't clutter live listings.
-  cached = all.filter((c) => DIRECTORY_CLASSES.has(c.classification) && !isGhost(c));
+  const real = all.filter((c) => DIRECTORY_CLASSES.has(c.classification) && !isGhost(c));
+  // Honeytokens ride along through every read path so they appear in shards
+  // and listings; sitemap/robots are responsible for excluding them from
+  // search engine indexing.
+  cached = real.concat(loadHoneytokens());
   return cached;
 }
 

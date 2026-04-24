@@ -27,56 +27,83 @@ import Icon from './Icon.astro';
   const roots = document.querySelectorAll('[data-site-search]');
   if (!roots.length) return;
 
-  let indexPromise = null;
-  function loadIndex() {
-    if (!indexPromise) {
-      indexPromise = fetch('/search-index.json')
+  // Sharded index. /sx/meta.json holds cities + chain rollups + state list.
+  // /sx/s/{stateSlug}.json holds clinic rows for that state. We lazy-fetch
+  // state shards as needed (typeahead context) so the initial payload stays
+  // small and scrapers can't grab everything in one request.
+  let metaPromise = null;
+  const stateShards = new Map();
+  let allShardsKickedOff = false;
+
+  function loadMeta() {
+    if (!metaPromise) {
+      metaPromise = fetch('/sx/meta.json')
         .then((r) => r.json())
-        .catch(() => ({ cities: [], clinics: [] }));
+        .catch(() => ({ cities: [], chains: [], states: [] }));
     }
-    return indexPromise;
+    return metaPromise;
+  }
+
+  function loadStateShard(stateSlug) {
+    if (!stateShards.has(stateSlug)) {
+      const p = fetch(`/sx/s/${stateSlug}.json`)
+        .then((r) => r.json())
+        .then((d) => d.rows || [])
+        .catch(() => []);
+      stateShards.set(stateSlug, p);
+    }
+    return stateShards.get(stateSlug);
   }
 
   function norm(s) { return (s || '').toLowerCase(); }
 
-  function rankAndFilter(q, idx) {
+  function rankCities(q, meta) {
     const nq = norm(q).trim();
-    if (!nq) return { cities: [], clinics: [] };
-
-    const cityHits = [];
-    for (const row of idx.cities) {
-      const [name, stateAbbr, stateSlug, citySlug, count] = row;
+    if (!nq) return [];
+    const hits = [];
+    for (const row of meta.cities) {
+      const [name, stateAbbr, , , count] = row;
       const hay = norm(name + ' ' + stateAbbr);
       const pos = hay.indexOf(nq);
       if (pos === -1) continue;
       const starts = pos === 0 || hay[pos - 1] === ' ';
-      cityHits.push({ row, rank: (starts ? 0 : 1) * 1e9 - count });
-      if (cityHits.length > 200) break;
+      hits.push({ row, rank: (starts ? 0 : 1) * 1e9 - count });
     }
-    cityHits.sort((a, b) => a.rank - b.rank);
+    hits.sort((a, b) => a.rank - b.rank);
+    return hits.map((h) => h.row);
+  }
 
-    const clinicHits = [];
-    for (const row of idx.clinics) {
+  function rankClinics(q, rows) {
+    const nq = norm(q).trim();
+    if (!nq) return [];
+    const hits = [];
+    for (const row of rows) {
       const [name, city, stateAbbr] = row;
       const hay = norm(name);
-      const pos = hay.indexOf(nq);
       const cityHay = norm(city + ' ' + stateAbbr);
+      const pos = hay.indexOf(nq);
       const cityPos = cityHay.indexOf(nq);
       if (pos === -1 && cityPos === -1) continue;
       const starts = pos === 0 || (pos > 0 && hay[pos - 1] === ' ');
       const score = row[6] || 0;
       const bucket = pos === 0 ? 0 : pos > 0 && starts ? 1 : pos > 0 ? 2 : 3;
-      clinicHits.push({ row, rank: bucket * 1e9 - score });
-      if (clinicHits.length > 400) break;
+      hits.push({ row, rank: bucket * 1e9 - score });
     }
-    clinicHits.sort((a, b) => a.rank - b.rank);
+    hits.sort((a, b) => a.rank - b.rank);
+    return hits;
+  }
 
-    return {
-      cities: cityHits.slice(0, 5).map((h) => h.row),
-      clinics: clinicHits.slice(0, 8).map((h) => h.row),
-      cityTotal: cityHits.length,
-      clinicTotal: clinicHits.length,
-    };
+  // Pick which state shards we need for this query. We start with states
+  // surfaced by the city matches (cheap, hits the user's geographic intent),
+  // then on follow-up keystrokes also pull all remaining shards in the
+  // background so chain-only queries (e.g. "gameday") still find everything.
+  function statesToFetch(q, meta, cityHits) {
+    const wanted = new Set();
+    for (const row of cityHits.slice(0, 8)) wanted.add(row[2 + 0] || row[2]);
+    // Cities row: [name, stateAbbr, stateSlug, citySlug, count]
+    const out = new Set();
+    for (const row of cityHits.slice(0, 8)) out.add(row[2]);
+    return out;
   }
 
   function escapeHtml(s) {
@@ -147,6 +174,7 @@ import Icon from './Icon.astro';
     const panel = root.querySelector('[data-site-search-panel]');
     let items = [];
     let activeIdx = -1;
+    let renderToken = 0;
 
     function refreshItems() {
       items = Array.from(panel.querySelectorAll('.ss-item'));
@@ -164,13 +192,55 @@ import Icon from './Icon.astro';
     async function handle() {
       const q = input.value;
       if (!q.trim()) { panel.classList.add('hidden'); return; }
-      const idx = await loadIndex();
-      const results = rankAndFilter(q, idx);
+      const myToken = ++renderToken;
+      const meta = await loadMeta();
+      if (myToken !== renderToken) return;
+
+      const cityHits = rankCities(q, meta);
+
+      // Fetch the shards we need: states surfaced by city matches first
+      // (cheap, hits geographic intent), and on the second keystroke also
+      // fan out to all remaining shards so chain-only queries find everything.
+      const targetStates = new Set();
+      for (const row of cityHits.slice(0, 8)) targetStates.add(row[2]);
+      // If user has typed enough to plausibly mean a clinic name, kick off
+      // remaining shards once. They cache so this only happens on the first
+      // active session.
+      if (q.trim().length >= 3 && !allShardsKickedOff) {
+        allShardsKickedOff = true;
+        for (const s of meta.states) loadStateShard(s);
+      }
+      for (const s of targetStates) loadStateShard(s);
+
+      // Wait only on the targeted shards before first paint - all-shard
+      // results stream in on the next keystroke.
+      const targetedShards = await Promise.all([...targetStates].map((s) => loadStateShard(s)));
+      if (myToken !== renderToken) return;
+
+      // Combine whatever is already resolved from the global fan-out.
+      const allRows = [];
+      for (const arr of targetedShards) allRows.push(...arr);
+      for (const [s, p] of stateShards.entries()) {
+        if (targetStates.has(s)) continue;
+        // Non-blocking: only include shards that are already resolved.
+        const settled = await Promise.race([p, Promise.resolve(null)]);
+        if (Array.isArray(settled)) allRows.push(...settled);
+      }
+
+      const clinicHits = rankClinics(q, allRows);
+
+      const results = {
+        cities: cityHits.slice(0, 5),
+        clinics: clinicHits.slice(0, 8).map((h) => h.row),
+        cityTotal: cityHits.length,
+        clinicTotal: clinicHits.length,
+      };
+      if (myToken !== renderToken) return;
       render(panel, results, q);
       refreshItems();
     }
 
-    input.addEventListener('focus', () => { loadIndex(); });
+    input.addEventListener('focus', () => { loadMeta(); });
     input.addEventListener('input', () => {
       clearTimeout(debounce);
       debounce = setTimeout(handle, 60);

@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const modules = import.meta.glob('./*.{md,mdx}', { eager: true });
+const articles = Object.entries(modules)
+  .map(([path, mod]: [string, any]) => {
+    const fm = mod?.frontmatter ?? {};
+    const slug = path.replace(/^\.\//, '').replace(/\.(md|mdx)$/, '');
+    return {
+      url: `/news/${slug}/`,
+      title: fm.title || slug,
+      description: fm.description || '',
+      category: fm.category || 'News',
+      date: fm.date || null,
+      image: fm.image || null,
+      source: fm.source || null,
+    };
+  })
+  .sort((a, b) => {
+    const aT = a.date ? new Date(a.date).getTime() : 0;
+    const bT = b.date ? new Date(b.date).getTime() : 0;
+    return bT - aT;
+  });
+---
+<BaseLayout
+  title="TRT news and research | TRT Index"
+  description="Editorial summaries of testosterone replacement therapy research, FDA news, and clinic trends, published 2-3 times a week."
+>
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="container-prose pt-14 pb-10">
+      <nav class="text-sm text-ink-500 mb-4">
+        <a href="/" class="hover:text-ink-900">Home</a>
+        <span class="mx-1.5">/</span>
+        <span class="text-ink-900">News</span>
+      </nav>
+      <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">News & research</p>
+      <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900">
+        TRT news, research, and clinic trends
+      </h1>
+      <p class="mt-4 text-lg text-ink-600 max-w-2xl">
+        Short, evidence-based summaries from journals, the FDA, and industry news. New posts 2-3 times a week. Nothing here is medical advice.
+      </p>
+
+      <form id="trt-subscribe-archive" class="mt-6 flex flex-col sm:flex-row gap-3 max-w-xl" novalidate>
+        <label class="sr-only" for="sub-email-archive">Email</label>
+        <input id="sub-email-archive" name="email" type="email" required autocomplete="email" placeholder="you@example.com"
+          class="flex-1 rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        <button type="submit"
+          class="inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-3 text-white font-semibold hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+          Get the weekly digest
+        </button>
+      </form>
+      <p id="sub-msg-archive" class="mt-3 text-sm hidden"></p>
+    </div>
+  </section>
+
+  <section class="container-prose py-10 pb-24">
+    {articles.length === 0 && (
+      <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-8 text-center">
+        <p class="text-ink-700">The first TRT Index briefings are in progress. Subscribe above and we'll send the weekly digest as posts go live.</p>
+      </div>
+    )}
+
+    {articles.length > 0 && (
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {articles.map((a: any) => (
+          <li class="rounded-2xl bg-white ring-1 ring-ink-100 overflow-hidden hover:ring-brand-200 transition">
+            <a href={a.url} class="block">
+              {a.image && (
+                <img src={a.image} alt="" width="1536" height="1024" class="w-full aspect-[3/2] object-cover" loading="lazy" />
+              )}
+              <div class="p-5">
+                <div class="flex items-center gap-2 text-xs text-ink-500">
+                  <span class="inline-block rounded-full bg-brand-50 px-2.5 py-0.5 font-semibold text-brand-700 uppercase tracking-wide">{a.category}</span>
+                  {a.date && (
+                    <time datetime={a.date}>{new Date(a.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</time>
+                  )}
+                </div>
+                <h2 class="mt-3 font-display text-xl font-semibold text-ink-900 leading-snug">{a.title}</h2>
+                {a.description && <p class="mt-2 text-sm text-ink-600 line-clamp-3">{a.description}</p>}
+                {a.source && <p class="mt-3 text-xs text-ink-500">Source: {a.source}</p>}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+
+  <script is:inline>
+    (function () {
+      const form = document.getElementById('trt-subscribe-archive');
+      if (!form) return;
+      const msg = document.getElementById('sub-msg-archive');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const email = form.querySelector('input[name="email"]').value.trim();
+        if (!email) return;
+        btn.disabled = true;
+        const originalLabel = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        msg.classList.add('hidden');
+        msg.classList.remove('text-emerald-800', 'text-rose-800');
+        try {
+          const res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, source: 'news-archive' }),
+          });
+          if (res.ok) {
+            msg.textContent = 'Thanks! We\'ll send the next digest to your inbox.';
+            msg.classList.remove('hidden');
+            msg.classList.add('text-emerald-800');
+            form.reset();
+          } else {
+            const body = await res.json().catch(() => ({}));
+            msg.textContent = body.error || 'Something went wrong. Please try again.';
+            msg.classList.remove('hidden');
+            msg.classList.add('text-rose-800');
+          }
+        } catch {
+          msg.textContent = 'Network error. Please try again.';
+          msg.classList.remove('hidden');
+          msg.classList.add('text-rose-800');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+        }
+      });
+    })();
+  </script>
+</BaseLayout>

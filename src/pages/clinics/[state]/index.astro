@@ -23,7 +23,7 @@ const cities = Object.keys(byCity)
     const avg = rated.length ? rated.reduce((s, c) => s + c.rating, 0) / rated.length : 0;
     return { slug, name: list[0]?.city || slug, count: list.length, avgRating: avg };
   })
-  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 const totalCount = cities.reduce((n, c) => n + c.count, 0);
 const allClinics = cities.flatMap((c) => byCity[c.slug]);

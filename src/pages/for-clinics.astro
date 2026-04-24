@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+
+// Form submissions go to Formspree (https://formspree.io). The destination
+// email is configured in the Formspree dashboard, not here. To swap providers
+// later, replace formAction below.
+const FORMSPREE_ID = 'xdayyyyb';
+const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
+---
+<BaseLayout
+  title="For clinics - list, verify, or feature your clinic | TRT Index"
+  description="TRT Index is an independent directory of TRT clinics. Request a new listing, corrections, verification, or featured placement."
+>
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="container-prose pt-14 pb-10">
+      <nav class="text-sm text-ink-500 mb-4">
+        <a href="/" class="hover:text-ink-900">Home</a>
+        <span class="mx-1.5">/</span>
+        <span class="text-ink-900">For clinics</span>
+      </nav>
+      <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">For clinics</p>
+      <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900">
+        List, verify, or feature your clinic
+      </h1>
+      <p class="mt-4 text-lg text-ink-600 max-w-2xl">
+        TRT Index is an editorially independent directory. Use this form to request a new listing, fix information on an existing one, or ask about verified and featured placement.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-prose py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="rounded-xl bg-white ring-1 ring-ink-100 p-5">
+        <div class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+          <Icon name="search" size={18} />
+        </div>
+        <h3 class="mt-3 font-display font-semibold text-ink-900">New listing</h3>
+        <p class="mt-1 text-sm text-ink-600">If your clinic isn't in the directory yet, send us the details and we'll review it for inclusion.</p>
+      </div>
+      <div class="rounded-xl bg-white ring-1 ring-ink-100 p-5">
+        <div class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 text-amber-700">
+          <Icon name="info" size={18} />
+        </div>
+        <h3 class="mt-3 font-display font-semibold text-ink-900">Corrections</h3>
+        <p class="mt-1 text-sm text-ink-600">Hours, phone, services, or anything else that's wrong on your listing. Free and fast.</p>
+      </div>
+      <div class="rounded-xl bg-white ring-1 ring-ink-100 p-5">
+        <div class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-violet-50 text-violet-700">
+          <Icon name="video" size={18} />
+        </div>
+        <h3 class="mt-3 font-display font-semibold text-ink-900">Verified & featured</h3>
+        <p class="mt-1 text-sm text-ink-600">Verified placement surfaces your real photos, services, and pricing on your page. Paid featured placement is editorially gated and disclosed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-prose pb-24">
+    <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-6 md:p-8">
+      <h2 class="font-display text-2xl font-semibold text-ink-900">Contact us</h2>
+      <p class="mt-1 text-sm text-ink-600">We read every message. Replies usually come within two business days.</p>
+
+      <form
+        id="clinic-contact-form"
+        action={formAction}
+        method="POST"
+        class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5"
+      >
+        <div class="md:col-span-1">
+          <label for="cc-name" class="block text-sm font-medium text-ink-800">Your name <span class="text-rose-600">*</span></label>
+          <input id="cc-name" name="name" type="text" required autocomplete="name"
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
+        <div class="md:col-span-1">
+          <label for="cc-email" class="block text-sm font-medium text-ink-800">Email <span class="text-rose-600">*</span></label>
+          <input id="cc-email" name="email" type="email" required autocomplete="email"
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
+        <div class="md:col-span-1">
+          <label for="cc-clinic" class="block text-sm font-medium text-ink-800">Clinic name <span class="text-rose-600">*</span></label>
+          <input id="cc-clinic" name="clinic" type="text" required
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
+        <div class="md:col-span-1">
+          <label for="cc-website" class="block text-sm font-medium text-ink-800">Website</label>
+          <input id="cc-website" name="website" type="url" placeholder="https://"
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-ink-800 mb-2">What are you reaching out about? <span class="text-rose-600">*</span></label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
+              <input type="radio" name="topic" value="New listing" required class="mt-1" />
+              <span><span class="font-medium text-ink-900">New listing</span><span class="block text-xs text-ink-500">Add my clinic to the directory</span></span>
+            </label>
+            <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
+              <input type="radio" name="topic" value="Correction" class="mt-1" />
+              <span><span class="font-medium text-ink-900">Correction</span><span class="block text-xs text-ink-500">Something is wrong on my page</span></span>
+            </label>
+            <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
+              <input type="radio" name="topic" value="Verified placement" class="mt-1" />
+              <span><span class="font-medium text-ink-900">Verified placement</span><span class="block text-xs text-ink-500">Show our real services / photos</span></span>
+            </label>
+            <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
+              <input type="radio" name="topic" value="Featured placement" class="mt-1" />
+              <span><span class="font-medium text-ink-900">Featured placement</span><span class="block text-xs text-ink-500">Paid, editorially gated</span></span>
+            </label>
+            <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300 sm:col-span-2">
+              <input type="radio" name="topic" value="Other" class="mt-1" />
+              <span><span class="font-medium text-ink-900">Other</span><span class="block text-xs text-ink-500">Partnerships, press, data licensing, or something else</span></span>
+            </label>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <label for="cc-message" class="block text-sm font-medium text-ink-800">Details <span class="text-rose-600">*</span></label>
+          <textarea id="cc-message" name="message" rows="6" required
+            placeholder="Tell us about your clinic, what you need, and anything we should know."
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100"></textarea>
+        </div>
+
+        {/* Honeypot field - bots fill it in, real users don't see it. Submissions
+            with a non-empty value are dropped client-side and flagged on the server. */}
+        <div class="hidden" aria-hidden="true">
+          <label>Do not fill this in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <div class="md:col-span-2 flex items-center justify-between gap-4 pt-2">
+          <p class="text-xs text-ink-500">By submitting, you agree to our <a href="/terms/" class="underline hover:text-ink-800">Terms of Service</a>.</p>
+          <button type="submit"
+            class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-white font-semibold hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            Send message
+          </button>
+        </div>
+      </form>
+
+      <div id="cc-success" class="hidden mt-6 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-900">
+        Thanks - we got your message and will reply shortly.
+      </div>
+      <div id="cc-error" class="hidden mt-6 rounded-lg border border-rose-300 bg-rose-50 p-4 text-sm text-rose-900">
+        Something went wrong. Please try again or email us via the link on <a href="/about/" class="underline">About</a>.
+      </div>
+    </div>
+
+    <div class="mt-8 rounded-2xl bg-ink-50 ring-1 ring-ink-100 p-6 md:p-8">
+      <h2 class="font-display text-lg font-semibold text-ink-900">A note on featured placement</h2>
+      <p class="mt-2 text-sm text-ink-700">
+        Featured placement is <strong>paid</strong> and is clearly disclosed on the relevant page. We still apply our editorial criteria: clinics that fail classification (no TRT service, fraudulent reviews, regulatory issues) are not eligible, regardless of payment. Our default ranking and directory data are never altered for paying clinics, only the additional featured surface.
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    const form = document.getElementById('clinic-contact-form');
+    if (!form || !form.getAttribute('action')) return;
+    const successBox = document.getElementById('cc-success');
+    const errorBox = document.getElementById('cc-error');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      successBox.classList.add('hidden');
+      errorBox.classList.add('hidden');
+
+      const data = new FormData(form);
+      if (data.get('_gotcha')) { successBox.classList.remove('hidden'); form.reset(); return; }
+
+      const btn = form.querySelector('button[type="submit"]');
+      const originalLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          form.reset();
+          successBox.classList.remove('hidden');
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          errorBox.classList.remove('hidden');
+        }
+      } catch {
+        errorBox.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      }
+    });
+  })();
+  </script>
+</BaseLayout>
