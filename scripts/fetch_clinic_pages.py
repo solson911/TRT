@@ -12,9 +12,13 @@ Usage:
   python3 scripts/fetch_clinic_pages.py --limit 10
   python3 scripts/fetch_clinic_pages.py --only <placeId>,<placeId>
 """
-import argparse, json, os, sys, time, re, socket
+import argparse, json, os, sys, time, re, socket, gzip, zlib, io
 import urllib.parse, urllib.request, urllib.error
 from bs4 import BeautifulSoup
+try:
+    import brotli  # type: ignore
+except ImportError:
+    brotli = None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data', 'clinics.min.json')
@@ -39,6 +43,21 @@ def fetch_one(url):
             if 'html' not in ctype.lower():
                 return None
             data = r.read(600_000)  # cap 600KB per page
+            # Some servers/CDNs return gzip/deflate even though urllib doesn't
+            # advertise Accept-Encoding. Decompress before decoding.
+            enc = (r.headers.get('Content-Encoding') or '').lower()
+            try:
+                if 'gzip' in enc:
+                    data = gzip.decompress(data)
+                elif 'deflate' in enc:
+                    try:
+                        data = zlib.decompress(data)
+                    except zlib.error:
+                        data = zlib.decompress(data, -zlib.MAX_WBITS)
+                elif 'br' in enc and brotli is not None:
+                    data = brotli.decompress(data)
+            except Exception:
+                pass
             try:
                 return data.decode(r.headers.get_content_charset() or 'utf-8', errors='replace')
             except Exception:

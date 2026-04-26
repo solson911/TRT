@@ -44,6 +44,14 @@ EXCLUDE = {
 
     # Dead site (bit.ly URL with no live destination content)
     'ChIJI9ntU6WrPogReke5h11EE2s': 'Dead/aggregator URL (bit.ly redirect)',
+
+    # Parse-failed sentinel triage 2026-04-26: Claude correctly refused to
+    # write a directory blurb because the website does not represent a TRT
+    # clinic for the listed location.
+    'ChIJNdSBZ6pkx4kRcDJqZli5uI0': 'B2B lead-gen service, not a clinic (Hormonetherapylead.com)',
+    'ChIJMSJUvgivU4gRPVHbiMv-pGo': 'Chain mismatch: Winston-Salem listing but website covers only Florida (AgeRejuvenation)',
+    'ChIJT62Ba3YOiYgRJ7yHHIQof-A': 'Spa/cosmetic beauty center, not TRT (Body Logic Wellness)',
+    'ChIJuaeWrc0ZU4gRQdyLPOtDsO0': 'Urology practice (vasectomy/ED/infertility), no TRT focus (Dr. Luke Machen)',
 }
 
 

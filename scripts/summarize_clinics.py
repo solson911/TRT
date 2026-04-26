@@ -63,13 +63,22 @@ def build_text(pages_record):
 
 def run_claude(prompt):
     # --print (-p) non-interactive; we pass the prompt via stdin for safety.
-    result = subprocess.run(
-        ['claude', '-p', '--model', 'haiku'],
-        input=prompt,
-        capture_output=True,
-        text=True,
-        timeout=120,
-    )
+    # Timeout bumped to 300s (some clinic page bundles are large enough that
+    # haiku takes >2min). TimeoutExpired is caught here so a single slow call
+    # writes a sentinel and the batch continues; previously an unhandled
+    # timeout killed the whole multi-hour run.
+    try:
+        result = subprocess.run(
+            ['claude', '-p', '--model', 'haiku'],
+            input=prompt,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+    except subprocess.TimeoutExpired:
+        return None, 'timeout'
+    except Exception as e:
+        return None, f'subprocess-error: {e}'
     if result.returncode != 0:
         return None, result.stderr.strip()
     return result.stdout.strip(), None
