@@ -9,8 +9,21 @@ interface Props {
   jsonLd?: unknown;
 }
 
-const { title, description = 'Find TRT clinics across the United States.', canonical, noindex = false, jsonLd } = Astro.props;
+const {
+  title,
+  description = 'Find testosterone replacement therapy clinics, online TRT providers, ratings, services, and contact information across the United States.',
+  canonical,
+  noindex = false,
+  jsonLd,
+} = Astro.props;
 const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://trtindex.com').toString();
+const navLinks = [
+  { href: '/clinics/', label: 'Find a clinic' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/news/', label: 'News' },
+  { href: '/telehealth/', label: 'Telehealth' },
+  { href: '/about/', label: 'About' },
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -52,13 +65,32 @@ const canonicalHref = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'ht
           <img src="/logo.png" alt="TRT Index" width="1248" height="304" class="h-9 md:h-11 w-auto" />
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-ink-600">
-          <a href="/clinics/" class="hover:text-ink-900">Find a clinic</a>
-          <a href="/guides/" class="hover:text-ink-900">Guides</a>
-          <a href="/news/" class="hover:text-ink-900">News</a>
-          <a href="/telehealth/" class="hover:text-ink-900">Telehealth</a>
-          <a href="/about/" class="hover:text-ink-900">About</a>
+          {navLinks.map((link) => (
+            <a href={link.href} class="hover:text-ink-900">{link.label}</a>
+          ))}
           <a href="/for-clinics/" class="inline-flex items-center rounded-lg bg-ink-900 px-3 py-1.5 text-white hover:bg-ink-700">For clinics</a>
         </nav>
+        <details class="group relative md:hidden">
+          <summary class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-ink-200 bg-white text-ink-800 transition hover:border-ink-300" aria-label="Open navigation">
+            <span class="sr-only">Menu</span>
+            <svg class="h-5 w-5 group-open:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16" />
+              <path d="M4 12h16" />
+              <path d="M4 18h16" />
+            </svg>
+            <svg class="hidden h-5 w-5 group-open:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </summary>
+          <nav class="absolute right-0 top-12 z-50 w-64 overflow-hidden rounded-xl bg-white py-2 text-sm font-medium text-ink-700 shadow-xl ring-1 ring-ink-100">
+            {navLinks.map((link) => (
+              <a href={link.href} class="block px-4 py-3 hover:bg-brand-50 hover:text-ink-900">{link.label}</a>
+            ))}
+            <div class="my-1 border-t border-ink-100"></div>
+            <a href="/for-clinics/" class="block px-4 py-3 font-semibold text-brand-700 hover:bg-brand-50">For clinics</a>
+          </nav>
+        </details>
       </div>
     </header>
 

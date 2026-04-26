@@ -70,6 +70,7 @@ const mapEmbed = `https://www.google.com/maps?q=${mapQuery}&z=15&output=embed`;
 const directionsUrl = clinic.lat && clinic.lng
   ? `https://www.google.com/maps/dir/?api=1&destination=${clinic.lat},${clinic.lng}`
   : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([clinic.name, clinic.address].filter(Boolean).join(' '))}`;
+const clinicContactHref = `/for-clinics/?clinic=${encodeURIComponent(clinic.name)}&city=${encodeURIComponent(clinic.city || '')}&state=${encodeURIComponent(clinic.state || '')}`;
 
 // LocalBusiness / MedicalBusiness structured data. Skipped on closed clinics
 // (we don't want rich snippets promoting a business that no longer exists).
@@ -124,11 +125,15 @@ const businessLd = closed ? null : {
 };
 
 const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
+const clinicDescription = closed
+  ? `${clinic.name} in ${clinic.city}, ${stateInfo?.abbr} is marked permanently closed. Browse open TRT clinics nearby on TRT Index.`
+  : `${clinic.name} is a ${clinic.city}, ${stateInfo?.abbr} TRT and hormone clinic. See ratings, reviews, services, address, phone, website, directions, and nearby alternatives.`;
 ---
 <BaseLayout
   title={closed
     ? `${clinic.name} - Permanently Closed | TRT Index`
     : `${clinic.name} - ${clinic.city}, ${stateInfo?.abbr} | TRT Index`}
+  description={clinicDescription}
   noindex={closed || honeytoken}
   jsonLd={honeytoken ? [] : jsonLd}
 >
@@ -330,6 +335,13 @@ const jsonLd = businessLd ? [businessLd, breadcrumbLd] : [breadcrumbLd];
         {clinic.googleUrl && (
           <div class="flex items-start gap-2"><span class="text-ink-400 shrink-0">Google</span><a href={clinic.googleUrl} target="_blank" rel="nofollow noopener noreferrer external" class="text-ink-800 hover:text-brand-700">View listing</a></div>
         )}
+      </div>
+      <div class="rounded-2xl ring-1 ring-brand-100 bg-brand-50/60 p-5">
+        <h2 class="font-display text-lg font-semibold text-ink-900">Own or manage this clinic?</h2>
+        <p class="mt-2 text-sm text-ink-700">Request corrections, add services, or ask about verified and featured placement.</p>
+        <a href={clinicContactHref} class="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700">
+          Claim or update listing
+        </a>
       </div>
     </aside>
   </section>

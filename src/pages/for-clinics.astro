@@ -155,6 +155,22 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
     if (!form || !form.getAttribute('action')) return;
     const successBox = document.getElementById('cc-success');
     const errorBox = document.getElementById('cc-error');
+    const params = new URLSearchParams(window.location.search);
+    const clinic = params.get('clinic');
+    const city = params.get('city');
+    const state = params.get('state');
+
+    if (clinic) {
+      const clinicInput = form.querySelector('input[name="clinic"]');
+      const correctionRadio = form.querySelector('input[name="topic"][value="Correction"]');
+      const message = form.querySelector('textarea[name="message"]');
+      if (clinicInput) clinicInput.value = clinic;
+      if (correctionRadio) correctionRadio.checked = true;
+      if (message && !message.value) {
+        const place = [city, state].filter(Boolean).join(', ');
+        message.value = `I am contacting you about ${clinic}${place ? ` in ${place}` : ''}.`;
+      }
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

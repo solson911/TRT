@@ -5,13 +5,15 @@ import { countsByState } from '../../data/clinics.js';
 import { breadcrumbJsonLd } from '../../data/breadcrumbs.js';
 
 const counts = countsByState();
+const total = Object.values(counts).reduce((sum, n) => sum + n, 0);
 
 const jsonLd = breadcrumbJsonLd([
   { name: 'Home', url: 'https://trtindex.com/' },
   { name: 'States', url: 'https://trtindex.com/clinics/' },
 ]);
+const description = `Browse TRT clinics by state across the United States. Compare ${total.toLocaleString()} testosterone and hormone therapy clinic listings grouped by city.`;
 ---
-<BaseLayout title="Find a TRT clinic by state - TRT Index" jsonLd={jsonLd}>
+<BaseLayout title="Find a TRT clinic by state - TRT Index" description={description} jsonLd={jsonLd}>
   <section class="container-prose pt-14 pb-10">
     <p class="text-sm font-semibold tracking-wider text-brand-700 uppercase">Directory</p>
     <h1 class="mt-2 font-display text-4xl md:text-5xl font-semibold tracking-tight text-ink-900">
