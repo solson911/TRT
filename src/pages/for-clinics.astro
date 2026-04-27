@@ -57,8 +57,8 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
 
   <section class="container-prose pb-24">
     <div class="rounded-2xl bg-white ring-1 ring-ink-100 p-6 md:p-8">
-      <h2 class="font-display text-2xl font-semibold text-ink-900">Contact us</h2>
-      <p class="mt-1 text-sm text-ink-600">We read every message. Replies usually come within two business days.</p>
+      <h2 class="font-display text-2xl font-semibold text-ink-900">Claim or update a listing</h2>
+      <p class="mt-1 text-sm text-ink-600">Corrections are free. Verified and featured placements are paid options and do not affect editorial ratings.</p>
 
       <form
         id="clinic-contact-form"
@@ -77,20 +77,51 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
             class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
         </div>
         <div class="md:col-span-1">
+          <label for="cc-role" class="block text-sm font-medium text-ink-800">Role / title</label>
+          <input id="cc-role" name="role" type="text" autocomplete="organization-title" placeholder="Owner, office manager, marketing director"
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
+        <div class="md:col-span-1">
+          <label for="cc-phone" class="block text-sm font-medium text-ink-800">Phone</label>
+          <input id="cc-phone" name="phone" type="tel" autocomplete="tel"
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
+        <div class="md:col-span-1">
           <label for="cc-clinic" class="block text-sm font-medium text-ink-800">Clinic name <span class="text-rose-600">*</span></label>
           <input id="cc-clinic" name="clinic" type="text" required
             class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
+        <div class="md:col-span-1 grid grid-cols-2 gap-3">
+          <div>
+            <label for="cc-city" class="block text-sm font-medium text-ink-800">City</label>
+            <input id="cc-city" name="city" type="text" autocomplete="address-level2"
+              class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+          </div>
+          <div>
+            <label for="cc-state" class="block text-sm font-medium text-ink-800">State</label>
+            <input id="cc-state" name="state" type="text" autocomplete="address-level1"
+              class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+          </div>
         </div>
         <div class="md:col-span-1">
           <label for="cc-website" class="block text-sm font-medium text-ink-800">Website</label>
           <input id="cc-website" name="website" type="url" placeholder="https://"
             class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
         </div>
+        <div class="md:col-span-1">
+          <label for="cc-google" class="block text-sm font-medium text-ink-800">Google Business Profile URL</label>
+          <input id="cc-google" name="google_profile_url" type="url" placeholder="https://"
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100" />
+        </div>
         <div class="md:col-span-2">
           <label class="block text-sm font-medium text-ink-800 mb-2">What are you reaching out about? <span class="text-rose-600">*</span></label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
-              <input type="radio" name="topic" value="New listing" required class="mt-1" />
+              <input type="radio" name="topic" value="Claim listing" required class="mt-1" />
+              <span><span class="font-medium text-ink-900">Claim listing</span><span class="block text-xs text-ink-500">I own or manage this clinic</span></span>
+            </label>
+            <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
+              <input type="radio" name="topic" value="New listing" class="mt-1" />
               <span><span class="font-medium text-ink-900">New listing</span><span class="block text-xs text-ink-500">Add my clinic to the directory</span></span>
             </label>
             <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
@@ -99,17 +130,28 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
             </label>
             <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
               <input type="radio" name="topic" value="Verified placement" class="mt-1" />
-              <span><span class="font-medium text-ink-900">Verified placement</span><span class="block text-xs text-ink-500">Show our real services / photos</span></span>
+              <span><span class="font-medium text-ink-900">Verified placement</span><span class="block text-xs text-ink-500">Ask about paid verified profile options</span></span>
             </label>
             <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
               <input type="radio" name="topic" value="Featured placement" class="mt-1" />
-              <span><span class="font-medium text-ink-900">Featured placement</span><span class="block text-xs text-ink-500">Paid, editorially gated</span></span>
+              <span><span class="font-medium text-ink-900">Featured placement</span><span class="block text-xs text-ink-500">Ask about sponsored city/state visibility</span></span>
+            </label>
+            <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300">
+              <input type="radio" name="topic" value="Add services or photos" class="mt-1" />
+              <span><span class="font-medium text-ink-900">Add services/photos</span><span class="block text-xs text-ink-500">Expand an existing profile</span></span>
             </label>
             <label class="flex items-start gap-2 rounded-lg border border-ink-200 px-3 py-2.5 cursor-pointer hover:border-brand-300 sm:col-span-2">
               <input type="radio" name="topic" value="Other" class="mt-1" />
               <span><span class="font-medium text-ink-900">Other</span><span class="block text-xs text-ink-500">Partnerships, press, data licensing, or something else</span></span>
             </label>
           </div>
+        </div>
+        <div class="md:col-span-2">
+          <label for="cc-proof" class="block text-sm font-medium text-ink-800">Proof of affiliation</label>
+          <textarea id="cc-proof" name="proof_of_affiliation" rows="3"
+            placeholder="Examples: business email domain, clinic website contact page, Google Business Profile access, or a short note explaining your relationship to the clinic."
+            class="mt-1 w-full rounded-lg border border-ink-200 bg-white px-3 py-2.5 text-base placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100"></textarea>
+          <p class="mt-1 text-xs text-ink-500">This helps us verify claim requests before changing ownership-sensitive listing details.</p>
         </div>
         <div class="md:col-span-2">
           <label for="cc-message" class="block text-sm font-medium text-ink-800">Details <span class="text-rose-600">*</span></label>
@@ -125,7 +167,7 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
         </div>
 
         <div class="md:col-span-2 flex items-center justify-between gap-4 pt-2">
-          <p class="text-xs text-ink-500">By submitting, you agree to our <a href="/terms/" class="underline hover:text-ink-800">Terms of Service</a>.</p>
+          <p class="text-xs text-ink-500">We review claim and correction requests manually. By submitting, you agree to our <a href="/terms/" class="underline hover:text-ink-800">Terms of Service</a>.</p>
           <button type="submit"
             class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-white font-semibold hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
             Send message
@@ -134,7 +176,7 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
       </form>
 
       <div id="cc-success" class="hidden mt-6 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-900">
-        Thanks - we got your message and will reply shortly.
+        Thanks - we got your request. We review clinic claim and correction requests manually and will reply shortly.
       </div>
       <div id="cc-error" class="hidden mt-6 rounded-lg border border-rose-300 bg-rose-50 p-4 text-sm text-rose-900">
         Something went wrong. Please try again or email us via the link on <a href="/about/" class="underline">About</a>.
@@ -144,7 +186,7 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
     <div class="mt-8 rounded-2xl bg-ink-50 ring-1 ring-ink-100 p-6 md:p-8">
       <h2 class="font-display text-lg font-semibold text-ink-900">A note on featured placement</h2>
       <p class="mt-2 text-sm text-ink-700">
-        Featured placement is <strong>paid</strong> and is clearly disclosed on the relevant page. We still apply our editorial criteria: clinics that fail classification (no TRT service, fraudulent reviews, regulatory issues) are not eligible, regardless of payment. Our default ranking and directory data are never altered for paying clinics, only the additional featured surface.
+        Corrections are free. Verified profiles and featured placement are <strong>paid</strong> and clearly disclosed where relevant. We still apply our editorial criteria: clinics that fail classification (no TRT service, fraudulent reviews, regulatory issues) are not eligible, regardless of payment. Our default ranking and directory data are never altered for paying clinics, only the additional verified or featured surface.
       </p>
     </div>
   </section>
@@ -162,9 +204,13 @@ const formAction = `https://formspree.io/f/${FORMSPREE_ID}`;
 
     if (clinic) {
       const clinicInput = form.querySelector('input[name="clinic"]');
+      const cityInput = form.querySelector('input[name="city"]');
+      const stateInput = form.querySelector('input[name="state"]');
       const correctionRadio = form.querySelector('input[name="topic"][value="Correction"]');
       const message = form.querySelector('textarea[name="message"]');
       if (clinicInput) clinicInput.value = clinic;
+      if (cityInput && city) cityInput.value = city;
+      if (stateInput && state) stateInput.value = state;
       if (correctionRadio) correctionRadio.checked = true;
       if (message && !message.value) {
         const place = [city, state].filter(Boolean).join(', ');
