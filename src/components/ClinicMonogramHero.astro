@@ -1,0 +1,36 @@
+---
+interface Props {
+  clinicName: string;
+  slug: string;
+}
+
+const { clinicName, slug } = Astro.props;
+
+const monogram = (clinicName || '?')
+  .replace(/[^A-Za-z\s]/g, '')
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((w) => w[0].toUpperCase())
+  .join('') || '?';
+
+const PALETTE = [
+  { bg: 'bg-brand-100',  text: 'text-brand-700',  ring: 'ring-brand-200'  },
+  { bg: 'bg-teal-100',   text: 'text-teal-700',   ring: 'ring-teal-200'   },
+  { bg: 'bg-amber-100',  text: 'text-amber-800',  ring: 'ring-amber-200'  },
+  { bg: 'bg-violet-100', text: 'text-violet-700', ring: 'ring-violet-200' },
+  { bg: 'bg-ink-100',    text: 'text-ink-700',    ring: 'ring-ink-200'    },
+  { bg: 'bg-rose-100',   text: 'text-rose-700',   ring: 'ring-rose-200'   },
+];
+
+let hash = 0;
+for (let i = 0; i < (slug || '').length; i++) hash = (hash * 31 + slug.charCodeAt(i)) >>> 0;
+const tone = PALETTE[hash % PALETTE.length];
+---
+<section class="container-prose pb-6">
+  <div class={`grid place-items-center h-[280px] md:h-[360px] rounded-2xl ring-1 ${tone.bg} ${tone.ring}`}>
+    <span class={`font-display font-bold tracking-tight ${tone.text} text-7xl md:text-8xl select-none`}>
+      {monogram}
+    </span>
+  </div>
+</section>

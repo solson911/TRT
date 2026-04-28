@@ -2,6 +2,7 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import ClinicCard from '../../../../components/ClinicCard.astro';
 import ClinicPhotos from '../../../../components/ClinicPhotos.astro';
+import ClinicMonogramHero from '../../../../components/ClinicMonogramHero.astro';
 import ClinicReviews from '../../../../components/ClinicReviews.astro';
 import Icon from '../../../../components/Icon.astro';
 import { STATE_BY_SLUG } from '../../../../data/states.js';
@@ -227,8 +228,10 @@ const clinicDescription = closed
     </div>
   </section>
 
-  {clinic.photos && clinic.photos.length > 0 && (
+  {clinic.photos && clinic.photos.length > 0 ? (
     <ClinicPhotos photos={clinic.photos} clinicName={clinic.name} googleUrl={clinic.googleUrl} />
+  ) : (
+    <ClinicMonogramHero clinicName={clinic.name} slug={clinic.slug} />
   )}
 
   {(writeup || mergedServices.length > 0) && !closed && (
