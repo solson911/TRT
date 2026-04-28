@@ -175,6 +175,7 @@ def main():
     ap.add_argument('--save', action='store_true', help='Persist to disk (pilot defaults to no-save report)')
     ap.add_argument('--limit', type=int, default=0, help='Max number of clinics to enrich')
     ap.add_argument('--force', action='store_true', help='Re-enrich clinics that already have extrasEnrichedAt')
+    ap.add_argument('--only', type=str, default='', help='Comma-separated placeIds to enrich (skips classification + source filters)')
     args = ap.parse_args()
 
     if args.pilot and args.limit == 0:
@@ -182,13 +183,17 @@ def main():
 
     clinics = load_clinics()
     DIRECTORY_CLASSES = {'primary_trt', 'offers_trt'}
-    targets = [
-        c for c in clinics
-        if c.get('source') == 'google-places'
-        and c.get('placeId')
-        and c.get('classification') in DIRECTORY_CLASSES
-        and (args.force or not c.get('extrasEnrichedAt'))
-    ]
+    if args.only:
+        only_ids = {p.strip() for p in args.only.split(',') if p.strip()}
+        targets = [c for c in clinics if c.get('placeId') in only_ids]
+    else:
+        targets = [
+            c for c in clinics
+            if c.get('source') == 'google-places'
+            and c.get('placeId')
+            and c.get('classification') in DIRECTORY_CLASSES
+            and (args.force or not c.get('extrasEnrichedAt'))
+        ]
     if args.limit:
         targets = targets[:args.limit]
 
