@@ -31,7 +31,7 @@ fi
 branch="${1:-$(git symbolic-ref --short HEAD)}"
 remote_url=$(git config --get remote.origin.url)
 
-if [[ "$remote_url" != https://github.com/* ]]; then
+if [[ "$remote_url" != https://github.com/* && "$remote_url" != https://*@github.com/* ]]; then
   echo "error: origin is not an https://github.com URL: $remote_url" >&2
   exit 2
 fi
