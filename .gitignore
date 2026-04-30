@@ -35,4 +35,6 @@ news-pipeline/logs/
 news-pipeline/runs/
 news-pipeline/summaries/
 news-pipeline/digests/
+news-pipeline/published/
 news-pipeline/state.json
+news-pipeline/last-scan-report.json
