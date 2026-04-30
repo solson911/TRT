@@ -17,7 +17,8 @@ import os
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all, save_all  # noqa: E402
 
 EXCLUDE = {
     # gambling-hijacked domains (former clinics whose URLs now host casinos)
@@ -56,8 +57,7 @@ EXCLUDE = {
 
 
 def main():
-    with open(DATA_FILE, 'r') as f:
-        clinics = json.load(f)
+    clinics = load_all()
     by_id = {c.get('placeId'): c for c in clinics}
 
     updated = 0
@@ -80,8 +80,7 @@ def main():
         updated += 1
 
     if updated:
-        with open(DATA_FILE, 'w') as f:
-            json.dump(clinics, f, separators=(',', ':'))
+        save_all(clinics)
     print(f'updated={updated} already-unrelated={already} missing={missing}')
 
 

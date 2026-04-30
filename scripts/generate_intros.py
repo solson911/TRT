@@ -28,7 +28,8 @@ from collections import defaultdict
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CLINICS_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all  # noqa: E402
 INTROS_FILE = os.path.join(ROOT, 'data', 'page-intros.json')
 
 CLAUDE_BIN = os.environ.get('CLAUDE_BIN', 'claude')
@@ -162,8 +163,7 @@ def main():
     ap.add_argument('--force', action='store_true', help='Re-generate even if entry exists')
     args = ap.parse_args()
 
-    with open(CLINICS_FILE) as f:
-        clinics = json.load(f)
+    clinics = load_all()
     intros = load_intros()
 
     # Plan state + city work lists up front

@@ -19,10 +19,12 @@ Run:
 import argparse
 import json
 import os
+import sys
 import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'public', 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all, save_all  # noqa: E402
 
 GENERIC_PREFIX = 'Biote Certified Provider'
 NOW = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
@@ -33,8 +35,7 @@ def main():
     ap.add_argument('--dry-run', action='store_true')
     args = ap.parse_args()
 
-    with open(DATA_FILE) as f:
-        clinics = json.load(f)
+    clinics = load_all()
 
     before_total = len(clinics)
     dir_before = sum(1 for c in clinics if c.get('classification') in ('primary_trt', 'offers_trt'))
@@ -73,10 +74,8 @@ def main():
         print('[dry-run] not saving')
         return
 
-    kept.sort(key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
-    with open(DATA_FILE, 'w') as f:
-        json.dump(kept, f, indent=2, ensure_ascii=False)
-    print(f'[save] wrote {len(kept)} records → {DATA_FILE}')
+    save_all(kept)
+    print(f'[save] wrote {len(kept)} records to per-state shards')
 
 
 if __name__ == '__main__':

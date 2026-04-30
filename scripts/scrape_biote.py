@@ -46,7 +46,8 @@ from html import unescape
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'public', 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all, save_all  # noqa: E402
 CHECKPOINT = os.path.join(ROOT, 'logs', 'biote_progress.json')
 
 UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
@@ -223,17 +224,11 @@ def fetch_provider_name(detail_url):
 # ---- merge into clinics.min.json ------------------------------------------
 
 def load_clinics():
-    if not os.path.exists(DATA_FILE):
-        return []
-    with open(DATA_FILE) as f:
-        d = json.load(f)
-    return d if isinstance(d, list) else d.get('clinics', [])
+    return load_all()
 
 
 def save_clinics(records):
-    records.sort(key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
-    with open(DATA_FILE, 'w') as f:
-        json.dump(records, f, ensure_ascii=False, separators=(',', ':'))
+    save_all(records)
 
 
 def build_indices(records):
@@ -438,7 +433,7 @@ def main():
         return
 
     save_clinics(existing)
-    print(f'[save] wrote {len(existing)} clinics → {DATA_FILE}')
+    print(f'[save] wrote {len(existing)} clinics to per-state shards')
 
 
 if __name__ == '__main__':

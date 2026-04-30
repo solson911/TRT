@@ -1,5 +1,5 @@
-// Loads clinic data from data/clinics.min.json at build time.
-// The JSON file is produced by scripts/scrape_places.py then classified by
+// Loads clinic data from data/clinics/*.json (per-state shards) at build time.
+// Records are produced by scripts/scrape_places.py then classified by
 // scripts/enrich_clinics.py. loadClinics() returns only records classified as
 // TRT-relevant (primary_trt or offers_trt); unrelated or unclassified records
 // are excluded from the public directory.
@@ -44,9 +44,21 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'clinics.min.json');
+const SHARDS_DIR = path.join(__dirname, '..', '..', 'data', 'clinics');
 const WRITEUPS_DIR = path.join(__dirname, '..', '..', 'data', 'clinic_writeups');
 const HONEYTOKENS_PATH = path.join(__dirname, '..', '..', 'data', 'honeytokens.json');
+
+function readShards() {
+  if (!fs.existsSync(SHARDS_DIR)) return [];
+  const out = [];
+  for (const name of fs.readdirSync(SHARDS_DIR).sort()) {
+    if (!name.endsWith('.json')) continue;
+    const raw = fs.readFileSync(path.join(SHARDS_DIR, name), 'utf8');
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) out.push(...parsed);
+  }
+  return out;
+}
 
 const DIRECTORY_CLASSES = new Set(['primary_trt', 'offers_trt']);
 
@@ -107,13 +119,11 @@ export function isHoneytoken(clinic) {
 
 export function loadClinics() {
   if (cached) return cached;
-  if (!fs.existsSync(DATA_PATH)) {
+  const all = readShards();
+  if (all.length === 0) {
     cached = [];
     return cached;
   }
-  const raw = fs.readFileSync(DATA_PATH, 'utf8');
-  const parsed = JSON.parse(raw);
-  const all = Array.isArray(parsed) ? parsed : (parsed.clinics || []);
   // Include CLOSED_PERMANENTLY so their detail pages still build (they render as
   // "permanently closed" pages with noindex + alternative-clinic suggestions) -
   // handy when someone searches the specific clinic name. Listing/roll-up
@@ -135,10 +145,7 @@ export function isTemporarilyClosed(clinic) {
 }
 
 export function loadAllClinics() {
-  if (!fs.existsSync(DATA_PATH)) return [];
-  const raw = fs.readFileSync(DATA_PATH, 'utf8');
-  const parsed = JSON.parse(raw);
-  return Array.isArray(parsed) ? parsed : (parsed.clinics || []);
+  return readShards();
 }
 
 export function clinicsByState() {

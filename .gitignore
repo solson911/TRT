@@ -10,6 +10,10 @@ logs/
 __pycache__/
 *.pyc
 
+# Legacy monolith - data lives in per-state shards under data/clinics/ now.
+# Re-created on demand by some workflows; never commit it.
+data/clinics.min.json
+
 # Raw scraped HTML - regeneratable; 100MB+ and not source material
 data/telehealth-raw/
 

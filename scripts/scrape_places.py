@@ -25,7 +25,9 @@ import urllib.request
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')  # legacy; data lives in per-state shards under data/clinics/
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all as _shards_load_all, save_all as _shards_save_all  # noqa: E402
 QUERIES_FILE = os.path.join(ROOT, 'data', 'seed-queries.json')
 METROS_FILE = os.path.join(ROOT, 'data', 'seed-metros.json')
 
@@ -212,26 +214,17 @@ def normalize_place(place, fallback_state):
 
 
 def load_existing():
-    if not os.path.exists(DATA_FILE):
-        return {}
     try:
-        with open(DATA_FILE, 'r') as f:
-            data = json.load(f)
-        if isinstance(data, list):
-            return {c['placeId']: c for c in data if c.get('placeId')}
-        if isinstance(data, dict) and 'clinics' in data:
-            return {c['placeId']: c for c in data['clinics'] if c.get('placeId')}
+        return {c['placeId']: c for c in _shards_load_all() if c.get('placeId')}
     except Exception as e:
         print(f'[warn] could not read existing data: {e}')
-    return {}
+        return {}
 
 
 def save_all(by_id):
-    items = sorted(by_id.values(), key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
-    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
-    with open(DATA_FILE, 'w') as f:
-        json.dump(items, f, ensure_ascii=False, separators=(',', ':'))
-    print(f'[save] wrote {len(items)} clinics → {DATA_FILE}')
+    items = list(by_id.values())
+    _shards_save_all(items)
+    print(f'[save] wrote {len(items)} clinics to per-state shards')
 
 
 def main():

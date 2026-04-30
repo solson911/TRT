@@ -26,7 +26,8 @@ import urllib.request
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all, save_all
 
 API_KEY = (
     os.environ.get('PLACES_UNRESTRICTED_API_KEY')
@@ -160,13 +161,11 @@ def merge_extras(clinic, details):
 
 
 def load_clinics():
-    with open(DATA_FILE) as f:
-        return json.load(f)
+    return load_all()
 
 
 def save_clinics(clinics):
-    with open(DATA_FILE, 'w') as f:
-        json.dump(clinics, f, ensure_ascii=False, separators=(',', ':'))
+    save_all(clinics)
 
 
 def main():
@@ -236,7 +235,7 @@ def main():
     if args.save or not args.pilot:
         ordered = sorted(by_id.values(), key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
         save_clinics(ordered)
-        print(f'[done] wrote {len(ordered)} clinics → {DATA_FILE}')
+        print(f'[done] wrote {len(ordered)} clinics to per-state shards')
 
     print(f'[summary] success={success} failed={failed}')
 

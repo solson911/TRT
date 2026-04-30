@@ -33,7 +33,8 @@ import urllib.request
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all, save_all  # noqa: E402
 METROS_FILE = os.path.join(ROOT, 'data', 'seed-metros.json')
 ENV_FILE = os.path.join(ROOT, '.env')
 
@@ -252,18 +253,12 @@ def apply_yelp_to_existing(existing, yelp_rec):
 
 
 def load_existing():
-    if not os.path.exists(DATA_FILE):
-        return []
-    with open(DATA_FILE) as f:
-        data = json.load(f)
-    return data if isinstance(data, list) else (data.get('clinics') or [])
+    return load_all()
 
 
 def save(records):
-    records.sort(key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
-    with open(DATA_FILE, 'w') as f:
-        json.dump(records, f, ensure_ascii=False, separators=(',', ':'))
-    print(f'[save] wrote {len(records)} clinics → {DATA_FILE}')
+    save_all(records)
+    print(f'[save] wrote {len(records)} clinics to per-state shards')
 
 
 def main():

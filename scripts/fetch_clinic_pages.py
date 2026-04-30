@@ -21,7 +21,8 @@ except ImportError:
     brotli = None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all  # noqa: E402
 OUT_DIR = os.path.join(ROOT, 'data', 'clinic_pages')
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -113,9 +114,7 @@ def main():
     ap.add_argument('--sleep', type=float, default=1.0)
     args = ap.parse_args()
 
-    with open(DATA) as f:
-        raw = json.load(f)
-    clinics = raw if isinstance(raw, list) else raw.get('clinics', [])
+    clinics = load_all()
     clinics = [c for c in clinics if c.get('classification') in DIRECTORY_CLASSES and not c.get('telehealth')]
     if args.state: clinics = [c for c in clinics if c.get('stateSlug') == args.state]
     if args.city: clinics = [c for c in clinics if c.get('citySlug') == args.city]

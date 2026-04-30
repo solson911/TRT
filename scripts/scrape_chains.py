@@ -37,7 +37,8 @@ from html import unescape
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all, save_all  # noqa: E402
 
 UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36')
@@ -524,13 +525,7 @@ def main():
     if bad:
         print(f'[err] unknown chains: {bad} (known: {list(CHAINS.keys())})'); sys.exit(2)
 
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE) as f:
-            existing = json.load(f)
-        if not isinstance(existing, list):
-            existing = existing.get('clinics', [])
-    else:
-        existing = []
+    existing = load_all()
     print(f'[start] loaded {len(existing)} existing clinics')
 
     chain_token_map = {k: v[2] for k, v in CHAINS.items()}
@@ -638,10 +633,8 @@ def main():
         print('[dry-run] skipping save')
         return
 
-    existing.sort(key=lambda c: (c.get('stateSlug') or '', c.get('citySlug') or '', c.get('name') or ''))
-    with open(DATA_FILE, 'w') as f:
-        json.dump(existing, f, ensure_ascii=False, separators=(',', ':'))
-    print(f'[save] wrote {len(existing)} clinics → {DATA_FILE}')
+    save_all(existing)
+    print(f'[save] wrote {len(existing)} clinics to per-state shards')
 
 
 if __name__ == '__main__':

@@ -15,8 +15,19 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.dirname(__dirname);
-const DATA = path.join(ROOT, 'data', 'clinics.min.json');
+const SHARDS_DIR = path.join(ROOT, 'data', 'clinics');
 const OUT_DIR = path.join(ROOT, 'data', 'clinic_pages');
+
+function loadAllClinics() {
+  if (!fs.existsSync(SHARDS_DIR)) return [];
+  const out = [];
+  for (const name of fs.readdirSync(SHARDS_DIR).sort()) {
+    if (!name.endsWith('.json')) continue;
+    const parsed = JSON.parse(fs.readFileSync(path.join(SHARDS_DIR, name), 'utf8'));
+    if (Array.isArray(parsed)) out.push(...parsed);
+  }
+  return out;
+}
 const CANDIDATE_PATHS = ['/', '/services/', '/trt/', '/about/', '/testosterone/', '/hormone-therapy/'];
 const MAX_PER_PAGE = 8000;
 const MIN_TEXT = 300;
@@ -41,7 +52,7 @@ if (!PIDS_FILE) {
 }
 
 const pids = fs.readFileSync(PIDS_FILE, 'utf8').split(/[\s,]+/).map(s => s.trim()).filter(Boolean);
-const clinics = JSON.parse(fs.readFileSync(DATA, 'utf8'));
+const clinics = loadAllClinics();
 const byId = new Map(clinics.map(c => [c.placeId, c]));
 
 function originOf(url) {

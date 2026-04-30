@@ -34,7 +34,9 @@ import time
 sys.stdout.reconfigure(line_buffering=True)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')  # legacy; per-state shards live under data/clinics/
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all as _shards_load_all, save_all as _shards_save_all  # noqa: E402
 MODEL = 'haiku'
 SAVE_EVERY = 200
 BATCH_SIZE = 20
@@ -159,8 +161,7 @@ def classify_batch(clinics):
 
 
 def save(records):
-    with open(DATA_FILE, 'w') as f:
-        json.dump(records, f, ensure_ascii=False, separators=(',', ':'))
+    _shards_save_all(records)
 
 
 def main():
@@ -171,8 +172,7 @@ def main():
     ap.add_argument('--dry-run', action='store_true')
     args = ap.parse_args()
 
-    with open(DATA_FILE) as f:
-        records = json.load(f)
+    records = _shards_load_all()
     print(f'[start] loaded {len(records)} records')
 
     states_scope = {s.strip().upper() for s in args.states.split(',') if s.strip()}

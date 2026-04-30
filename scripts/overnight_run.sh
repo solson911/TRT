@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # overnight_run.sh — sequential orchestrator for tonight's scraping pass.
 #
-# Order matters (all three scripts write to the same clinics.min.json, so we
-# serialize): chains first (fast, known-good), then Places phrase expansion
-# (medium), then Biote (slow multi-level walk), then classifier to cover all
-# newly-added records.
+# Order matters (all three scripts write to the same per-state shards under
+# data/clinics/, so we serialize): chains first (fast, known-good), then Places
+# phrase expansion (medium), then Biote (slow multi-level walk), then classifier
+# to cover all newly-added records.
 
 set -u  # not -e: we want to continue even if one stage hits a hiccup
 cd "$(dirname "$0")/.." || exit 2
@@ -17,7 +17,9 @@ MASTER_LOG="$LOG_DIR/overnight_${STAMP}.log"
 echo "=== overnight run started $(date -u +'%Y-%m-%dT%H:%M:%SZ') ===" | tee -a "$MASTER_LOG"
 
 backup_data() {
-  cp data/clinics.min.json "$LOG_DIR/clinics.min.${STAMP}.bak.json" 2>/dev/null || true
+  if [[ -d data/clinics ]]; then
+    cp -r data/clinics "$LOG_DIR/clinics.${STAMP}.bak" 2>/dev/null || true
+  fi
 }
 
 run_stage() {

@@ -20,7 +20,8 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(ROOT, 'data', 'clinics.min.json')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib.clinics_io import load_all, save_all  # noqa: E402
 
 NAME_PATTERN = re.compile(
     r"\b(peptide(?:s)?(?:\s+therapy)?|iv\s+(?:hydration|therapy|lounge|bar|drip)"
@@ -55,9 +56,7 @@ def should_flip(c):
 
 
 def main():
-    with open(DATA_FILE, 'r') as f:
-        data = json.load(f)
-    clinics = data if isinstance(data, list) else data.get('clinics', [])
+    clinics = load_all()
 
     flipped = []
     for c in clinics:
@@ -71,12 +70,7 @@ def main():
             )
             flipped.append(c)
 
-    with open(DATA_FILE, 'w') as f:
-        if isinstance(data, list):
-            json.dump(clinics, f, separators=(',', ':'))
-        else:
-            data['clinics'] = clinics
-            json.dump(data, f, separators=(',', ':'))
+    save_all(clinics)
 
     print(f"flipped {len(flipped)} records from offers_trt -> unrelated")
     print()

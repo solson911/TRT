@@ -47,27 +47,26 @@ LOG_DIR="$ROOT/logs"
 mkdir -p "$LOG_DIR"
 STAMP=$(date -u +'%Y%m%dT%H%M%SZ')
 MASTER_LOG="$LOG_DIR/nightly_${STAMP}.log"
-BACKUP="$LOG_DIR/clinics.min.${STAMP}.bak.json"
+BACKUP="$LOG_DIR/clinics.${STAMP}.bak"
 
 log() { echo "[$(date -u +'%H:%M:%SZ')] $*" | tee -a "$MASTER_LOG"; }
 
 count_eligible() {
   python3 - <<'PY'
-import json
-with open('data/clinics.min.json') as f:
-    d = json.load(f)
-a = d if isinstance(d, list) else d.get('clinics', [])
+import sys, os
+sys.path.insert(0, 'scripts')
+from lib.clinics_io import load_all
+a = load_all()
 print(sum(1 for c in a if c.get('classification') in ('primary_trt','offers_trt') and not c.get('telehealth')))
 PY
 }
 
 count_total() {
   python3 - <<'PY'
-import json
-with open('data/clinics.min.json') as f:
-    d = json.load(f)
-a = d if isinstance(d, list) else d.get('clinics', [])
-print(len(a))
+import sys, os
+sys.path.insert(0, 'scripts')
+from lib.clinics_io import load_all
+print(len(load_all()))
 PY
 }
 
@@ -87,7 +86,7 @@ run_stage() {
 log "=== nightly run starting ==="
 log "repo: $ROOT"
 
-cp data/clinics.min.json "$BACKUP" 2>/dev/null || log "no clinics.min.json to back up"
+if [ -d data/clinics ]; then cp -r data/clinics "$BACKUP" 2>/dev/null; else log "no data/clinics shards to back up"; fi
 BEFORE_TOTAL=$(count_total)
 BEFORE_ELIG=$(count_eligible)
 log "starting records: total=$BEFORE_TOTAL eligible=$BEFORE_ELIG"
@@ -127,7 +126,7 @@ run_stage summarize python3 scripts/summarize_clinics.py
 cd "$ROOT"
 if git status --porcelain | grep -qE '^(A|M|\?\?) (data/|public/img/)'; then
   log "changes detected, committing"
-  git add data/clinics.min.json \
+  git add data/clinics \
           "data/clinic_pages" \
           "data/clinic_writeups" \
           "public/img/clinics" 2>/dev/null || true
