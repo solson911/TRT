@@ -1,1 +1,17 @@
-{"skipped": "no-page-text"}
+{
+  "overview": "Vitality TRT connects patients with healthcare specialists for testosterone replacement therapy through a three-step process: comprehensive assessment, personalized treatment planning with multiple delivery options, and ongoing monitoring.",
+  "highlights": [
+    "Multiple testosterone delivery methods: injections, patches, gels, or pellets",
+    "Personalized treatment plans with ongoing support and adjustment",
+    "Complementary services including exercise programs and nutritional guidance"
+  ],
+  "services": [
+    "TRT",
+    "Wellness",
+    "Pellets"
+  ],
+  "consultModel": "in-person",
+  "targetAudience": "Men with low testosterone seeking medically supervised treatment.",
+  "source": "chain-template",
+  "generatedAt": "2026-05-02T20:48:57Z"
+}

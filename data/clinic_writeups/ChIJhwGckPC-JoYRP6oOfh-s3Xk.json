@@ -1,1 +1,17 @@
-{"skipped": "no-page-text"}
+{
+  "overview": "Flourish provides functional medicine with a focus on bio-identical hormone replacement therapy, oral thyroid prescriptions, and vitamin supplementation. The practice emphasizes prevention and treating the root cause of illness rather than masking conditions.",
+  "highlights": [
+    "Bio-identical hormone replacement pellets",
+    "Weight loss program with GLP-1 medications",
+    "IV hydration and Vampire PRP services"
+  ],
+  "services": [
+    "BHRT",
+    "GLP-1",
+    "Wellness"
+  ],
+  "consultModel": "in-person",
+  "targetAudience": "Patients seeking hormone replacement therapy and weight loss support through functional medicine.",
+  "source": "chain-template",
+  "generatedAt": "2026-05-02T20:48:57Z"
+}

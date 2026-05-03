@@ -1,1 +1,15 @@
-{"skipped": "no-page-text"}
+{
+  "overview": "Vital TRT connects patients with healthcare specialists for testosterone replacement therapy. The clinic provides comprehensive assessment, personalized treatment plans, and ongoing monitoring throughout the TRT process.",
+  "highlights": [
+    "Personalized treatment plans",
+    "Multiple testosterone delivery methods (injections, patches, gels, pellets)",
+    "Complementary services including exercise and nutrition support"
+  ],
+  "services": [
+    "TRT"
+  ],
+  "consultModel": "",
+  "targetAudience": "Men with low testosterone levels seeking personalized testosterone replacement therapy.",
+  "source": "chain-template",
+  "generatedAt": "2026-05-02T20:48:57Z"
+}

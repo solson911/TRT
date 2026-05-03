@@ -1,4 +1,4 @@
-// US states - used for routing and state directory pages.
+// US states and District of Columbia - used for routing and state directory pages.
 // Slug format: lowercase, hyphen-separated (e.g. "new-york").
 export const STATES = [
   { slug: 'alabama', name: 'Alabama', abbr: 'AL' },
@@ -9,6 +9,7 @@ export const STATES = [
   { slug: 'colorado', name: 'Colorado', abbr: 'CO' },
   { slug: 'connecticut', name: 'Connecticut', abbr: 'CT' },
   { slug: 'delaware', name: 'Delaware', abbr: 'DE' },
+  { slug: 'district-of-columbia', name: 'District of Columbia', abbr: 'DC' },
   { slug: 'florida', name: 'Florida', abbr: 'FL' },
   { slug: 'georgia', name: 'Georgia', abbr: 'GA' },
   { slug: 'hawaii', name: 'Hawaii', abbr: 'HI' },

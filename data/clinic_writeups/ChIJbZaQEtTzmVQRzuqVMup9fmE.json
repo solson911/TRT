@@ -1,1 +1,18 @@
-{"skipped": "no-page-text"}
+{
+  "overview": "Washington Testosterone Center provides testosterone replacement therapy for men and women diagnosed with hypogonadism. All therapies are based on laboratory testing and diagnostics, with certified doctors providing customized treatment plans.",
+  "highlights": [
+    "Thorough diagnostics before starting any treatment",
+    "Customized treatment plans with results monitoring",
+    "Also offers HGH and peptide therapy"
+  ],
+  "services": [
+    "TRT",
+    "HRT",
+    "Peptides",
+    "Wellness"
+  ],
+  "consultModel": "",
+  "targetAudience": "Men and women seeking treatment for low testosterone or related hormonal concerns.",
+  "source": "chain-template",
+  "generatedAt": "2026-05-02T20:48:57Z"
+}

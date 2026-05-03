@@ -1,1 +1,15 @@
-{"skipped": "no-page-text"}
+{
+  "overview": "Men's health clinic in Maine offering personalized wellness programs focused on energy, performance, and confidence through in-person and virtual visits.",
+  "highlights": [
+    "Telehealth available",
+    "Also treats joint pain, hair loss, and erectile dysfunction",
+    "Free initial consultation"
+  ],
+  "services": [
+    "TRT"
+  ],
+  "consultModel": "hybrid",
+  "targetAudience": "Men looking to improve energy, performance, and overall wellness.",
+  "source": "chain-template",
+  "generatedAt": "2026-05-02T20:48:57Z"
+}

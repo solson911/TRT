@@ -1,1 +1,16 @@
-{"overview": "Medical center providing hormone therapy and post-operative care.", "highlights": ["Hormone therapy", "Post-operative care after reassignment or orchiectomy"], "services": ["HRT"], "consultModel": "", "targetAudience": "Transgender patients seeking hormone therapy and post-operative care"}
+{
+  "overview": "O’DEA Medical Hormone Center is a Los Angeles medical clinic listed for hormone therapy and related medical care. Patients should confirm the clinic’s current services, eligibility criteria, lab process, and whether testosterone therapy is offered for their needs before booking.",
+  "highlights": [
+    "Hormone center listing",
+    "Phone and website listed",
+    "Physical clinic location in Los Angeles"
+  ],
+  "services": [
+    "TRT",
+    "HRT"
+  ],
+  "consultModel": "in-person",
+  "targetAudience": "Patients seeking hormone therapy who need to verify current services and fit directly with the clinic.",
+  "source": "website",
+  "generatedAt": "2026-05-03T02:15:48Z"
+}

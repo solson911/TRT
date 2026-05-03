@@ -1,1 +1,19 @@
-{"skipped": "no-page-text"}
+{
+  "overview": "Low T Center specializes in testosterone replacement therapy and men's health management through customized treatment plans delivered via both in-office visits and at-home telehealth programs. Services also include peptide therapies, hormone replacement for women, and treatment for related health conditions.",
+  "highlights": [
+    "Self-inject at-home TRT with remote monitoring",
+    "Peptide therapies including Sermorelin, GLP-1s, and NAD+",
+    "Women's hormone replacement therapy options"
+  ],
+  "services": [
+    "TRT",
+    "HRT",
+    "Peptides",
+    "GLP-1",
+    "Wellness"
+  ],
+  "consultModel": "hybrid",
+  "targetAudience": "Men with low testosterone seeking convenient, customized treatment, plus women interested in hormone replacement therapy.",
+  "source": "chain-template",
+  "generatedAt": "2026-05-02T20:48:57Z"
+}
